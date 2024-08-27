@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.heartProgressBar.setProgress(0.8f)
+
         binding.btnGameStart.setOnClickListener{
             // todo : 게임 시작 화면 뜨도록 하기
             val intent = Intent(this,GameActivity::class.java)
