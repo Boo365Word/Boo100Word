@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="apple"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/time_progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="350dp"
+        android:layout_height="30sp"
+        android:layout_marginTop="4dp"
+        android:max="60"
+        android:progress="0"
+        android:progressDrawable="@drawable/time_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_word" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintBottom_toBottomOf="@+id/time_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/time_progress_bar" />
+
+    <FrameLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/sketch_book_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar">
+
+        <com.example.boo345word.ui.custom.DrawingView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/drawingView"
+            android:layout_width="380dp"
+            android:layout_height="370dp"
+            android:background="@drawable/img_sketch_book" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txt_current_state"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
+        app:layout_constraintEnd_toEndOf="@+id/sketch_book_frame"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="/5"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
+        app:layout_constraintEnd_toEndOf="@+id/sketch_book_frame"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
+        app:layout_constraintVertical_bias="0.16000003"/>
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:scaleType="fitCenter"
+        android:id="@+id/ic_eraser"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_eraser"
+        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
+        app:layout_constraintVertical_bias="0.95" />
+
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_ghost_v2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sketch_book_frame"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/sketch_book_frame">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_speech_bubble"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="얼른 그려줘!"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="229dp"
+            tools:layout_editor_absoluteY="608dp" />
+
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:hint="정답을 입력하고 힌트 얻기"
+        android:gravity="center"
+        android:background="@drawable/edit_text_game"
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/edit_hint"
+        app:layout_constraintBottom_toTopOf="@+id/btn_skip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+
+    <ImageButton
+        android:id="@+id/btn_skip"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_skip"
+        android:scaleType="fitCenter"
+        android:src="@drawable/btn_skip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
