@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="15dp"
         android:background="@drawable/dialog_info_background">
 
         <!-- ViewPager2: 스와이프 가능한 페이지 뷰 -->
@@ -34,8 +34,8 @@
     <!-- 닫기 버튼 추가 -->
     <ImageView
         android:id="@+id/closeButton"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="end|top"
         android:background="@drawable/btn_close" />
 
