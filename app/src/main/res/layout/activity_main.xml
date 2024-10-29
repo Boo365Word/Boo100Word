@@ -115,6 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <ImageView
+        android:id="@+id/btn_info"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="20dp"
@@ -147,6 +148,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_game_start"
         app:layout_constraintTop_toTopOf="@+id/btn_game_start" />
+
+    <View
+        android:id="@+id/info_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility = "gone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
