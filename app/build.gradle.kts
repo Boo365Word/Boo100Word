@@ -1,11 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "com.example.boo345word"
     compileSdk = 34
+
+
 
     buildFeatures{
         viewBinding = true
@@ -37,9 +40,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    aaptOptions{
+        noCompress += "tflite"
+    }
 }
 
+
+
 dependencies {
+    implementation (libs.tensorflow.lite.support)
     implementation (libs.tensorflow.lite)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -50,5 +60,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation( libs.androidx.cardview)
+
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 
 }

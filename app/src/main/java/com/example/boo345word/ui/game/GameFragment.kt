@@ -1,25 +1,28 @@
 package com.example.boo345word.ui.game
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.boo345word.R
-import com.example.boo345word.databinding.ActivityGameBinding
+import com.example.boo345word.data.service.TransformRequest
+import com.example.boo345word.data.service.apiService
 import com.example.boo345word.databinding.FragmentGameBinding
+import com.example.boo345word.ui.classifier.DrawDetector
 import com.example.boo345word.ui.classifier.QuickDrawClassifier
 import com.example.boo345word.ui.custom.GameResultDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class GameFragment : Fragment() {
 
-    private lateinit var classifier: QuickDrawClassifier
-    private lateinit var binding : FragmentGameBinding
-    private var  stateCount : Int = 5
+    private lateinit var binding: FragmentGameBinding
+    private var stateCount: Int = 5
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,19 +30,46 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGameBinding.inflate(inflater)
-        Log.d("게임 프래그먼트당","욥")
+        Log.d("게임 프래그먼트당", "욥")
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.drawingView.setOnDrawingCompletedListener { bitmap ->
-            val filename = "drawing_${System.currentTimeMillis()}.png"
-            binding.drawingView.saveBitmapToFile(bitmap,filename)
+        val detector = DrawDetector(requireActivity())
 
-            // 또는 QuickDrawClassifier를 사용하여 분류를 수행할 수 있습니다.
-            val result = classifier.classifyDrawing(bitmap)
-            binding.result.text = "Predicted: $result"
+
+        binding.drawingView.setOnDrawingCompletedListener { bitmap ->
+            val classifier = QuickDrawClassifier(requireContext())
+            Log.d("현재의 bitmap", bitmap.toString())
+            val (strokes, box) = binding.drawingView.getStrokesData()
+//            val results=  classifier.classifyStrokes(strokes, box)
+            val neW_bitmap = Bitmap.createScaledBitmap(bitmap, 28, 28, false)
+            val result = detector.classify(neW_bitmap)
+            binding.result.text = result
+
+//            lifecycleScope.launch {
+//                val response = apiService.transformStrokes(TransformRequest(strokes, box))
+//                if (response.isSuccessful) {
+//                    response.body()?.let { responseBody ->
+//                        // Convert response to Bitmap
+//                        val inputStream = responseBody.byteStream()
+//                        val transformedBitmap = withContext(Dispatchers.IO) {
+//                            BitmapFactory.decodeStream(inputStream)
+//                        }
+//                        binding.imageView8.setImageBitmap(transformedBitmap)
+//
+//                        val new =binding.drawingView.recreateDrawingFromStrokes(strokes, box, transformedBitmap.width, transformedBitmap.height)
+//
+//
+//                        binding.result.text = results.toString()
+//                         Log.d("API", "Image transformation successful")
+//                    }
+//                } else {
+//                    Log.e("API", "Error: ${response.errorBody()?.string()}")
+//                }
+//
+//            }
 
         }
         //todo : timer와 연동하기 (30초)
@@ -56,32 +86,33 @@ class GameFragment : Fragment() {
         binding.txtCurrentState.text = currentState.toString()
 
         // 맞힌 경우
-        if (binding.txtCurrentState.text =="6") {
+        if (binding.txtCurrentState.text == "6") {
             // todo : 게임 결과창 띄우기
         }
         binding.btnSkip.setOnClickListener {
             //틀린 경우
-            if (binding.txtCurrentState.text ==stateCount.toString()) {
+            if (binding.txtCurrentState.text == stateCount.toString()) {
                 // todo : 게임 결과창 띄우기
                 showGameResult()
-            }
-            else{
+            } else {
                 (activity as? GameActivity)?.skipState(currentState + 1)
             }
         }
     }
 
-    private fun showGameResult(){
+
+    private fun showGameResult() {
         context?.let {
             val dialog = GameResultDialog(it)
             dialog.show()
         }
     }
 
-    companion object{
-        fun newInstance(currentState: Int) : GameFragment {
+
+    companion object {
+        fun newInstance(currentState: Int): GameFragment {
             val args = Bundle().apply {
-                putInt("currentState",currentState)
+                putInt("currentState", currentState)
             }
             val fragment = GameFragment()
             fragment.arguments = args
@@ -89,4 +120,3 @@ class GameFragment : Fragment() {
         }
     }
 }
-

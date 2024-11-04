@@ -3,6 +3,9 @@ package com.example.boo345word.ui.custom
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.graphics.Paint
 import android.graphics.Path
 import android.os.Looper
@@ -18,12 +21,24 @@ class DrawingView @JvmOverloads constructor(
     attrs : AttributeSet?= null,
     defStyleAttr : Int = 0,
 ) : View(context,attrs, defStyleAttr) {
+    private val strokes = mutableListOf<MutableList<Pair<Float, Float>>>()
+    private var currentStroke = mutableListOf<Pair<Float, Float>>()
+    private var minX = Float.MAX_VALUE
+    private var minY = Float.MAX_VALUE
+    private var maxX = Float.MIN_VALUE
+    private var maxY = Float.MIN_VALUE
+
+
 
     private val handler = android.os.Handler(Looper.getMainLooper())
     private var drawingCompleteRunnable : Runnable? = null
 
+
+
     private val paint = Paint().apply {
-        color = 0xFF0000FF.toInt() // 파란색
+//        color = 0xFF0000FF.toInt() // 파란색
+                color = Color.BLACK
+
         style = Paint.Style.STROKE
         strokeJoin = Paint.Join.ROUND
         strokeCap = Paint.Cap.ROUND
@@ -38,11 +53,31 @@ class DrawingView @JvmOverloads constructor(
         onDrawingCompletedListener = listener
     }
 
+
     private fun getBitmap(): Bitmap {
-        val returnedBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val returnedBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888, false)
         val canvas = Canvas(returnedBitmap)
+        canvas.translate(0f, 80F) // Adjust this value to cut off more or less from the top
         draw(canvas)
         return returnedBitmap
+    }
+    private fun updateBounds(x: Float, y: Float) {
+        minX = minOf(minX, x)
+        minY = minOf(minY, y)
+        maxX = maxOf(maxX, x)
+        maxY = maxOf(maxY, y)
+
+    }
+
+    fun getStrokesData(): Pair<List<List<List<Int>>>, List<Int>> {
+        val strokesData = strokes.map { stroke ->
+            listOf(
+                stroke.map { it.first.toInt() },
+                stroke.map { it.second.toInt() }
+            )
+        }
+        val box = listOf(minX.toInt(), minY.toInt(), maxX.toInt(), maxY.toInt())
+        return strokesData to box
     }
 
     fun saveBitmapToFile(bitmap: Bitmap, filename : String) {
@@ -59,56 +94,93 @@ class DrawingView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        Log.d("ondraw 호출","onDraw")
         for (p in paths) {
             canvas.drawPath(p,paint)
         }
-        Log.d("path는 이것!! ", path.toString())
         canvas.drawPath(path,paint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        when(event.action) {
+        val action = event.actionMasked
+        val x = event.x
+        val y = event.y
 
-            // 화면에 손가락이 닿은 채로 움직이는 중
-            MotionEvent.ACTION_MOVE -> {
-                path.lineTo(event.x,event.y)
-                drawingCompleteRunnable?.let { handler.removeCallbacks(it) }
-            }
-            // 화면에 손가락이 닿음 채로 움직일 때
+        when (action) {
             MotionEvent.ACTION_DOWN -> {
                 path = Path()
-                path.moveTo(event.x,event.y)
-
+                path.moveTo(x, y)
+                currentStroke = mutableListOf()
+                currentStroke.add(x to y)
+                updateBounds(x, y)
                 drawingCompleteRunnable?.let { handler.removeCallbacks(it) }
-                return true
             }
-
-            // 화면에서 손가락을 땜
+            MotionEvent.ACTION_MOVE -> {
+                path.lineTo(x, y)
+                currentStroke.add(x to y)
+                updateBounds(x, y)
+                drawingCompleteRunnable?.let { handler.removeCallbacks(it) }
+            }
             MotionEvent.ACTION_UP -> {
-                path.lineTo(event.x,event.y)
+                path.lineTo(x, y)
                 paths.add(path)
-                path = Path()
-
-                drawingCompleteRunnable = kotlinx.coroutines.Runnable {
+                strokes.add(currentStroke)
+                drawingCompleteRunnable = Runnable {
                     val bitmap = getBitmap()
                     onDrawingCompletedListener?.invoke(bitmap)
                 }
-                handler.postDelayed(drawingCompleteRunnable!!,3000)
+                handler.postDelayed(drawingCompleteRunnable!!, 1000)
             }
         }
 
-        // 화면갱신이 필요할 때 호출하는 함수
-        // 지금 화면은 무효이니 다시 그려주세요 라는 의미
         invalidate()
         return true
     }
+        fun clearCanvas() {
+            paths.clear()
+            strokes.clear()
+            Log.d("clear 호출", paths.toString())
+            undonePaths.clear()
+            path.reset()
+            minX = Float.MAX_VALUE
+            minY = Float.MAX_VALUE
+            maxX = Float.MIN_VALUE
+            maxY = Float.MIN_VALUE
+            invalidate()
+        }
 
-    fun clearCanvas() {
-        paths.clear()
-        Log.d("clear 호출",paths.toString())
-        undonePaths.clear()
-        path = Path()
-        invalidate()
+    fun recreateDrawingFromStrokes(strokes: List<List<List<Int>>>, box: List<Int>, width: Int, height: Int): Bitmap {
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        canvas.drawColor(Color.WHITE)
+
+        val paint = Paint().apply {
+            color = Color.BLACK
+            style = Paint.Style.STROKE
+            strokeJoin = Paint.Join.ROUND
+            strokeCap = Paint.Cap.ROUND
+            strokeWidth = 2f
+        }
+
+        val scaleX = width.toFloat() / (box[2] - box[0])
+        val scaleY = height.toFloat() / (box[3] - box[1])
+
+        for (stroke in strokes) {
+            val path = Path()
+            path.moveTo(
+                (stroke[0][0] - box[0]) * scaleX,
+                (stroke[1][0] - box[1]) * scaleY
+            )
+            for (i in 1 until stroke[0].size) {
+                path.lineTo(
+                    (stroke[0][i] - box[0]) * scaleX,
+                    (stroke[1][i] - box[1]) * scaleY
+                )
+            }
+            canvas.drawPath(path, paint)
+        }
+
+        return bitmap
     }
+
+
 }

@@ -51,12 +51,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_progress_bar">
 
+        <View
+            android:layout_width="380dp"
+            android:layout_height="370dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/img_sketch_book">
+
+        </View>
         <com.example.boo345word.ui.custom.DrawingView
             android:layout_gravity="center_horizontal"
             android:id="@+id/drawingView"
             android:layout_width="380dp"
-            android:layout_height="370dp"
-            android:background="@drawable/img_sketch_book" />
+            android:layout_height="370dp"/>
 
     </FrameLayout>
 
@@ -76,6 +82,7 @@
 
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:text="/5"
@@ -86,7 +93,7 @@
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
         app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
-        app:layout_constraintVertical_bias="0.16000003"/>
+        app:layout_constraintVertical_bias="0.16000003" />
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
@@ -110,11 +117,20 @@
         app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
         app:layout_constraintVertical_bias="0.95" />
 
+<!--    <ImageView-->
+<!--        android:id="@+id/bitmap_imageview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView10"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@id/imageView8" /> &lt;!&ndash; Initially hidden &ndash;&gt;-->
 
     <ImageView
+        android:scaleType="fitCenter"
         android:id="@+id/imageView8"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/img_ghost_v2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
