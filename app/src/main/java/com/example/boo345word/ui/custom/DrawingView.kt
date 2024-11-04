@@ -31,8 +31,6 @@ class DrawingView @JvmOverloads constructor(
     private val handler = android.os.Handler(Looper.getMainLooper())
     private var drawingCompleteRunnable : Runnable? = null
 
-
-
     private val paint = Paint().apply {
 //        color = 0xFF0000FF.toInt() // 파란색
                 color = Color.BLACK
