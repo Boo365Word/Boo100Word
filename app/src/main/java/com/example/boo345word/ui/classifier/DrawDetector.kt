@@ -15,6 +15,7 @@ import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.util.*
 
+// Todo : 변경 모델에 따라 적용해야함
 class DrawDetector(activity: Activity) {
     private val TAG = this.javaClass.simpleName
     private var tflite: Interpreter? = null
@@ -23,7 +24,9 @@ class DrawDetector(activity: Activity) {
     private var mnistOutput: Array<FloatArray>? = null
 
     // Name of the files in the assets folder
-    private val MODEL_PATH = "model (1004).tflite"
+    private val MODEL_PATH = "quick_draw_model.tflite"
+
+    // todo : 카테고리 파일 추가 필요
     private val LABEL_PATH = "class_names (1004).txt"
     private val RESULTS_TO_SHOW = 1
 
