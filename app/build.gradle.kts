@@ -8,8 +8,6 @@ android {
     namespace = "com.example.boo345word"
     compileSdk = 34
 
-
-
     buildFeatures{
         viewBinding = true
     }
@@ -46,8 +44,6 @@ android {
     }
 }
 
-
-
 dependencies {
     implementation (libs.tensorflow.lite.support)
     implementation (libs.tensorflow.lite)
@@ -63,5 +59,4 @@ dependencies {
 
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
-
 }
