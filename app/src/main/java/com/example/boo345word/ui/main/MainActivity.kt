@@ -1,17 +1,11 @@
 package com.example.boo345word.ui.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityMainBinding
 import com.example.boo345word.ui.custom.InfoDialog
 import com.example.boo345word.ui.game.GameActivity
-import com.example.boo345word.ui.game.GameFragment
 import com.example.boo345word.ui.word.WordListActivity
 
 class MainActivity : AppCompatActivity() {
@@ -25,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         initMainClickListener()
     }
 
-    private fun initMainBinding(){
+    private fun initMainBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { binding ->
             setContentView(binding.root)
         }
     }
 
-    private fun initMainClickListener(){
+    private fun initMainClickListener() {
         with(binding) {
             heartProgressBar.setProgress(INITIAL_PROGRESS_VALUE)
 
@@ -44,13 +38,17 @@ class MainActivity : AppCompatActivity() {
             btnInfo.setOnClickListener {
                 infoOverlay.also { overlay ->
                     overlay.visibility = View.VISIBLE
-                    InfoDialog(this@MainActivity).showViewPagerDialog(it)
+
+                    InfoDialog(
+                        context = this@MainActivity,
+                        overlay = overlay
+                    )
                 }
             }
         }
     }
 
-    companion object{
+    companion object {
 
         private const val INITIAL_PROGRESS_VALUE = 0.8f
     }
