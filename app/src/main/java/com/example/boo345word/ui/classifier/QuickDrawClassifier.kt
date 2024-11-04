@@ -50,10 +50,10 @@ class QuickDrawClassifier(private val context : Context) {
         val maxIndex = output.indices.maxByOrNull { output[it] } ?: -1
         return LABELS[maxIndex]
     }
+
     companion object {
         private val LABELS = arrayOf("apple", "banana", "cat", "dog", "elephant") // 예시 레이블
         private const val NUM_CLASSES = 5 // 클래스 수
     }
-
 }
 
