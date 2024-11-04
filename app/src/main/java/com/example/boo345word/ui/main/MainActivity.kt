@@ -16,36 +16,42 @@ import com.example.boo345word.ui.word.WordListActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding  : ActivityMainBinding
-    private lateinit var infoDialog: InfoDialog
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
 
-        infoDialog = InfoDialog(this)
+        initMainBinding()
+        initMainClickListener()
+    }
 
-        binding.heartProgressBar.setProgress(0.8f)
-
-        binding.btnGameStart.setOnClickListener{
-            // todo : 게임 시작 화면 뜨도록 하기
-            val intent = Intent(this,GameActivity::class.java)
-            startActivity(intent)
-
+    private fun initMainBinding(){
+        binding = ActivityMainBinding.inflate(layoutInflater).also { binding ->
+            setContentView(binding.root)
         }
+    }
 
-        binding.btnWord.setOnClickListener {
-            val intent = Intent(this, WordListActivity::class.java)
-            startActivity(intent)
-        }
+    private fun initMainClickListener(){
+        with(binding) {
+            heartProgressBar.setProgress(INITIAL_PROGRESS_VALUE)
 
-        binding.btnInfo.setOnClickListener {
-            val overlay = findViewById<View>(R.id.info_overlay)
-            overlay.visibility = View.VISIBLE
-            infoDialog.showViewPagerDialog(overlay)
+            btnGameStart.setOnClickListener {
+                GameActivity.start(this@MainActivity)
+            }
+            btnWord.setOnClickListener {
+                WordListActivity.start(this@MainActivity)
+            }
+            btnInfo.setOnClickListener {
+                infoOverlay.also { overlay ->
+                    overlay.visibility = View.VISIBLE
+                    InfoDialog(this@MainActivity).showViewPagerDialog(it)
+                }
+            }
         }
+    }
+
+    companion object{
+
+        private const val INITIAL_PROGRESS_VALUE = 0.8f
     }
 }
