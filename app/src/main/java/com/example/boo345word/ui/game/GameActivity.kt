@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityGameBinding
 
@@ -15,24 +16,29 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGameBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+
+        initGameBinding()
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.game_fragment_container_view, GameFragment.newInstance(1))
-                .commit()
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add(R.id.game_fragment_container_view, GameFragment.newInstance(1))
+            }
+        }
+    }
+
+    private fun initGameBinding() {
+        binding = ActivityGameBinding.inflate(layoutInflater).also { binding ->
+            setContentView(binding.root)
         }
     }
 
     fun skipState(currentState: Int) {
         Log.d("넘어가기", "스킵><")
-        supportFragmentManager.beginTransaction()
-            .setReorderingAllowed(true)
-            .add(R.id.game_fragment_container_view, GameFragment.newInstance(currentState))
-            .commit()
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add(R.id.game_fragment_container_view, GameFragment.newInstance(currentState))
+        }
     }
 
     companion object {
