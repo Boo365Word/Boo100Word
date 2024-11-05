@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMainClickListener() {
         with(binding) {
-            heartProgressBar.setProgress(INITIAL_PROGRESS_VALUE)
+            customHeartProgressBar.updateProgress(INITIAL_PROGRESS_VALUE)
 
             btnGameStart.setOnClickListener {
                 GameActivity.start(this@MainActivity)
@@ -50,6 +50,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
 
-        private const val INITIAL_PROGRESS_VALUE = 0.8f
+        private const val INITIAL_PROGRESS_VALUE = 0.3f
     }
 }

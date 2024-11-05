@@ -3,7 +3,6 @@ package com.example.boo345word.ui.game
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.boo345word.R
@@ -12,7 +11,6 @@ import com.example.boo345word.databinding.ActivityGameBinding
 class GameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGameBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +32,6 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun skipState(currentState: Int) {
-        Log.d("넘어가기", "스킵><")
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add(R.id.game_fragment_container_view, GameFragment.newInstance(currentState))
