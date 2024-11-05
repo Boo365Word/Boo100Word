@@ -12,12 +12,19 @@ import java.nio.channels.FileChannel
 
 class DrawClassifier(activity: Activity) {
     private val TAG = this.javaClass.simpleName
+
+    // 모델 로드에 필요한 인터프리터 null로 초기화
     private var tflite: Interpreter? = null
+
+    // 모델이 인식하는 카테고리 배열로 선언
     private val classNames = arrayOf("aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
         "animal_migration", "ant", "anvil", "apple", "arm", "asparagus", "axe", "backpack", "banana", "bandage")
+
+    // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)
     private val MODEL_PATH = "quick_draw_model.tflite"
 
 
+    // 초기화 한 인터프리터 객체 생성 (모델 불러오기)
     init {
         try {
             tflite = Interpreter(loadModelFile(activity))
@@ -39,11 +46,23 @@ class DrawClassifier(activity: Activity) {
     // 모델 파일 로드
     @Throws(IOException::class)
     private fun loadModelFile(activity: Activity): MappedByteBuffer {
+
+        // MODEL_PATH 경로에 있는 모델 파일 정보를 메모리에 매핑하기 위한 객체
         val fileDescriptor = activity.assets.openFd(MODEL_PATH)
+
+        // 파일 채널을 열어 모델 파일에 접근하기 위한 객체
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+
+        // 파일 채널 객체에서 생성한 채널
         val fileChannel = inputStream.channel
+
+        // 모델 파일의 시작 위치 저장, 모델이 저장된 위치 지정 시 필요
         val startOffset = fileDescriptor.startOffset
+
+        // 모델 파일의 전체 길이 저장, 메모리에 매핑할 때 필요한 크기
         val declaredLength = fileDescriptor.declaredLength
+
+        // 모델의 위치와 크기를 사용해서 읽기 전용으로 모델 파일을 메모리에 매핑
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 
