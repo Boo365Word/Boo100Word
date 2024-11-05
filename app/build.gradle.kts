@@ -8,6 +8,8 @@ android {
     namespace = "com.example.boo345word"
     compileSdk = 34
 
+
+
     buildFeatures{
         viewBinding = true
     }
@@ -44,6 +46,8 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation (libs.tensorflow.lite.support)
     implementation (libs.tensorflow.lite)
@@ -55,6 +59,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation( libs.androidx.cardview)
+
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.fragment)
     implementation (libs.retrofit)

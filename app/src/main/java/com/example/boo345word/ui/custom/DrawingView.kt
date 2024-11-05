@@ -4,8 +4,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.ColorMatrix
-import android.graphics.ColorMatrixColorFilter
 import android.graphics.Paint
 import android.graphics.Path
 import android.os.Looper
@@ -33,16 +31,14 @@ class DrawingView @JvmOverloads constructor(
     private val handler = android.os.Handler(Looper.getMainLooper())
     private var drawingCompleteRunnable : Runnable? = null
 
-
-
     private val paint = Paint().apply {
 //        color = 0xFF0000FF.toInt() // 파란색
                 color = Color.BLACK
-
+        isAntiAlias = true
         style = Paint.Style.STROKE
         strokeJoin = Paint.Join.ROUND
         strokeCap = Paint.Cap.ROUND
-        strokeWidth = 10f
+        strokeWidth = 20f
     }
 
     private var path = Path()
@@ -53,11 +49,11 @@ class DrawingView @JvmOverloads constructor(
         onDrawingCompletedListener = listener
     }
 
-
-    private fun getBitmap(): Bitmap {
-        val returnedBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888, false)
+    fun getBitmap(): Bitmap {
+        val returnedBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(returnedBitmap)
-        canvas.translate(0f, 80F) // Adjust this value to cut off more or less from the top
+        canvas.drawColor(Color.WHITE)
+//        canvas.translate(0f, 80F) // Adjust this value to cut off more or less from the top
         draw(canvas)
         return returnedBitmap
     }
@@ -158,7 +154,7 @@ class DrawingView @JvmOverloads constructor(
             style = Paint.Style.STROKE
             strokeJoin = Paint.Join.ROUND
             strokeCap = Paint.Cap.ROUND
-            strokeWidth = 2f
+            strokeWidth = 20f
         }
 
         val scaleX = width.toFloat() / (box[2] - box[0])
