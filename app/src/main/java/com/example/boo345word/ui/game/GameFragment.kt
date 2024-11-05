@@ -32,7 +32,6 @@ class GameFragment : Fragment() {
 
         val detector = DrawDetector(requireActivity())
 
-
         binding.drawingView.setOnDrawingCompletedListener { bitmap ->
             val classifier = QuickDrawClassifier(requireContext())
             Log.d("현재의 bitmap", bitmap.toString())

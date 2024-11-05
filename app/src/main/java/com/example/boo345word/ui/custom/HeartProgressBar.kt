@@ -2,7 +2,6 @@ package com.example.boo345word.ui.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.boo345word.databinding.HeartProgressBar2Binding
@@ -18,13 +17,14 @@ class HeartProgressBar(
         LayoutInflater.from(context),
         this,
         true
-    )
-
-    fun updateProgress(progressRate: Float) {
-        binding.ivProgressContainer.measure(
+    ).also{
+        it.ivProgressContainer.measure(
             MeasureSpec.UNSPECIFIED,
             MeasureSpec.UNSPECIFIED
         )
+    }
+
+    fun updateProgress(progressRate: Float) {
         val height = round(resources.displayMetrics.density * PROGRESS_BAR_HEIGHT).toInt()
         val containerWidth = binding.ivProgressContainer.measuredWidth
 
@@ -33,13 +33,13 @@ class HeartProgressBar(
             bottomToBottom = LayoutParams.PARENT_ID
             startToStart = LayoutParams.PARENT_ID
             endToEnd = LayoutParams.PARENT_ID
-            marginStart = (0.8 * containerWidth - 0.8 * containerWidth * progressRate).toInt()
-            Log.d("woogi", "updateProgress: $marginStart")
+            marginStart = (MIN_MARGIN_RATE * containerWidth - MIN_MARGIN_RATE * containerWidth * progressRate).toInt()
         }
     }
 
     companion object {
 
         private const val PROGRESS_BAR_HEIGHT = 32
+        private const val MIN_MARGIN_RATE = 0.8
     }
 }

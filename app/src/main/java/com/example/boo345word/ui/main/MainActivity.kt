@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
 
-        private const val INITIAL_PROGRESS_VALUE = 0.3f
+        private const val INITIAL_PROGRESS_VALUE = 0.5f
 
         fun start(context: Context){
             val intent = Intent(context, MainActivity::class.java)
