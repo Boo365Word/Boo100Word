@@ -5,8 +5,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.core.app.DialogCompat
 import com.example.boo345word.databinding.DialogGameResultBinding
 import com.example.boo345word.ui.game.GameActivity
 import com.example.boo345word.ui.main.MainActivity
