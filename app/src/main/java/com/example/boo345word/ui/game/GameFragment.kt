@@ -1,7 +1,5 @@
 package com.example.boo345word.ui.game
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,15 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.boo345word.data.service.TransformRequest
-import com.example.boo345word.data.service.apiService
 import com.example.boo345word.databinding.FragmentGameBinding
-import com.example.boo345word.ui.classifier.DrawDetector
-import com.example.boo345word.ui.classifier.QuickDrawClassifier
+import com.example.boo345word.ui.classifier.DrawClassifier
 import com.example.boo345word.ui.custom.GameResultDialog
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class GameFragment : Fragment() {
 
@@ -36,16 +28,12 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val detector = DrawDetector(requireActivity())
-
+        val classifier = DrawClassifier(requireActivity())
 
         binding.drawingView.setOnDrawingCompletedListener { bitmap ->
-            val classifier = QuickDrawClassifier(requireContext())
             Log.d("현재의 bitmap", bitmap.toString())
-            val (strokes, box) = binding.drawingView.getStrokesData()
-//            val results=  classifier.classifyStrokes(strokes, box)
-            val neW_bitmap = Bitmap.createScaledBitmap(bitmap, 28, 28, false)
-            val result = detector.classify(neW_bitmap)
+            val newBitmap = binding.drawingView.getBitmap()
+            val result = classifier.classify(newBitmap)
             binding.result.text = result
 
 //            lifecycleScope.launch {
@@ -80,6 +68,7 @@ class GameFragment : Fragment() {
 
         binding.icEraser.setOnClickListener {
             binding.drawingView.clearCanvas()
+            binding.result.text = ""
         }
 
         val currentState = arguments?.getInt("currentState") ?: 0
