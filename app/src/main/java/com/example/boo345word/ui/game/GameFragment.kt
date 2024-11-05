@@ -1,7 +1,6 @@
 package com.example.boo345word.ui.game
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,15 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.boo345word.data.service.TransformRequest
-import com.example.boo345word.data.service.apiService
 import com.example.boo345word.databinding.FragmentGameBinding
 import com.example.boo345word.ui.classifier.DrawDetector
 import com.example.boo345word.ui.classifier.QuickDrawClassifier
 import com.example.boo345word.ui.custom.GameResultDialog
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class GameFragment : Fragment() {
 

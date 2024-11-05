@@ -1,5 +1,7 @@
 package com.example.boo345word.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -51,5 +53,11 @@ class MainActivity : AppCompatActivity() {
     companion object {
 
         private const val INITIAL_PROGRESS_VALUE = 0.3f
+
+        fun start(context: Context){
+            val intent = Intent(context, MainActivity::class.java)
+
+            context.startActivity(intent)
+        }
     }
 }
