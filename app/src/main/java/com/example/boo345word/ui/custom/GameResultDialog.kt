@@ -5,9 +5,9 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.core.app.DialogCompat
 import com.example.boo345word.databinding.DialogGameResultBinding
+import com.example.boo345word.ui.game.GameActivity
+import com.example.boo345word.ui.main.MainActivity
 
 class GameResultDialog(context: Context) : Dialog(context) {
 
@@ -31,11 +31,13 @@ class GameResultDialog(context: Context) : Dialog(context) {
     private fun initGameResultListener(){
         //todo : 처음으로 돌아가기
         binding.btnGoFirst.setOnClickListener {
-
+            dismiss()
+            MainActivity.start(context)
         }
         //todo : 다시 하기
         binding.btnRetry.setOnClickListener {
-
+            dismiss()
+            GameActivity.start(context)
         }
         // 다이얼로그 바깥쪽 클릭시 종료되도록 함
         setCanceledOnTouchOutside(true)
