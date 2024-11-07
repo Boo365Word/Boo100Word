@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Boo345Word</string>
+    <string name="common_ask_curious_voca">궁금한 단어를 검색해봐</string>
+    <string name="wordList_no_matching_words">검색 결과가 없어요.\n다른 단어를 입력해보세요!</string>
 </resources>

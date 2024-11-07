@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.game.GameActivity"/>
-        <activity android:name=".ui.word.WordListActivity"/>
+        <activity android:name=".ui.word.WordListActivity" android:exported="true"/>
     </application>
 
 </manifest>
