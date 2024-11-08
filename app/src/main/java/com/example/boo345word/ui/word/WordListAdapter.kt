@@ -4,13 +4,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class WordListAdapter(
-    words: List<String>
+    words: List<String>,
+    private val onWordClick: (word: String) -> Unit
 ) : RecyclerView.Adapter<WordListItemViewHolder>() {
 
     private var _words = words
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListItemViewHolder {
-        return WordListItemViewHolder.of(parent)
+        return WordListItemViewHolder.of(
+            parent = parent,
+            onClick = onWordClick
+        )
     }
 
     override fun onBindViewHolder(holder: WordListItemViewHolder, position: Int) {

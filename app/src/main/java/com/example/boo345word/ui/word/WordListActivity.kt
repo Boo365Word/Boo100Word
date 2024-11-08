@@ -10,13 +10,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.boo345word.databinding.ActivityWordListBinding
+import com.example.boo345word.ui.detail.WordDetailActivity
 import kotlinx.coroutines.launch
 
 class WordListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWordListBinding
     private val viewModel: WordListViewModel by viewModels()
-    private val wordListAdapter = WordListAdapter(emptyList())
+    private val wordListAdapter = WordListAdapter(emptyList()){ word ->
+        WordDetailActivity.start(this, word)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

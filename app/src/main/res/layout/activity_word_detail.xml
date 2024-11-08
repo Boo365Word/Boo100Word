@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.WordDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/changwondangamasac"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="apple" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="11dp"
+        android:src="@drawable/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/tv_word"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_word" />
+
+    <TextView
+        android:id="@+id/tv_word_english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:textSize="24sp"
+        android:textStyle="bold|normal"
+        app:layout_constraintEnd_toStartOf="@id/tv_pronunciation"
+        app:layout_constraintTop_toTopOf="@id/tv_pronunciation"
+        tools:text="apple" />
+
+    <TextView
+        android:id="@+id/tv_pronunciation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="43dp"
+        android:textColor="#ABABAB"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_word"
+        tools:text="['aepel]" />
+
+    <TextView
+        android:id="@+id/tv_word_korean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tv_pronunciation"
+        app:layout_constraintStart_toEndOf="@id/tv_pronunciation"
+        app:layout_constraintTop_toTopOf="@id/tv_pronunciation"
+        tools:text="사과" />
+
+    <ImageView
+        android:id="@+id/iv_word_symbol_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="25dp"
+        android:background="#EFEFEF"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pronunciation" />
+
+    <TextView
+        android:id="@+id/tv_example_sentence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="42dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_word_symbol_image"
+        tools:text="예문" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_example_sentence"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_example_sentence"
+        app:layout_constraintTop_toBottomOf="@id/tv_example_sentence"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_example_sentence" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
