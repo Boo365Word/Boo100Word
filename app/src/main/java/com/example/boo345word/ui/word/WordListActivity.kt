@@ -17,7 +17,7 @@ class WordListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWordListBinding
     private val viewModel: WordListViewModel by viewModels()
-    private val wordListAdapter = WordListAdapter(emptyList()) { word ->
+    private val wordListAdapter = WordListAdapter { word ->
         WordDetailActivity.start(this, word)
     }
 
@@ -25,7 +25,7 @@ class WordListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         initWordListBinding()
-        initWordListListener()
+        initWordListObserver()
     }
 
     private fun initWordListBinding() {
@@ -33,15 +33,46 @@ class WordListActivity : AppCompatActivity() {
             setContentView(it.root)
             it.rvWordList.adapter = wordListAdapter
         }
-        initWordListObserver()
+        initWordListListener()
+    }
+
+    private fun initWordListListener() {
+        with(binding) {
+            tfWordSearchingField.setOnSearchingTextFieldListener { keyword ->
+                viewModel.fetchWords(keyword)
+            }
+            cbOnlyRightWords.setOnCheckedChangeListener { _, _ ->
+                showFilteredWords()
+            }
+            cbOnlyWrongWords.setOnCheckedChangeListener { _, _ ->
+                showFilteredWords()
+            }
+        }
+    }
+
+    private fun showFilteredWords() {
+        when {
+            binding.cbOnlyRightWords.isChecked && binding.cbOnlyWrongWords.isChecked ->
+                wordListAdapter.submitList(viewModel.words.value.value)
+
+            binding.cbOnlyRightWords.isChecked && !binding.cbOnlyWrongWords.isChecked ->
+                wordListAdapter.submitList(viewModel.words.value.gotARight)
+
+            !binding.cbOnlyRightWords.isChecked && binding.cbOnlyWrongWords.isChecked ->
+                wordListAdapter.submitList(viewModel.words.value.gotAWrong)
+
+            !binding.cbOnlyRightWords.isChecked && !binding.cbOnlyWrongWords.isChecked ->
+                wordListAdapter.submitList(emptyList())
+        }
     }
 
     private fun initWordListObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.words.collect { words ->
-                    wordListAdapter.updateWords(words)
-                    if (words.isEmpty()) {
+                    wordListAdapter.updateWords(words.value)
+
+                    if (words.value.isEmpty()) {
                         binding.ivNoMatchingWords.visibility = View.VISIBLE
                         binding.tvNoMatchingWords.visibility = View.VISIBLE
                     } else {
@@ -50,12 +81,6 @@ class WordListActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
-    }
-
-    private fun initWordListListener() {
-        binding.tfWordSearchingField.setOnSearchingTextFieldListener { keyword ->
-            viewModel.fetchWords(keyword)
         }
     }
 

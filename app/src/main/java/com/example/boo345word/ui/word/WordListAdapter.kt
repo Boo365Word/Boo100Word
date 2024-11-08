@@ -1,14 +1,11 @@
 package com.example.boo345word.ui.word
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 
 class WordListAdapter(
-    words: List<String>,
     private val onWordClick: (word: String) -> Unit
-) : RecyclerView.Adapter<WordListItemViewHolder>() {
-
-    private var _words = words
+) : ListAdapter<Word, WordListItemViewHolder>(WordDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListItemViewHolder {
         return WordListItemViewHolder.of(
@@ -18,13 +15,10 @@ class WordListAdapter(
     }
 
     override fun onBindViewHolder(holder: WordListItemViewHolder, position: Int) {
-        holder.bind(_words[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = _words.size
-
-    fun updateWords(words: List<String>) {
-        _words = words
-        notifyDataSetChanged()
+    fun updateWords(words: List<Word>) {
+        submitList(words.toMutableList())
     }
 }

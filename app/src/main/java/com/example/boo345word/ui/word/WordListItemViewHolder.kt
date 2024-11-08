@@ -9,8 +9,9 @@ class WordListItemViewHolder(
     private val binding: ItemWordListBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(word: String) {
-        binding.tvWordDescription.text = word
+    fun bind(word: Word) {
+        binding.tvWordEnglish.text = word.english
+        binding.tvWordKorean.text = word.korean
     }
 
     companion object {
@@ -22,7 +23,7 @@ class WordListItemViewHolder(
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemWordListBinding.inflate(layoutInflater, parent, false).apply {
                 root.setOnClickListener {
-                    onClick(tvWordDescription.text.toString())
+                    onClick(tvWordEnglish.text.toString())
                 }
             }
 

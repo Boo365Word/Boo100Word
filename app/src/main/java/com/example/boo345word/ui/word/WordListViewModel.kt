@@ -13,8 +13,8 @@ class WordListViewModel(
     private val wordListRepository: WordListRepository = DefaultWordListRepository()
 ) : ViewModel() {
 
-    private val _words: MutableStateFlow<List<String>> = MutableStateFlow(listOf())
-    val words: StateFlow<List<String>>
+    private val _words: MutableStateFlow<Words> = MutableStateFlow(Words(listOf()))
+    val words: StateFlow<Words>
         get() = _words
 
     init {
@@ -26,8 +26,8 @@ class WordListViewModel(
             wordListRepository.fetchWords(keyword)
                 .catch {
                     // todo: 예외 처리
-                }.collect { searched ->
-                    _words.value = searched
+                }.collect { value ->
+                    _words.value = Words(value)
                 }
         }
     }

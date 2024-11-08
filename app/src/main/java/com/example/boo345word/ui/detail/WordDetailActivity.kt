@@ -27,13 +27,21 @@ class WordDetailActivity : AppCompatActivity() {
         binding = ActivityWordDetailBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
+        intent.getStringExtra(KEY)?.also { word ->
+            viewModel.fetchWordDetail(word)
+            binding.tvWord.text = word
+        } ?: finish()
+
+        initWordDetailListener()
+    }
+
+    private fun initWordDetailListener() {
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initWordDetailObserver() {
-        intent.getStringExtra(KEY)?.also { word ->
-            viewModel.fetchWordDetail(word)
-        }
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.wordDetail.collect {
