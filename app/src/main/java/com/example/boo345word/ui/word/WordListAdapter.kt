@@ -23,7 +23,7 @@ class WordListAdapter(
 
     override fun getItemCount(): Int = _words.size
 
-    fun updateWords(words: List<String>){
+    fun updateWords(words: List<String>) {
         _words = words
         notifyDataSetChanged()
     }

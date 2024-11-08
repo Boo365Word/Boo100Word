@@ -15,10 +15,10 @@ import java.io.File
 import java.io.FileOutputStream
 
 class DrawingView @JvmOverloads constructor(
-    context : Context,
-    attrs : AttributeSet?= null,
-    defStyleAttr : Int = 0,
-) : View(context,attrs, defStyleAttr) {
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
     private val strokes = mutableListOf<MutableList<Pair<Float, Float>>>()
     private var currentStroke = mutableListOf<Pair<Float, Float>>()
     private var minX = Float.MAX_VALUE
@@ -26,14 +26,12 @@ class DrawingView @JvmOverloads constructor(
     private var maxX = Float.MIN_VALUE
     private var maxY = Float.MIN_VALUE
 
-
-
     private val handler = android.os.Handler(Looper.getMainLooper())
-    private var drawingCompleteRunnable : Runnable? = null
+    private var drawingCompleteRunnable: Runnable? = null
 
     private val paint = Paint().apply {
 //        color = 0xFF0000FF.toInt() // 파란색
-                color = Color.BLACK
+        color = Color.BLACK
         isAntiAlias = true
         style = Paint.Style.STROKE
         strokeJoin = Paint.Join.ROUND
@@ -50,7 +48,7 @@ class DrawingView @JvmOverloads constructor(
     }
 
     fun getBitmap(): Bitmap {
-        val returnedBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888)
+        val returnedBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(returnedBitmap)
         canvas.drawColor(Color.WHITE)
 //        canvas.translate(0f, 80F) // Adjust this value to cut off more or less from the top
@@ -62,7 +60,6 @@ class DrawingView @JvmOverloads constructor(
         minY = minOf(minY, y)
         maxX = maxOf(maxX, x)
         maxY = maxOf(maxY, y)
-
     }
 
     fun getStrokesData(): Pair<List<List<List<Int>>>, List<Int>> {
@@ -76,11 +73,11 @@ class DrawingView @JvmOverloads constructor(
         return strokesData to box
     }
 
-    fun saveBitmapToFile(bitmap: Bitmap, filename : String) {
+    fun saveBitmapToFile(bitmap: Bitmap, filename: String) {
         try {
             val file = File(context.filesDir, filename)
             FileOutputStream(file).use { out ->
-                bitmap.compress(Bitmap.CompressFormat.PNG,100,out)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 Log.d("DrawingView", "Drawing saved to $filename")
             }
         } catch (e: Exception) {
@@ -91,9 +88,9 @@ class DrawingView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         for (p in paths) {
-            canvas.drawPath(p,paint)
+            canvas.drawPath(p, paint)
         }
-        canvas.drawPath(path,paint)
+        canvas.drawPath(path, paint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -131,18 +128,18 @@ class DrawingView @JvmOverloads constructor(
         invalidate()
         return true
     }
-        fun clearCanvas() {
-            paths.clear()
-            strokes.clear()
-            Log.d("clear 호출", paths.toString())
-            undonePaths.clear()
-            path.reset()
-            minX = Float.MAX_VALUE
-            minY = Float.MAX_VALUE
-            maxX = Float.MIN_VALUE
-            maxY = Float.MIN_VALUE
-            invalidate()
-        }
+    fun clearCanvas() {
+        paths.clear()
+        strokes.clear()
+        Log.d("clear 호출", paths.toString())
+        undonePaths.clear()
+        path.reset()
+        minX = Float.MAX_VALUE
+        minY = Float.MAX_VALUE
+        maxX = Float.MIN_VALUE
+        maxY = Float.MIN_VALUE
+        invalidate()
+    }
 
     fun recreateDrawingFromStrokes(strokes: List<List<List<Int>>>, box: List<Int>, width: Int, height: Int): Bitmap {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
@@ -177,6 +174,4 @@ class DrawingView @JvmOverloads constructor(
 
         return bitmap
     }
-
-
 }

@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         private const val INITIAL_PROGRESS_VALUE = 0.5f
 
-        fun start(context: Context){
+        fun start(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
 
             context.startActivity(intent)

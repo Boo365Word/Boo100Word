@@ -13,14 +13,14 @@ class WordListItemViewHolder(
         binding.tvWordDescription.text = word
     }
 
-    companion object{
+    companion object {
 
         fun of(
             parent: ViewGroup,
-            onClick: (word:String) -> Unit
+            onClick: (word: String) -> Unit
         ): WordListItemViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
-            val binding = ItemWordListBinding.inflate(layoutInflater, parent, false).apply{
+            val binding = ItemWordListBinding.inflate(layoutInflater, parent, false).apply {
                 root.setOnClickListener {
                     onClick(tvWordDescription.text.toString())
                 }

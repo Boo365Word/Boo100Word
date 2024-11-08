@@ -8,7 +8,14 @@ import kotlinx.coroutines.flow.flow
 class DefaultWordListRepository : WordListRepository {
 
     private val words = listOf(
-        "apple", "orange", "apple", "orange", "apple", "orange", "apple", "orange",
+        "apple",
+        "orange",
+        "apple",
+        "orange",
+        "apple",
+        "orange",
+        "apple",
+        "orange"
     )
     private val wordsDetail = mapOf(
         "apple" to listOf(Sentence("I ate an apple", "난 사과를 먹었어요")),

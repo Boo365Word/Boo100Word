@@ -2,6 +2,10 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
-    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ktlint) apply true
     id("com.google.gms.google-services") version "4.4.2" apply false
+}
+
+allprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }

@@ -17,12 +17,13 @@ class DrawClassifier(activity: Activity) {
     private var tflite: Interpreter? = null
 
     // 모델이 인식하는 카테고리 배열로 선언
-    private val classNames = arrayOf("aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
-        "animal_migration", "ant", "anvil", "apple", "arm", "asparagus", "axe", "backpack", "banana", "bandage")
+    private val classNames = arrayOf(
+        "aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
+        "animal_migration", "ant", "anvil", "apple", "arm", "asparagus", "axe", "backpack", "banana", "bandage"
+    )
 
     // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)
     private val MODEL_PATH = "quick_draw_model.tflite"
-
 
     // 초기화 한 인터프리터 객체 생성 (모델 불러오기)
     init {
@@ -46,7 +47,6 @@ class DrawClassifier(activity: Activity) {
     // 모델 파일 로드
     @Throws(IOException::class)
     private fun loadModelFile(activity: Activity): MappedByteBuffer {
-
         // MODEL_PATH 경로에 있는 모델 파일 정보를 메모리에 매핑하기 위한 객체
         val fileDescriptor = activity.assets.openFd(MODEL_PATH)
 
@@ -77,7 +77,7 @@ class DrawClassifier(activity: Activity) {
 
         // 3. 예측 확률이 가장 높은 클래스 및 확률 값 추출
         val maxIndex = output[0].indices.maxByOrNull { output[0][it] } ?: -1
-        val confidence = if (maxIndex >= 0) output[0][maxIndex] * 100 else 0f  // 확률을 퍼센트로 변환
+        val confidence = if (maxIndex >= 0) output[0][maxIndex] * 100 else 0f // 확률을 퍼센트로 변환
 
         // 4. 결과 표시
         return if (maxIndex >= 0) {
@@ -109,15 +109,19 @@ class DrawClassifier(activity: Activity) {
                 val pixel = resizedBitmap.getPixel(j, i)
 
                 // RGB -> 그레이스케일 변환 및 반전 (1.0 - grayscale)
-                val grayscale = 1.0f - ((Color.red(pixel) * 0.299f +
-                        Color.green(pixel) * 0.587f +
-                        Color.blue(pixel) * 0.114f) / 255.0f)
+                val grayscale = 1.0f - (
+                    (
+                        Color.red(pixel) * 0.299f +
+                            Color.green(pixel) * 0.587f +
+                            Color.blue(pixel) * 0.114f
+                        ) / 255.0f
+                    )
 
                 // 다중 임계값에 따른 값 설정
                 val transformedValue = when {
-                    grayscale > thresholdHigh -> 1.0f  // 흰색
-                    grayscale > thresholdLow -> 0.7f   // 회색
-                    else -> 0.0f                       // 검은색
+                    grayscale > thresholdHigh -> 1.0f // 흰색
+                    grayscale > thresholdLow -> 0.7f // 회색
+                    else -> 0.0f // 검은색
                 }
                 inputArray[0][i][j][0] = transformedValue
             }

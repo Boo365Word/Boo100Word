@@ -28,13 +28,13 @@ class GameResultDialog(context: Context) : Dialog(context) {
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    private fun initGameResultListener(){
-        //todo : 처음으로 돌아가기
+    private fun initGameResultListener() {
+        // todo : 처음으로 돌아가기
         binding.btnGoFirst.setOnClickListener {
             dismiss()
             MainActivity.start(context)
         }
-        //todo : 다시 하기
+        // todo : 다시 하기
         binding.btnRetry.setOnClickListener {
             dismiss()
             GameActivity.start(context)

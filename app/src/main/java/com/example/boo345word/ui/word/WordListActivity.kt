@@ -17,7 +17,7 @@ class WordListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWordListBinding
     private val viewModel: WordListViewModel by viewModels()
-    private val wordListAdapter = WordListAdapter(emptyList()){ word ->
+    private val wordListAdapter = WordListAdapter(emptyList()) { word ->
         WordDetailActivity.start(this, word)
     }
 
@@ -44,7 +44,7 @@ class WordListActivity : AppCompatActivity() {
                     if (words.isEmpty()) {
                         binding.ivNoMatchingWords.visibility = View.VISIBLE
                         binding.tvNoMatchingWords.visibility = View.VISIBLE
-                    }else {
+                    } else {
                         binding.ivNoMatchingWords.visibility = View.GONE
                         binding.tvNoMatchingWords.visibility = View.GONE
                     }

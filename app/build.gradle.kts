@@ -8,9 +8,7 @@ android {
     namespace = "com.example.boo345word"
     compileSdk = 34
 
-
-
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 
@@ -41,16 +39,14 @@ android {
         jvmTarget = "1.8"
     }
 
-    aaptOptions{
+    aaptOptions {
         noCompress += "tflite"
     }
 }
 
-
-
 dependencies {
-    implementation (libs.tensorflow.lite.support)
-    implementation (libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -59,10 +55,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation( libs.androidx.cardview)
+    implementation(libs.androidx.cardview)
 
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.fragment)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }

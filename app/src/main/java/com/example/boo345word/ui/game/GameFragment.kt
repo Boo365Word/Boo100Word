@@ -26,7 +26,6 @@ class GameFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         val classifier = DrawClassifier(requireActivity())
 
         binding.drawingView.setOnDrawingCompletedListener { bitmap ->
@@ -35,7 +34,7 @@ class GameFragment : Fragment() {
             val result = classifier.classify(newBitmap)
             binding.result.text = result
 
-            //todo : timer와 연동하기 (30초)
+            // todo : timer와 연동하기 (30초)
             lifecycleScope.let {
                 val currentState = 0
                 binding.timeProgressBar.progress = currentState
@@ -54,7 +53,7 @@ class GameFragment : Fragment() {
                 // todo : 게임 결과창 띄우기
             }
             binding.btnSkip.setOnClickListener {
-                //틀린 경우
+                // 틀린 경우
                 if (binding.txtCurrentState.text == stateCount.toString()) {
                     // todo : 게임 결과창 띄우기
                     showGameResult()
@@ -63,7 +62,6 @@ class GameFragment : Fragment() {
                 }
             }
         }
-
     }
     private fun showGameResult() {
         context?.let {
@@ -71,7 +69,6 @@ class GameFragment : Fragment() {
             dialog.show()
         }
     }
-
 
     companion object {
         fun newInstance(currentState: Int): GameFragment {

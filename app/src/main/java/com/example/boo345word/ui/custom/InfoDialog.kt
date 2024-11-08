@@ -13,7 +13,7 @@ import com.example.boo345word.databinding.DialogInfoViewpagerBinding
 
 class InfoDialog(
     private val context: Context,
-    private val overlay: View,
+    private val overlay: View
 ) {
 
     private val binding: DialogInfoViewpagerBinding = DialogInfoViewpagerBinding.inflate(
@@ -24,7 +24,7 @@ class InfoDialog(
     private val dialog: Dialog = Dialog(context, R.style.CustomDialog).apply {
         setContentView(binding.root) // 다이얼로그 레이아웃 설정
         setCanceledOnTouchOutside(false) // 창 외부 클릭 시 안닫히게
-        setCancelable(false)             // 뒤로가기 버튼으로 안닫히게
+        setCancelable(false) // 뒤로가기 버튼으로 안닫히게
     }
 
     init {
@@ -38,12 +38,11 @@ class InfoDialog(
 
         initViewViewPagerDialogBinding(images)
         createIndicators(images.size)
-
     }
 
     private fun initViewViewPagerDialogBinding(
         @DrawableRes
-        images: List<Int>,
+        images: List<Int>
     ) {
         with(binding) {
             // 어댑터 설정

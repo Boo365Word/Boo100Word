@@ -9,14 +9,14 @@ import com.example.boo345word.databinding.SearchingTextFieldBinding
 
 class SearchingTextField(
     context: Context,
-    attrs: AttributeSet,
+    attrs: AttributeSet
 ) : ConstraintLayout(context, attrs) {
 
     private val binding = SearchingTextFieldBinding.inflate(
         LayoutInflater.from(context),
         this,
         true
-    ).also{ binding ->
+    ).also { binding ->
         binding.btnInitSeraching.setOnClickListener {
             binding.etVocaSearching.setText("")
         }

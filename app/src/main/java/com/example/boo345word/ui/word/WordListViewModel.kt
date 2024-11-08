@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-
 class WordListViewModel(
     private val wordListRepository: WordListRepository = DefaultWordListRepository()
 ) : ViewModel() {
@@ -26,7 +25,7 @@ class WordListViewModel(
         viewModelScope.launch {
             wordListRepository.fetchWords(keyword)
                 .catch {
-                    //todo: 예외 처리
+                    // todo: 예외 처리
                 }.collect { searched ->
                     _words.value = searched
                 }

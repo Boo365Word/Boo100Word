@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class WordDetailViewModel(
-    private val wordListRepository: WordListRepository = DefaultWordListRepository(),
+    private val wordListRepository: WordListRepository = DefaultWordListRepository()
 ) : ViewModel() {
 
     private val _wordDetail: MutableStateFlow<WordDetail> = MutableStateFlow(
@@ -26,13 +26,13 @@ class WordDetailViewModel(
     val wordDetail: StateFlow<WordDetail>
         get() = _wordDetail.asStateFlow()
 
-    fun fetchWordDetail(word: String){
+    fun fetchWordDetail(word: String) {
         viewModelScope.launch {
             wordListRepository.fetchWordDetail(word)
                 .catch {
-                    //todo: 예외 처리
+                    // todo: 예외 처리
                     Log.d("woogi", "fetchWordDetail: $it")
-                }.collect{ detail ->
+                }.collect { detail ->
                     _wordDetail.value = detail
                 }
         }

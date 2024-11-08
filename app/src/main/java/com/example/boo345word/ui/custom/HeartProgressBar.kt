@@ -7,17 +7,16 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.boo345word.databinding.HeartProgressBar2Binding
 import kotlin.math.round
 
-
 class HeartProgressBar(
     context: Context,
-    attrs: AttributeSet,
+    attrs: AttributeSet
 ) : ConstraintLayout(context, attrs) {
 
     private val binding = HeartProgressBar2Binding.inflate(
         LayoutInflater.from(context),
         this,
         true
-    ).also{
+    ).also {
         it.ivProgressContainer.measure(
             MeasureSpec.UNSPECIFIED,
             MeasureSpec.UNSPECIFIED

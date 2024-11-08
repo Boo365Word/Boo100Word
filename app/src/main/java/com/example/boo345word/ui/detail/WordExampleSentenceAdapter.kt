@@ -5,14 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class WordExampleSentenceAdapter(
     private val word: String,
-    private val sentences: List<Sentence>,
+    private val sentences: List<Sentence>
 ) : RecyclerView.Adapter<WordExampleSentenceViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int,
+        viewType: Int
     ): WordExampleSentenceViewHolder {
-
         return WordExampleSentenceViewHolder.of(parent)
     }
 

@@ -37,21 +37,23 @@ class WordDetailActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.wordDetail.collect {
-                    if(it.english.isNotEmpty()) binding.rvExampleSentence.adapter = WordExampleSentenceAdapter(
-                        word = it.english,
-                        sentences = it.sentences
-                    )
+                    if (it.english.isNotEmpty()) {
+                        binding.rvExampleSentence.adapter = WordExampleSentenceAdapter(
+                            word = it.english,
+                            sentences = it.sentences
+                        )
+                    }
                 }
             }
         }
     }
-    
-    companion object{
+
+    companion object {
 
         private const val KEY = "key"
 
-        fun start(context: Context, word: String){
-            val intent = Intent(context, WordDetailActivity::class.java).apply{
+        fun start(context: Context, word: String) {
+            val intent = Intent(context, WordDetailActivity::class.java).apply {
                 putExtra(KEY, word)
             }
             context.startActivity(intent)
