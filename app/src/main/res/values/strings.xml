@@ -2,4 +2,5 @@
     <string name="app_name">Boo345Word</string>
     <string name="common_ask_curious_voca">궁금한 단어를 검색해봐</string>
     <string name="wordList_no_matching_words">검색 결과가 없어요.\n다른 단어를 입력해보세요!</string>
+    <string name="word_detail_error_message">해당 단어에 대한 예문을 확인할 수 없습니다</string>
 </resources>

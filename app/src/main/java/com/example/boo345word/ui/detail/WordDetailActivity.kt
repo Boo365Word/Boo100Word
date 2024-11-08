@@ -3,13 +3,12 @@ package com.example.boo345word.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityWordDetailBinding
-import kotlinx.coroutines.launch
+import com.example.boo345word.ui.util.repeatOnStarted
 
 class WordDetailActivity : AppCompatActivity() {
 
@@ -42,15 +41,30 @@ class WordDetailActivity : AppCompatActivity() {
     }
 
     private fun initWordDetailObserver() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.wordDetail.collect {
-                    if (it.english.isNotEmpty()) {
-                        binding.rvExampleSentence.adapter = WordExampleSentenceAdapter(
-                            word = it.english,
-                            sentences = it.sentences
-                        )
-                    }
+        repeatOnStarted(this) {
+            viewModel.wordDetail.collect {
+                if (it.english.isNotEmpty()) {
+                    binding.rvExampleSentence.adapter = WordExampleSentenceAdapter(
+                        word = it.english,
+                        sentences = it.sentences
+                    )
+                }
+            }
+        }
+        repeatOnStarted(this) {
+            handleWordDetailEvent()
+        }
+    }
+
+    private suspend fun handleWordDetailEvent() {
+        viewModel.event.collect { event ->
+            when (event) {
+                is WordDetailEvent.Error -> {
+                    Toast.makeText(
+                        this@WordDetailActivity,
+                        getString(R.string.word_detail_error_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
