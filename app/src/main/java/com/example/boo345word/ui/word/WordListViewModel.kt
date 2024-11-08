@@ -6,7 +6,6 @@ import com.example.boo345word.data.repository.DefaultWordListRepository
 import com.example.boo345word.data.repository.WordListRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class WordListViewModel(
@@ -24,9 +23,7 @@ class WordListViewModel(
     fun fetchWords(keyword: String) {
         viewModelScope.launch {
             wordListRepository.fetchWords(keyword)
-                .catch {
-                    // todo: 예외 처리
-                }.collect { value ->
+                .collect { value ->
                     _words.value = Words(value)
                 }
         }

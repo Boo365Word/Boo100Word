@@ -18,6 +18,9 @@ class WordExampleSentenceViewHolder private constructor(
         val from = sentence.english.indexOf(targetWord)
         val to = from + targetWord.length
 
+        /**
+         * 검색한 단어의 색깔은 예문에서 다르게 표현하기 위한 코드
+         */
         SpannableStringBuilder(sentence.english).also {
             it.setSpan(
                 ForegroundColorSpan(binding.root.context.getColor(R.color.highlighting_word)),
