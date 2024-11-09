@@ -1,43 +1,69 @@
 package com.example.boo345word.ui.custom
 
-import android.app.Dialog
-import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.core.app.DialogCompat
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import com.example.boo345word.databinding.DialogGameResultBinding
+import com.example.boo345word.ui.main.MainActivity
 
-class GameResultDialog(context: Context) : Dialog(context) {
+class GameResultDialog(
+    wordList: String,
+    listener: GameResultDialogListener,
+) : DialogFragment() {
+    @Suppress("ktlint:standard:backing-property-naming")
+    private var _binding: DialogGameResultBinding? = null
+    private val binding get() = _binding!!
+    private var word: String? = null
+    private var listener: GameResultDialogListener? = null
 
-    private lateinit var binding: DialogGameResultBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initGameResultBinding()
-        initGameResultListener()
+    init {
+        this.word = wordList
+        this.listener = listener
     }
 
-    private fun initGameResultBinding() {
-        binding = DialogGameResultBinding.inflate(layoutInflater).also { binding ->
-            setContentView(binding.root)
-        }
-        // 배경을 투명하게
-        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    interface GameResultDialogListener {
+        fun onGoHome()
+
+        fun onRetryGame()
     }
 
-    private fun initGameResultListener(){
-        //todo : 처음으로 돌아가기
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = DialogGameResultBinding.inflate(inflater, container, false)
+        val view = binding.root
+        requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         binding.btnGoFirst.setOnClickListener {
-
+            this.listener?.onGoHome()
+            Toast.makeText(context, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+            dismiss()
         }
-        //todo : 다시 하기
         binding.btnRetry.setOnClickListener {
-
+            this.listener?.onRetryGame()
+            dismiss()
         }
-        // 다이얼로그 바깥쪽 클릭시 종료되도록 함
-        setCanceledOnTouchOutside(true)
+
+        return view
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
+        requireActivity().setFinishOnTouchOutside(true)
+        with(binding) {
+            correctWordList.text = word
+        }
     }
 }

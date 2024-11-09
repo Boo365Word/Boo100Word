@@ -17,6 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btn_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/btn_pause"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_word"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/txt_word" />
+
 
     <ProgressBar
         android:id="@+id/time_progress_bar"
@@ -24,7 +35,7 @@
         android:layout_width="350dp"
         android:layout_height="30sp"
         android:layout_marginTop="4dp"
-        android:max="60"
+        android:max="20"
         android:progress="0"
         android:progressDrawable="@drawable/time_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_word" />
 
     <ImageView
+        android:id="@+id/imageView11"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_clock"
@@ -65,7 +77,6 @@
             android:layout_height="360dp"/>
 
     </FrameLayout>
-
     <TextView
         android:id="@+id/txt_current_state"
         android:layout_width="wrap_content"
@@ -94,14 +105,21 @@
         app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
         app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
         app:layout_constraintVertical_bias="0.16000003" />
-    <TextView
-        android:id="@+id/result"
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/correct_animation"
+        android:id="@+id/lottie_animation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
+        app:lottie_repeatCount="1"
+        app:lottie_autoPlay="true" />
+
 
     <ImageButton
         android:scaleType="fitCenter"
@@ -117,18 +135,20 @@
         app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
         app:layout_constraintVertical_bias="0.95" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/bitmap_imageview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:scaleType="fitCenter"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView10"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@id/imageView8" /> &lt;!&ndash; Initially hidden &ndash;&gt;-->
-
+    <ImageButton
+        android:id="@+id/btn_hint"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/btn_hint"
+        app:layout_constraintBottom_toTopOf="@+id/iv_ghost"
+        app:layout_constraintStart_toStartOf="@+id/iv_ghost" />
     <ImageView
         android:scaleType="fitCenter"
-        android:id="@+id/imageView8"
+        android:id="@+id/iv_ghost"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/img_ghost_v2"
@@ -143,17 +163,20 @@
         android:id="@+id/frameLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_ghost"
         app:layout_constraintTop_toBottomOf="@+id/sketch_book_frame">
 
         <ImageView
-            android:layout_width="200dp"
+            android:layout_width="180dp"
             android:layout_height="100dp"
             android:src="@drawable/img_speech_bubble"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
             app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
         <TextView
+            android:id="@+id/txt_model_speech"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -161,23 +184,20 @@
             android:textSize="20sp"
             tools:layout_editor_absoluteX="229dp"
             tools:layout_editor_absoluteY="608dp" />
-
-
     </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:hint="정답을 입력하고 힌트 얻기"
-        android:gravity="center"
-        android:background="@drawable/edit_text_game"
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_game"
+        android:gravity="center"
+        android:hint="정답을 입력하고 힌트 얻기"
         android:src="@drawable/edit_hint"
         app:layout_constraintBottom_toTopOf="@+id/btn_skip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <ImageButton

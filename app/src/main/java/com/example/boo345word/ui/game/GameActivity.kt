@@ -3,16 +3,13 @@ package com.example.boo345word.ui.game
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityGameBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,27 +19,16 @@ class GameActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add(R.id.game_fragment_container_view, GameFragment.newInstance(1))
+                add(R.id.game_fragment_container_view, GameFragment.newInstance())
             }
         }
     }
 
     private fun initGameBinding() {
-        binding = ActivityGameBinding.inflate(layoutInflater).also { binding ->
-            setContentView(binding.root)
-        }
-    }
-
-    fun skipState(currentState: Int) {
-        Log.d("넘어가기", "스킵><")
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add(R.id.game_fragment_container_view, GameFragment.newInstance(currentState))
-        }
+        binding = ActivityGameBinding.inflate(layoutInflater).also { binding -> setContentView(binding.root) }
     }
 
     companion object {
-
         fun start(context: Context) {
             Intent(context, GameActivity::class.java).also {
                 context.startActivity(it)
@@ -50,5 +36,3 @@ class GameActivity : AppCompatActivity() {
         }
     }
 }
-
-

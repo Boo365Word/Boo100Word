@@ -1,0 +1,62 @@
+[
+  { "word": "aircraft_carrier",
+    "meaning": "항공 모함" ,
+    "isLearned": false
+  },
+  { "word": "airplane",
+    "meaning": "비행기",
+    "isLearned": false
+  },
+  { "word": "alarm_clock",
+    "meaning": "알람 시계",
+    "isLearned": false
+  },
+  { "word": "ambulance",
+    "meaning": "구급차",
+    "isLearned": false
+  },
+  { "word": "angel",
+    "meaning": "천사",
+    "isLearned": false
+  },
+  { "word": "animal_migration",
+    "meaning": "동물 이동",
+    "isLearned": false
+  },
+  { "word": "ant",
+    "meaning": "개미",
+    "isLearned": false
+  },
+  { "word": "anvil",
+    "meaning": "모루",
+    "isLearned": false
+  },
+  { "word": "apple",
+    "meaning": "사과",
+    "isLearned": false
+  },
+  { "word": "arm",
+    "meaning": "팔",
+    "isLearned": false
+  },
+  { "word": "asparagus",
+    "meaning": "아스파라거스",
+    "isLearned": false
+  },
+  { "word": "axe",
+    "meaning": "도끼",
+    "isLearned": false
+  },
+  { "word": "backpack",
+    "meaning": "가방",
+    "isLearned": false
+  },
+  { "word": "banana",
+    "meaning": "바나나",
+    "isLearned": false
+  },
+  { "word": "bandage",
+    "meaning": "붕대",
+    "isLearned": false
+  }
+]
