@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.boo345word.databinding.HeartProgressBar2Binding
+import com.example.boo345word.databinding.HeartProgressBarBinding
 import kotlin.math.round
 
 class HeartProgressBar(
@@ -12,7 +12,7 @@ class HeartProgressBar(
     attrs: AttributeSet
 ) : ConstraintLayout(context, attrs) {
 
-    private val binding = HeartProgressBar2Binding.inflate(
+    private val binding = HeartProgressBarBinding.inflate(
         LayoutInflater.from(context),
         this,
         true
