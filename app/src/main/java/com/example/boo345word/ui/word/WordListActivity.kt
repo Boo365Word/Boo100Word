@@ -41,10 +41,10 @@ class WordListActivity : AppCompatActivity() {
             tfWordSearchingField.setOnSearchingTextFieldListener { keyword ->
                 viewModel.fetchWords(keyword)
             }
-            cbOnlyRightWords.setOnCheckedChangeListener { _, _ ->
+            cbRightWords.setOnCheckedChangeListener { _, _ ->
                 showFilteredWords()
             }
-            cbOnlyWrongWords.setOnCheckedChangeListener { _, _ ->
+            cbWrongWords.setOnCheckedChangeListener { _, _ ->
                 showFilteredWords()
             }
         }
@@ -52,16 +52,16 @@ class WordListActivity : AppCompatActivity() {
 
     private fun showFilteredWords() {
         when {
-            binding.cbOnlyRightWords.isChecked && binding.cbOnlyWrongWords.isChecked ->
+            binding.cbRightWords.isChecked && binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(viewModel.words.value.value)
 
-            binding.cbOnlyRightWords.isChecked && !binding.cbOnlyWrongWords.isChecked ->
+            binding.cbRightWords.isChecked && !binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(viewModel.words.value.gotARight)
 
-            !binding.cbOnlyRightWords.isChecked && binding.cbOnlyWrongWords.isChecked ->
+            !binding.cbRightWords.isChecked && binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(viewModel.words.value.gotAWrong)
 
-            !binding.cbOnlyRightWords.isChecked && !binding.cbOnlyWrongWords.isChecked ->
+            !binding.cbRightWords.isChecked && !binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(emptyList())
         }
     }
