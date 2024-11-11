@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import com.example.boo345word.data.model.WordInfo
 import com.example.boo345word.databinding.HintDialogBinding
 
 class HintDialog(
-    word: String,
+    word: WordInfo,
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: HintDialogBinding? = null
     private val binding get() = _binding!!
-    private var word: String? = null
+    private var word: WordInfo? = null
 
     init {
         this.word = word
@@ -32,9 +33,14 @@ class HintDialog(
 
         _binding = HintDialogBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        binding.txtHintWord.text = word?.meaning
+        val imageSource = "example_${word?.word}"
+        val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
         binding.btnClose.setOnClickListener {
             dismiss()
         }
+        binding.imageHint.setImageResource(imageId)
 
         return view
     }

@@ -34,8 +34,6 @@ class GameResultDialog(
     }
 
     interface GameResultDialogListener {
-        fun onGoHome()
-
         fun onRetryGame()
     }
 
@@ -47,9 +45,9 @@ class GameResultDialog(
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
         requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        isCancelable = false
 
         binding.btnGoFirst.setOnClickListener {
-            this.listener?.onGoHome()
             Toast.makeText(context, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)

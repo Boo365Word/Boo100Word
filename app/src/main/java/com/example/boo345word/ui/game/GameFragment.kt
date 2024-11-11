@@ -3,9 +3,12 @@ package com.example.boo345word.ui.game
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,9 +21,8 @@ import com.example.boo345word.ui.custom.HintDialog
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.IOException
 import java.util.Locale
-
-private const val TIME_INTERVAL = 5
 
 class GameFragment :
     Fragment(),
@@ -42,13 +44,12 @@ class GameFragment :
     ): View {
         binding = FragmentGameBinding.inflate(inflater)
         requireContext().loadJsonFromAssets()
+        viewmodel.getWordList()
         return binding.root
     }
 
     private fun getRandomWord() {
-        // 제시될 단어는 단어 리스트 중 무작위 5개 선택하기
-
-        // 첫번 째 게임인 경우 랜덤으로 단어 5개를 가져온다.
+        // 첫 게임인 경우 무작위 5개 선택된 단어 리스트를 가져온다.
         if (currentState == 1) {
             lifecycleScope.launch {
                 viewmodel.wordList.observe(viewLifecycleOwner, {
@@ -56,6 +57,7 @@ class GameFragment :
                 })
             }
         }
+        // 가져온 5개 단어 중 현재 게임 단계에 맞는 단어를 얻는다.
         currentWord = viewmodel.wordList.value?.get(currentState - 1)
         binding.txtWord.text = currentWord?.word
     }
@@ -66,7 +68,6 @@ class GameFragment :
             getRandomWord()
             // 새 게임을 시작할 준비를 한다.
             // 타이머 시작
-            // 첫 번째 Job 생성
             gameTimer.startTimer()
             startNextGame()
         } else {
@@ -164,19 +165,48 @@ class GameFragment :
             icEraser.setOnClickListener {
                 binding.drawingView.clearCanvas()
             }
+
+            editHint.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)
+                ) {
+                    if (binding.editHint.text.toString() == currentWord?.meaning) {
+                        Toast.makeText(context, "맞았어요!! 힌트를 보고 다시 그려볼까요?", Toast.LENGTH_SHORT).show()
+                        binding.btnHint.visibility = View.VISIBLE
+                    } else {
+                        Toast.makeText(context, "다시 입력해주세요!", Toast.LENGTH_SHORT).show()
+                    }
+                    true
+                } else {
+                    false
+                }
+            }
+
             btnHint.setOnClickListener {
-                val dialog = HintDialog(currentWord.toString())
-                dialog.show(parentFragmentManager, "HintDialog")
+                currentWord?.let {
+                    val dialog = HintDialog(it)
+                    dialog.show(parentFragmentManager, "HintDialog")
+                }
             }
         }
     }
 
-    // assets에서 Json 파일 읽어오기
-    private fun Context.loadJsonFromAssets() {
+    // json 파일 읽기
+    private fun Context.getWords(): List<WordInfo> {
         val inputStream = assets.open("class_names.json")
         val json = inputStream.bufferedReader().use { it.readText() }
         val wordList = Gson().fromJson(json, Array<WordInfo>::class.java).toList()
-        viewmodel.setWordList(wordList)
+        return wordList
+    }
+
+    // assets에서 Json 파일 읽어오기
+    private fun Context.loadJsonFromAssets() {
+        try {
+            val wordList = getWords()
+            viewmodel.setWordList(wordList)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
     private fun init() {
@@ -222,11 +252,6 @@ class GameFragment :
             fragment.arguments = args
             return fragment
         }
-    }
-
-    override fun onGoHome() {
-        Log.d("처음으로 가기", "메인")
-        // 뷰모델에 저장된 5개의 데이터 db에 저장하기
     }
 
     override fun onRetryGame() {

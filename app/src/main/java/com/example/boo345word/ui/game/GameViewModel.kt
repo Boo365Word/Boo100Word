@@ -29,10 +29,11 @@ class GameViewModel : ViewModel() {
         _wordList.value = list
     }
 
-    fun getWordList(): List<WordInfo>? =
-        _wordList.value
-            ?.shuffled()
-            ?.take(5)
+    fun getWordList(): List<WordInfo>? {
+        val words = _wordList.value?.shuffled()
+        _wordList.value = words?.take(5)
+        return _wordList.value
+    }
 
     fun clear() {
         gameResult.clear()
