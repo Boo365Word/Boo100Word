@@ -6,12 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.boo345word.databinding.ActivityWordListBinding
 import com.example.boo345word.ui.detail.WordDetailActivity
-import kotlinx.coroutines.launch
+import com.example.boo345word.ui.util.repeatOnStarted
 
 class WordListActivity : AppCompatActivity() {
 
@@ -32,6 +29,11 @@ class WordListActivity : AppCompatActivity() {
         binding = ActivityWordListBinding.inflate(layoutInflater).also {
             setContentView(it.root)
             it.rvWordList.adapter = wordListAdapter
+
+            /**
+             * 리사이클러뷰 최적화를 위한 설정
+             */
+            it.rvWordList.setHasFixedSize(true)
         }
         initWordListListener()
     }
@@ -67,18 +69,16 @@ class WordListActivity : AppCompatActivity() {
     }
 
     private fun initWordListObserver() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.words.collect { words ->
-                    wordListAdapter.updateWords(words.value)
+        repeatOnStarted(this) {
+            viewModel.words.collect { words ->
+                wordListAdapter.updateWords(words.value)
 
-                    if (words.value.isEmpty()) {
-                        binding.ivNoMatchingWords.visibility = View.VISIBLE
-                        binding.tvNoMatchingWords.visibility = View.VISIBLE
-                    } else {
-                        binding.ivNoMatchingWords.visibility = View.GONE
-                        binding.tvNoMatchingWords.visibility = View.GONE
-                    }
+                if (words.value.isEmpty()) {
+                    binding.ivNoMatchingWords.visibility = View.VISIBLE
+                    binding.tvNoMatchingWords.visibility = View.VISIBLE
+                } else {
+                    binding.ivNoMatchingWords.visibility = View.GONE
+                    binding.tvNoMatchingWords.visibility = View.GONE
                 }
             }
         }

@@ -3,6 +3,9 @@ package com.example.boo345word.ui.word
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 
+/**
+ * AsyncListDiffer를 내부적으로 사용하고 있는 ListAdapter를 적용
+ */
 class WordListAdapter(
     private val onWordClick: (word: String) -> Unit
 ) : ListAdapter<Word, WordListItemViewHolder>(WordDiffUtilCallback()) {

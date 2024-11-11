@@ -26,6 +26,9 @@ class WordDetailActivity : AppCompatActivity() {
         binding = ActivityWordDetailBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
+        /**
+         * WordListActivity에서 intent로 전달한 Word를 수신
+         */
         intent.getStringExtra(KEY)?.also { word ->
             viewModel.fetchWordDetail(word)
             binding.tvWord.text = word
