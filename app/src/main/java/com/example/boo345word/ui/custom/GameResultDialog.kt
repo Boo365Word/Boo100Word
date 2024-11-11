@@ -9,21 +9,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.boo345word.data.model.WordInfo
 import com.example.boo345word.databinding.DialogGameResultBinding
+import com.example.boo345word.ui.game.adapter.GameResultCorrectListAdapter
+import com.example.boo345word.ui.game.adapter.GameResultWrongListAdapter
 import com.example.boo345word.ui.main.MainActivity
 
 class GameResultDialog(
-    wordList: String,
+    correctWordList: List<WordInfo>,
+    wrongWordList: List<WordInfo>,
     listener: GameResultDialogListener,
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: DialogGameResultBinding? = null
     private val binding get() = _binding!!
-    private var word: String? = null
+    private var correctWordList: List<WordInfo>? = null
+    private var wrongWordList: List<WordInfo>? = null
     private var listener: GameResultDialogListener? = null
 
     init {
-        this.word = wordList
+        this.correctWordList = correctWordList
+        this.wrongWordList = wrongWordList
         this.listener = listener
     }
 
@@ -62,8 +68,10 @@ class GameResultDialog(
         savedInstanceState: Bundle?,
     ) {
         requireActivity().setFinishOnTouchOutside(true)
-        with(binding) {
-            correctWordList.text = word
-        }
+
+        val gameResultCorrectAdapter = correctWordList?.let { GameResultCorrectListAdapter(it) }
+        val gameResultWrongAdapter = wrongWordList?.let { GameResultWrongListAdapter(it) }
+        binding.listCorrectWord.adapter = gameResultCorrectAdapter
+        binding.listWrongWord.adapter = gameResultWrongAdapter
     }
 }

@@ -33,6 +33,7 @@ class GameFragment :
     private var currentState = 1
     private var falseCount = 0
     private var isPaused: Boolean = false
+    private val gameTimer = GameTimer
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +47,6 @@ class GameFragment :
 
     private fun getRandomWord() {
         // 제시될 단어는 단어 리스트 중 무작위 5개 선택하기
-        Log.d("게임", "단어 가져오기")
 
         // 첫번 째 게임인 경우 랜덤으로 단어 5개를 가져온다.
         if (currentState == 1) {
@@ -63,12 +63,11 @@ class GameFragment :
     private fun startGame() {
         // 현재 게임 단계가 5보다 작을 경우 다음 게임을 시작한다.
         if (currentState <= stateCount) {
-            Log.d("게임", "${currentState}회차 게임!")
-            // 5회 게임이라면 5번째 단어를 가져온다.
             getRandomWord()
             // 새 게임을 시작할 준비를 한다.
             // 타이머 시작
-            viewmodel.startTimer()
+            // 첫 번째 Job 생성
+            gameTimer.startTimer()
             startNextGame()
         } else {
             showGameResult()
@@ -81,6 +80,7 @@ class GameFragment :
         if (currentState < stateCount) {
             currentState++
             viewmodel.updateState(currentState)
+            gameTimer.stopTimer()
             startGame()
         } else {
             // 만약 현재 단계 >= 5 라면 결과창 보이기
@@ -93,11 +93,12 @@ class GameFragment :
         savedInstanceState: Bundle?,
     ) {
         val classifier = DrawClassifier(requireActivity())
-        startGame()
-
-        lifecycleScope.launch {
-            viewmodel.currentTimer.collect {
-                Log.d("time", it.toString())
+        if (savedInstanceState == null) {
+            startGame()
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            // 여기서 두번째 Job이 생성됨 -> 결과적으로 타이머가 동시에 2번 실행됨
+            gameTimer.currentTimer.collect {
                 binding.timeProgressBar.progress = it
                 if (it == 20) {
                     // 시간이 다 된 경우 넘어가기
@@ -111,11 +112,11 @@ class GameFragment :
                 isPaused = !isPaused
                 if (isPaused) {
                     // 중지버튼 누른 경우 타이머 중지
-                    viewmodel.stopTimer()
+                    gameTimer.stopTimer()
                     binding.btnPause.setImageResource(R.drawable.btn_play)
                 } else {
                     // 다시 한번 누른 경우 타이머 재시작
-                    viewmodel.restartTimer()
+                    gameTimer.restartTimer()
                     binding.btnPause.setImageResource(R.drawable.btn_pause)
                 }
             }
@@ -137,7 +138,7 @@ class GameFragment :
                             binding.lottieAnimationView.visibility = View.VISIBLE
                             binding.txtModelSpeech.text = "\"${currentWord?.meaning}\" 정답~!"
                             saveGameResult(true)
-                            delay(2500)
+                            delay(2000)
                             currentState++
                             viewmodel.updateState(currentState)
                             // 정답이라면 다음으로 넘어간다.
@@ -190,6 +191,7 @@ class GameFragment :
         // 컨버스를 초기화하고, 초기 유령이미지를 보인다.
         binding.btnPause.setImageResource(R.drawable.btn_pause)
         binding.drawingView.clearCanvas()
+        binding.btnHint.visibility = View.GONE
         binding.lottieAnimationView.visibility = View.GONE
         binding.ivGhost.setImageResource(R.drawable.img_ghost_v2)
         binding.txtModelSpeech.text = "음 ~ 뭐지"
@@ -198,14 +200,18 @@ class GameFragment :
 
     private fun saveGameResult(result: Boolean) {
         lifecycleScope.launch {
-            viewmodel.saveGameResult(WordState(currentWord.toString(), result))
+            if (result) {
+                viewmodel.saveCorrectWord(currentWord!!)
+            } else {
+                viewmodel.saveWrongWord(currentWord!!)
+            }
         }
     }
 
     private fun showGameResult() {
         // 이 때 뷰모델 데이터 이용하기
-        viewmodel.stopTimer()
-        val dialog = GameResultDialog(viewmodel.gameResult.toString(), this)
+        gameTimer.stopTimer()
+        val dialog = GameResultDialog(viewmodel.correctWordList.value!!.toList(), viewmodel.wrongWordList.value!!.toList(), this)
         dialog.show(parentFragmentManager, "GameResultDialog")
     }
 
