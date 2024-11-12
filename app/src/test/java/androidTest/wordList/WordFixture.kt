@@ -1,4 +1,4 @@
-package test
+package androidTest.wordList
 
 import com.example.boo345word.ui.word.Word
 
