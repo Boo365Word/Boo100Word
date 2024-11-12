@@ -32,7 +32,8 @@ class GameFragment : Fragment() {
         binding.drawingView.setOnDrawingCompletedListener { bitmap ->
             Log.d("현재의 bitmap", bitmap.toString())
             val newBitmap = binding.drawingView.getBitmap()
-            val result = classifier.classify(newBitmap)
+            val strokes = binding.drawingView.getStrokes()
+            val result = classifier.classify(newBitmap, strokes)
             binding.result.text = result
 
             //todo : timer와 연동하기 (30초)

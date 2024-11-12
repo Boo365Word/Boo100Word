@@ -65,6 +65,10 @@ class DrawingView @JvmOverloads constructor(
 
     }
 
+    fun getStrokes(): List<List<Pair<Float, Float>>> {
+        return strokes
+    }
+
     fun getStrokesData(): Pair<List<List<List<Int>>>, List<Int>> {
         val strokesData = strokes.map { stroke ->
             listOf(
