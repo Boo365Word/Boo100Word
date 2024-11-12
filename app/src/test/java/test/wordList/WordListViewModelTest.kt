@@ -1,4 +1,4 @@
-package androidTest.wordList
+package test.wordList
 
 import com.example.boo345word.data.repository.WordRepository
 import com.example.boo345word.ui.word.WordListViewModel

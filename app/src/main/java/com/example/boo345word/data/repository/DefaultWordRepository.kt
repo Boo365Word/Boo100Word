@@ -12,7 +12,7 @@ class DefaultWordRepository : WordRepository {
         Word(
             english = "apple",
             korean = "사과",
-            isCorrect = false
+            isCorrect = true
         ),
         Word(
             english = "orange",
@@ -20,9 +20,9 @@ class DefaultWordRepository : WordRepository {
             isCorrect = false
         ),
         Word(
-            english = "apple",
-            korean = "사과",
-            isCorrect = false
+            english = "peach",
+            korean = "복숭아",
+            isCorrect = true
         ),
         Word(
             english = "grape",
@@ -30,8 +30,8 @@ class DefaultWordRepository : WordRepository {
             isCorrect = false
         ),
         Word(
-            english = "apple",
-            korean = "사과",
+            english = "watermelon",
+            korean = "수박",
             isCorrect = false
         ),
         Word(
@@ -40,8 +40,8 @@ class DefaultWordRepository : WordRepository {
             isCorrect = true
         ),
         Word(
-            english = "apple",
-            korean = "사과",
+            english = "anchovy",
+            korean = "멸치",
             isCorrect = false
         ),
         Word(

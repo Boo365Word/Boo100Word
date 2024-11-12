@@ -1,4 +1,4 @@
-package androidTest.wordDetail
+package test.wordDetail
 
 import com.example.boo345word.ui.detail.WordDetail
 

@@ -1,4 +1,4 @@
-package androidTest.wordDetail
+package test.wordDetail
 
 import app.cash.turbine.test
 import com.example.boo345word.data.repository.WordRepository

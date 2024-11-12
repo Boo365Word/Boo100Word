@@ -8,6 +8,10 @@ android {
     namespace = "com.example.boo345word"
     compileSdk = 34
 
+    testOptions {
+        animationsDisabled = true
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -55,13 +59,17 @@ dependencies {
 
     implementation(libs.coroutines.android)
     implementation(libs.coroutines.core)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.rules)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.contrib)
     implementation(libs.androidx.cardview)
 
     implementation(libs.androidx.cardview)

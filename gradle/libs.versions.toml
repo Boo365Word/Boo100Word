@@ -8,7 +8,8 @@ kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+espressoCore = "3.3.0"
+espressoContrib = "3.3.0"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.1"
@@ -24,6 +25,9 @@ coroutinesCore = "1.5.0"
 coroutinesAndroid = "1.5.0"
 mockk = "1.13.5"
 turbine = "1.0.0"
+runner = "1.6.2"
+rules = "1.6.1"
+junitKtx = "1.2.1"
 
 [libraries]
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
@@ -39,9 +43,12 @@ coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 turbine = {group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
+androidx-runner = {group = "androidx.test", name = "runner", version.ref = "runner"}
+androidx-rules = {group = "androidx.test", name = "rules", version.ref = "rules"}
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-contrib = {group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib"}
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -51,6 +58,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
 tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
 tensorflow-lite-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 
 [plugins]
