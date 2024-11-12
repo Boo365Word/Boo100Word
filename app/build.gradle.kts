@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -46,8 +47,15 @@ android {
 
 dependencies {
 
+    // Room components
+    implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
+    // ksp(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler) // Replace with your Room version
+    testImplementation(libs.androidx.room.testing)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     implementation(libs.lottie)
     implementation(libs.tensorflow.lite.support)

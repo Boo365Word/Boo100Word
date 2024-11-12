@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="얼른 그려줘!"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="229dp"
             tools:layout_editor_absoluteY="608dp" />
     </FrameLayout>

@@ -9,22 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.boo345word.data.model.WordInfo
+import com.example.boo345word.data.model.BasicWord
 import com.example.boo345word.databinding.DialogGameResultBinding
 import com.example.boo345word.ui.game.adapter.GameResultCorrectListAdapter
 import com.example.boo345word.ui.game.adapter.GameResultWrongListAdapter
 import com.example.boo345word.ui.main.MainActivity
 
 class GameResultDialog(
-    correctWordList: List<WordInfo>,
-    wrongWordList: List<WordInfo>,
+    correctWordList: List<BasicWord>,
+    wrongWordList: List<BasicWord>,
     listener: GameResultDialogListener,
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: DialogGameResultBinding? = null
     private val binding get() = _binding!!
-    private var correctWordList: List<WordInfo>? = null
-    private var wrongWordList: List<WordInfo>? = null
+    private var correctWordList: List<BasicWord>? = null
+    private var wrongWordList: List<BasicWord>? = null
     private var listener: GameResultDialogListener? = null
 
     init {

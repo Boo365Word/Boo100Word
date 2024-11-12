@@ -8,16 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
-import com.example.boo345word.data.model.WordInfo
+import com.example.boo345word.data.model.BasicWord
 import com.example.boo345word.databinding.HintDialogBinding
 
 class HintDialog(
-    word: WordInfo,
+    word: BasicWord,
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: HintDialogBinding? = null
     private val binding get() = _binding!!
-    private var word: WordInfo? = null
+    private var word: BasicWord? = null
 
     init {
         this.word = word
