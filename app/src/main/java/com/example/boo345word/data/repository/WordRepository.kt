@@ -4,7 +4,7 @@ import com.example.boo345word.ui.detail.WordDetail
 import com.example.boo345word.ui.word.Word
 import kotlinx.coroutines.flow.Flow
 
-interface WordListRepository {
+interface WordRepository {
 
     suspend fun fetchWords(keyword: String): Flow<List<Word>>
 

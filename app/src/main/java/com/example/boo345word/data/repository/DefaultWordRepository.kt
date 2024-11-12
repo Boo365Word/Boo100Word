@@ -6,7 +6,7 @@ import com.example.boo345word.ui.word.Word
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class DefaultWordListRepository : WordListRepository {
+class DefaultWordRepository : WordRepository {
 
     private val words = listOf(
         Word(
