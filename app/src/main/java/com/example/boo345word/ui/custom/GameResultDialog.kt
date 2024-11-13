@@ -4,11 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.boo345word.R
 import com.example.boo345word.data.model.BasicWord
 import com.example.boo345word.databinding.DialogGameResultBinding
 import com.example.boo345word.ui.game.adapter.GameResultCorrectListAdapter
@@ -71,5 +73,38 @@ class GameResultDialog(
         val gameResultWrongAdapter = wrongWordList?.let { GameResultWrongListAdapter(it) }
         binding.listCorrectWord.adapter = gameResultCorrectAdapter
         binding.listWrongWord.adapter = gameResultWrongAdapter
+        binding.txtCorrectWordCount.text = correctWordList?.size.toString()
+        binding.imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        // 배경을 투명하게 해줌
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog?.window?.setGravity(Gravity.CENTER)
+
+        when (correctWordList?.size) {
+            1 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+            }
+            2 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+            }
+            3 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+            }
+            4 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
+            }
+            5 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart5.setImageResource(R.drawable.ic_filled_heart)
+            }
+        }
     }
 }
