@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -44,8 +46,9 @@ android {
         noCompress += "tflite"
     }
 }
-
 dependencies {
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     // Room components
     implementation(libs.androidx.room.ktx)

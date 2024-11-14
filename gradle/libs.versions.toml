@@ -6,6 +6,8 @@ digitalInkRecognition = "18.1.0"
 firebaseBom = "33.4.0"
 firebaseMlModelInterpreterVersion = "22.0.3"
 gson = "2.10.1"
+hiltAndroid = "2.51.1"
+hiltAndroidCompiler = "2.51.1"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -42,6 +44,8 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-ml-model-interpreter-v2203 = { module = "com.google.firebase:firebase-ml-model-interpreter", version.ref = "firebaseMlModelInterpreterVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

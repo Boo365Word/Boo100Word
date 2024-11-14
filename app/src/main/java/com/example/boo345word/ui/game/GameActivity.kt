@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityGameBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGameBinding
 

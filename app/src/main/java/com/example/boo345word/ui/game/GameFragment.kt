@@ -8,25 +8,27 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.boo345word.R
-import com.example.boo345word.data.db.WordDatabase
-import com.example.boo345word.data.model.BasicWord
-import com.example.boo345word.data.repository.WordRepository
+import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.FragmentGameBinding
 import com.example.boo345word.ui.classifier.DrawClassifier
 import com.example.boo345word.ui.custom.GameResultDialog
 import com.example.boo345word.ui.custom.HintDialog
+import com.example.boo345word.ui.game.util.GameTimer
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
 
+@AndroidEntryPoint
 class GameFragment :
     Fragment(),
     GameResultDialog.GameResultDialogListener {
+    private val viewModel: GameViewModel by viewModels()
     private var wordList: List<BasicWord> = emptyList()
     private var currentWord: BasicWord? = null
     private lateinit var binding: FragmentGameBinding
@@ -35,7 +37,6 @@ class GameFragment :
     private var falseCount = 0
     private var isPaused: Boolean = false
 
-    private lateinit var viewmodel: GameViewModel
     private val gameTimer = GameTimer
 
     override fun onCreateView(
@@ -44,10 +45,10 @@ class GameFragment :
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentGameBinding.inflate(inflater)
-        val database = WordDatabase.getDatabase(requireContext())
-        val repository = WordRepository(database.wordDao())
-        val viewModelFactory = GameViewModelFactory(repository)
-        viewmodel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
+//        val database = WordDatabase.getDatabase(requireContext())
+//        val repository = WordRepository(database.getBasicWordDao(), database.getDetailWordDao())
+//        val viewModelFactory = GameViewModelFactory(repository)
+//        viewmodel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
         return binding.root
     }
 
@@ -90,9 +91,9 @@ class GameFragment :
         lifecycleScope.launch {
             if (currentWord != null) {
                 if (result) {
-                    viewmodel.saveCorrectWord(currentWord!!)
+                    viewModel.saveCorrectWord(currentWord!!)
                 } else {
-                    viewmodel.saveWrongWord(currentWord!!)
+                    viewModel.saveWrongWord(currentWord!!)
                 }
             }
         }
@@ -105,7 +106,7 @@ class GameFragment :
         // 다음 게임으로 넘어간다.
         if (currentState < stateCount) {
             currentState++
-            viewmodel.updateState(currentState)
+            viewModel.updateState(currentState)
             gameTimer.stopTimer()
             startGame()
         } else {
@@ -137,7 +138,7 @@ class GameFragment :
         if (currentState == 1) {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewmodel.basicWordList.collect {
+                    viewModel.basicWordList.observe(viewLifecycleOwner) {
                         if (it.isNotEmpty()) {
                             wordList = it
                             startGame()
@@ -173,7 +174,7 @@ class GameFragment :
                     if (result) {
                         lifecycleScope.launch {
                             saveGameResult(true)
-                            viewmodel.updateState(currentState)
+                            viewModel.updateState(currentState)
                             binding.ivGhost.setImageResource(R.drawable.img_ghost_v2)
                             binding.btnHint.visibility = View.GONE
                             binding.lottieAnimationView.visibility = View.VISIBLE
@@ -232,13 +233,13 @@ class GameFragment :
     private fun init() {
         // 초기화
         currentState = 1
-        viewmodel.clearWordList()
+        viewModel.clearWordList()
         prepareGameView()
     }
 
     private fun showGameResult() {
         gameTimer.stopTimer()
-        val dialog = GameResultDialog(viewmodel.correctWordList.value!!.toList(), viewmodel.wrongWordList.value!!.toList(), this)
+        val dialog = GameResultDialog(viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
         dialog.show(parentFragmentManager, "GameResultDialog")
     }
 
@@ -255,8 +256,8 @@ class GameFragment :
         // 다시 게임을 하는 경우에도 새로운 랜덤 5개의 단어를 가져온다.
         lifecycleScope.launch {
             init()
-            viewmodel.loadNewData()
-            viewmodel.basicWordList.collect {
+            viewModel.loadData()
+            viewModel.basicWordList.observe(viewLifecycleOwner) {
                 if (it.isNotEmpty()) {
                     startGame()
                 }
