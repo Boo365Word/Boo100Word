@@ -1,4 +1,4 @@
-package com.example.boo345word.ui.game
+package com.example.boo345word.ui.game.util
 
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
