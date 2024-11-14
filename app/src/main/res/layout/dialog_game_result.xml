@@ -122,10 +122,10 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:listitem="@layout/game_result_word_item" />
 
 
     <TextView

@@ -20,7 +20,6 @@
         android:id="@+id/txt_word_meaning"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:text="TextView"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
