@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
-import com.example.boo345word.data.model.BasicWord
+import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.HintDialogBinding
 
 class HintDialog(
@@ -27,7 +27,7 @@ class HintDialog(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
 
