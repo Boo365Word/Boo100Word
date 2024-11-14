@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.boo345word.R
-import com.example.boo345word.data.model.BasicWord
+import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.DialogGameResultBinding
 import com.example.boo345word.ui.game.adapter.GameResultCorrectListAdapter
 import com.example.boo345word.ui.game.adapter.GameResultWrongListAdapter

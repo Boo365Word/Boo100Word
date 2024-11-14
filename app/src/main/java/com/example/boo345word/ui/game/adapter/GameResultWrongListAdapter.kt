@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.boo345word.R
-import com.example.boo345word.data.model.BasicWord
+import com.example.boo345word.data.entity.BasicWord
 
 class GameResultWrongListAdapter(
     private val wrongWordList: List<BasicWord>,
