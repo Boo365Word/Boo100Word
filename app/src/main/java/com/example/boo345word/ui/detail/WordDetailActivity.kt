@@ -31,7 +31,7 @@ class WordDetailActivity : AppCompatActivity() {
          */
         intent.getStringExtra(KEY)?.also { word ->
             viewModel.fetchWordDetail(word)
-            binding.tvWord.text = word
+            binding.tvWordEnglishDetailTitle.text = word
         } ?: finish()
 
         initWordDetailListener()
