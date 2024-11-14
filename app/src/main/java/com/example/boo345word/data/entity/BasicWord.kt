@@ -1,4 +1,4 @@
-package com.example.boo345word.data.model
+package com.example.boo345word.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,5 +8,4 @@ import androidx.room.PrimaryKey
 data class BasicWord(
     @PrimaryKey val word: String,
     val meaning: String,
-    val isLearned: Boolean = false,
 )

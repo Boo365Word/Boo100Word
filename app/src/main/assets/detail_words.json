@@ -1,0 +1,1003 @@
+[
+    {
+      "word": "aircraft_carrier",
+      "meaning": "항공 모함",
+      "pronunciation": "ˈerkræft ˈkæriə(r)",
+      "example1": "The aircraft carrier sailed across the ocean.",
+      "example1Meaning": "항공 모함이 바다를 가로질러 항해했어요.",
+      "example2": "An aircraft carrier can hold many airplanes.",
+      "example2Meaning": "항공 모함은 많은 비행기를 실을 수 있어요.",
+      "status": 0
+    },
+    {
+      "word": "airplane",
+      "meaning": "비행기",
+      "pronunciation": "ˈɛərˌpleɪn",
+      "example1": "The airplane flew high in the sky.",
+      "example1Meaning": "비행기가 하늘 높이 날았어요.",
+      "example2": "Airplanes help people travel quickly.",
+      "example2Meaning": "비행기는 사람들이 빨리 여행할 수 있도록 도와줘요.",
+      "status": 0
+    },
+    {
+      "word": "alarm_clock",
+      "meaning": "알람 시계",
+      "pronunciation": "əˈlɑːrm klɒk",
+      "example1": "The alarm clock rings in the morning.",
+      "example1Meaning": "알람 시계가 아침에 울려요.",
+      "example2": "I set the alarm clock to wake up early.",
+      "example2Meaning": "나는 일찍 일어나려고 알람 시계를 맞췄어요.",
+      "status": 0
+    },
+    {
+      "word": "ambulance",
+      "meaning": "구급차",
+      "pronunciation": "ˈæmbjʊləns",
+      "example1": "The ambulance rushed to the hospital.",
+      "example1Meaning": "구급차가 병원으로 급히 달렸어요.",
+      "example2": "An ambulance carries sick people to the hospital.",
+      "example2Meaning": "구급차는 아픈 사람들을 병원으로 데려가요.",
+      "status": 0
+    },
+    {
+      "word": "angel",
+      "meaning": "천사",
+      "pronunciation": "ˈeɪndʒəl",
+      "example1": "The angel helped the lost child.",
+      "example1Meaning": "천사가 길을 잃은 아이를 도왔어요.",
+      "example2": "Angels are kind and protect us.",
+      "example2Meaning": "천사들은 친절하고 우리를 보호해요.",
+      "status": 0
+    },
+    {
+      "word": "animal_migration",
+      "meaning": "동물 이동",
+      "pronunciation": "ˈænɪməl maɪˈɡreɪʃən",
+      "example1": "Birds fly south for animal migration.",
+      "example1Meaning": "새들이 동물 이동을 위해 남쪽으로 날아요.",
+      "example2": "Some animals migrate to find food.",
+      "example2Meaning": "몇몇 동물들은 먹이를 찾기 위해 이동해요.",
+      "status": 0
+    },
+    {
+      "word": "ant",
+      "meaning": "개미",
+      "pronunciation": "ænt",
+      "example1": "The ant carried food back to its home.",
+      "example1Meaning": "개미가 음식을 집으로 가져갔어요.",
+      "example2": "Ants live in big groups called colonies.",
+      "example2Meaning": "개미는 군집이라고 불리는 큰 그룹에서 살아가요.",
+      "status": 0
+    },
+    {
+      "word": "anvil",
+      "meaning": "모루",
+      "pronunciation": "ˈæn.vɪl",
+      "example1": "The blacksmith used the anvil to shape the metal.",
+      "example1Meaning": "대장장이가 금속을 다듬기 위해 모루를 사용했어요.",
+      "example2": "An anvil is a heavy block used by blacksmiths.",
+      "example2Meaning": "모루는 대장장이들이 사용하는 무거운 블록이에요.",
+      "status": 0
+    },
+    {
+      "word": "apple",
+      "meaning": "사과",
+      "pronunciation": "ˈæpəl",
+      "example1": "I eat an apple every day.",
+      "example1Meaning": "나는 매일 사과를 먹어요.",
+      "example2": "Apples are sweet and healthy.",
+      "example2Meaning": "사과는 달고 건강에 좋아요.",
+      "status": 0
+    },
+    {
+      "word": "arm",
+      "meaning": "팔",
+      "pronunciation": "ɑːrm",
+      "example1": "She waved her arm to say hello.",
+      "example1Meaning": "그녀는 팔을 흔들어 인사를 했어요.",
+      "example2": "He hurt his arm while playing soccer.",
+      "example2Meaning": "그는 축구를 하다가 팔을 다쳤어요.",
+      "status": 0
+    },
+    {
+      "word": "asparagus",
+      "meaning": "아스파라거스",
+      "pronunciation": "əˈspærəɡəs",
+      "example1": "I love eating asparagus with my dinner.",
+      "example1Meaning": "나는 저녁에 아스파라거스를 먹는 걸 좋아해요.",
+      "example2": "Asparagus is green and healthy.",
+      "example2Meaning": "아스파라거스는 초록색이고 건강에 좋아요.",
+      "status": 0
+    },
+    {
+      "word": "axe",
+      "meaning": "도끼",
+      "pronunciation": "æks",
+      "example1": "The man chopped wood with an axe.",
+      "example1Meaning": "남자가 도끼로 나무를 잘랐어요.",
+      "example2": "An axe is used to cut trees.",
+      "example2Meaning": "도끼는 나무를 자르는 데 사용돼요.",
+      "status": 0
+    },
+    {
+      "word": "backpack",
+      "meaning": "가방",
+      "pronunciation": "ˈbækˌpæk",
+      "example1": "She put her books in the backpack.",
+      "example1Meaning": "그녀는 책을 가방에 넣었어요.",
+      "example2": "A backpack helps carry many things.",
+      "example2Meaning": "가방은 많은 것을 들고 다닐 수 있어요.",
+      "status": 0
+    },
+  {
+    "word": "banana",
+    "meaning": "바나나",
+    "pronunciation": "bəˈnænə",
+    "example1": "I like to eat a banana for breakfast.",
+    "example1Meaning": "나는 아침에 바나나를 먹는 것을 좋아해요.",
+    "example2": "Bananas are yellow and sweet.",
+    "example2Meaning": "바나나는 노랗고 달콤해요.",
+    "status": 0
+  },
+  {
+    "word": "bandage",
+    "meaning": "붕대",
+    "pronunciation": "ˈbændɪdʒ",
+    "example1": "She put a bandage on her knee.",
+    "example1Meaning": "그녀는 무릎에 붕대를 감았어요.",
+    "example2": "A bandage helps to protect a wound.",
+    "example2Meaning": "붕대는 상처를 보호하는 데 도움이 돼요.",
+    "status": 0
+  },
+  {
+    "word": "barn",
+    "meaning": "헛간",
+    "pronunciation": "bɑːrn",
+    "example1": "The animals sleep in the barn at night.",
+    "example1Meaning": "동물들은 밤에 헛간에서 잠을 자요.",
+    "example2": "The barn is red and very big.",
+    "example2Meaning": "헛간은 빨갛고 매우 커요.",
+    "status": 0
+  },
+  {
+    "word": "baseball",
+    "meaning": "야구",
+    "pronunciation": "ˈbeɪsbɔːl",
+    "example1": "We play baseball in the park every Saturday.",
+    "example1Meaning": "우리는 매주 토요일에 공원에서 야구를 해요.",
+    "example2": "He hit the baseball with a bat.",
+    "example2Meaning": "그는 방망이로 야구공을 쳤어요.",
+    "status": 0
+  },
+  {
+    "word": "baseball_bat",
+    "meaning": "야구 방망이",
+    "pronunciation": "ˈbeɪsbɔːl bæt",
+    "example1": "The baseball bat is made of wood.",
+    "example1Meaning": "야구 방망이는 나무로 만들어졌어요.",
+    "example2": "She swung the baseball bat and hit the ball.",
+    "example2Meaning": "그녀는 야구 방망이를 휘둘러 공을 쳤어요.",
+    "status": 0
+  },
+  {
+    "word": "basket",
+    "meaning": "바구니",
+    "pronunciation": "ˈbæskɪt",
+    "example1": "She put the apples in the basket.",
+    "example1Meaning": "그녀는 사과를 바구니에 담았어요.",
+    "example2": "A basket can be used to carry fruits.",
+    "example2Meaning": "바구니는 과일을 나르는 데 사용할 수 있어요.",
+    "status": 0
+  },
+  {
+    "word": "basketball",
+    "meaning": "농구",
+    "pronunciation": "ˈbæskɪtbɔːl",
+    "example1": "They played basketball at school.",
+    "example1Meaning": "그들은 학교에서 농구를 했어요.",
+    "example2": "Basketball is a fun game to play with friends.",
+    "example2Meaning": "농구는 친구들과 함께 할 때 재미있는 게임이에요.",
+    "status": 0
+  },
+  {
+    "word": "bat",
+    "meaning": "박쥐",
+    "pronunciation": "bæt",
+    "example1": "The bat flew out of the cave at night.",
+    "example1Meaning": "박쥐는 밤에 동굴에서 날아 나왔어요.",
+    "example2": "Bats use their ears to find food.",
+    "example2Meaning": "박쥐는 음식을 찾기 위해 귀를 사용해요.",
+    "status": 0
+  },
+  {
+    "word": "bathtub",
+    "meaning": "욕조",
+    "pronunciation": "ˈbæθtʌb",
+    "example1": "She took a bath in the bathtub.",
+    "example1Meaning": "그녀는 욕조에서 목욕을 했어요.",
+    "example2": "The bathtub is full of warm water.",
+    "example2Meaning": "욕조는 따뜻한 물로 가득 차 있어요.",
+    "status": 0
+  },
+  {
+    "word": "beach",
+    "meaning": "해변",
+    "pronunciation": "biːtʃ",
+    "example1": "We built a sandcastle at the beach.",
+    "example1Meaning": "우리는 해변에서 모래성을 쌓았어요.",
+    "example2": "The beach is very beautiful with blue water.",
+    "example2Meaning": "해변은 파란 물과 함께 매우 아름다워요.",
+    "status": 0
+  },
+  {
+    "word": "bear",
+    "meaning": "곰",
+    "pronunciation": "beər",
+    "example1": "The bear lives in the forest.",
+    "example1Meaning": "곰은 숲에 살아요.",
+    "example2": "Bears like to eat honey.",
+    "example2Meaning": "곰은 꿀을 먹는 것을 좋아해요.",
+    "status": 0
+  },
+  {
+    "word": "beard",
+    "meaning": "수염",
+    "pronunciation": "bɪəd",
+    "example1": "He has a big, brown beard.",
+    "example1Meaning": "그는 크고 갈색의 수염을 가지고 있어요.",
+    "example2": "Some men grow a beard to look older.",
+    "example2Meaning": "몇몇 남자들은 나이가 더 많아 보이기 위해 수염을 길러요.",
+    "status": 0
+  },
+  {
+    "word": "bed",
+    "meaning": "침대",
+    "pronunciation": "bed",
+    "example1": "I sleep on my bed every night.",
+    "example1Meaning": "나는 매일 밤 침대에서 자요.",
+    "example2": "My bed is very comfortable.",
+    "example2Meaning": "내 침대는 아주 편안해요.",
+    "status": 0
+  },
+  {
+    "word": "bee",
+    "meaning": "벌",
+    "pronunciation": "biː",
+    "example1": "A bee makes honey.",
+    "example1Meaning": "벌은 꿀을 만들어요.",
+    "example2": "Bees fly from flower to flower.",
+    "example2Meaning": "벌은 꽃에서 꽃으로 날아요.",
+    "status": 0
+  },
+  {
+    "word": "belt",
+    "meaning": "벨트",
+    "pronunciation": "belt",
+    "example1": "I wear a belt with my pants.",
+    "example1Meaning": "나는 바지에 벨트를 매요.",
+    "example2": "My belt is black.",
+    "example2Meaning": "내 벨트는 검은색이에요.",
+    "status": 0
+  },
+  {
+    "word": "bench",
+    "meaning": "벤치",
+    "pronunciation": "bɛntʃ",
+    "example1": "We sat on the bench at the park.",
+    "example1Meaning": "우리는 공원에서 벤치에 앉았어요.",
+    "example2": "There is a bench under the tree.",
+    "example2Meaning": "나무 아래에 벤치가 있어요.",
+    "status": 0
+  },
+  {
+    "word": "bicycle",
+    "meaning": "자전거",
+    "pronunciation": "ˈbaɪsɪkəl",
+    "example1": "I ride my bicycle to school.",
+    "example1Meaning": "나는 자전거를 타고 학교에 가요.",
+    "example2": "Bicycles have two wheels.",
+    "example2Meaning": "자전거는 두 개의 바퀴가 있어요.",
+    "status": 0
+  },
+  {
+    "word": "binoculars",
+    "meaning": "쌍안경",
+    "pronunciation": "bɪˈnɒkjʊlərz",
+    "example1": "I use binoculars to see birds far away.",
+    "example1Meaning": "나는 멀리 있는 새들을 보기 위해 쌍안경을 사용해요.",
+    "example2": "Binoculars help you see things closer.",
+    "example2Meaning": "쌍안경은 물체를 더 가까이 보게 해요.",
+    "status": 0
+  },
+  {
+    "word": "bird",
+    "meaning": "새",
+    "pronunciation": "bɜːrd",
+    "example1": "The bird is flying in the sky.",
+    "example1Meaning": "새가 하늘을 날고 있어요.",
+    "example2": "I saw a bird sitting on the tree.",
+    "example2Meaning": "나는 나무에 앉아 있는 새를 봤어요.",
+    "status": 0
+  },
+  {
+    "word": "birthday_cake",
+    "meaning": "생일 케이크",
+    "pronunciation": "ˈbɜːrθdeɪ keɪk",
+    "example1": "I had a birthday cake at my party.",
+    "example1Meaning": "내 파티에서 생일 케이크를 먹었어요.",
+    "example2": "The birthday cake has candles on it.",
+    "example2Meaning": "생일 케이크에는 촛불이 있어요.",
+    "status": 0
+  },
+  {
+    "word": "blackberry",
+    "meaning": "블랙베리",
+    "pronunciation": "ˈblækˌbɛri",
+    "example1": "Blackberries grow on bushes.",
+    "example1Meaning": "블랙베리는 덤불에서 자라요.",
+    "example2": "I like eating blackberries.",
+    "example2Meaning": "나는 블랙베리를 먹는 걸 좋아해요.",
+    "status": 0
+  },
+  {
+    "word": "blueberry",
+    "meaning": "블루베리",
+    "pronunciation": "ˈbluːˌbɛri",
+    "example1": "Blueberries are small and sweet.",
+    "example1Meaning": "블루베리는 작고 달아요.",
+    "example2": "I put blueberries in my cereal.",
+    "example2Meaning": "나는 시리얼에 블루베리를 넣어요.",
+    "status": 0
+  },
+  {
+    "word": "book",
+    "meaning": "책",
+    "pronunciation": "bʊk",
+    "example1": "I read a book every night.",
+    "example1Meaning": "나는 매일 밤 책을 읽어요.",
+    "example2": "This book is very interesting.",
+    "example2Meaning": "이 책은 매우 재미있어요.",
+    "status": 0
+  },
+  {
+    "word": "boomerang",
+    "meaning": "부메랑",
+    "pronunciation": "ˈbuːməræŋ",
+    "example1": "A boomerang comes back when you throw it.",
+    "example1Meaning": "부메랑은 던지면 다시 돌아와요.",
+    "example2": "I saw someone playing with a boomerang.",
+    "example2Meaning": "나는 누군가가 부메랑으로 놀고 있는 것을 봤어요.",
+    "status": 0
+  },
+  {
+    "word": "bottlecap",
+    "meaning": "병뚜껑",
+    "pronunciation": "ˈbɒtlˌkæp",
+    "example1": "I opened the bottle with the bottlecap.",
+    "example1Meaning": "나는 병뚜껑으로 병을 열었어요.",
+    "example2": "The bottlecap is made of metal.",
+    "example2Meaning": "병뚜껑은 금속으로 만들어졌어요.",
+    "status": 0
+  },
+  {
+    "word": "bowtie",
+    "meaning": "나비 넥타이",
+    "pronunciation": "ˈboʊtaɪ",
+    "example1": "He wears a bowtie at the party.",
+    "example1Meaning": "그는 파티에서 나비 넥타이를 매요.",
+    "example2": "The bowtie is very colorful.",
+    "example2Meaning": "나비 넥타이는 매우 다채로워요.",
+    "status": 0
+  },
+  {
+    "word": "bracelet",
+    "meaning": "팔찌",
+    "pronunciation": "ˈbreɪslət",
+    "example1": "She is wearing a bracelet on her wrist.",
+    "example1Meaning": "그녀는 팔찌를 팔에 차고 있어요.",
+    "example2": "I bought a bracelet for my friend.",
+    "example2Meaning": "나는 친구에게 팔찌를 샀어요.",
+    "status": 0
+  },
+  {
+    "word": "brain",
+    "meaning": "뇌",
+    "pronunciation": "breɪn",
+    "example1": "The brain helps us think and learn.",
+    "example1Meaning": "뇌는 우리가 생각하고 배우도록 도와줘요.",
+    "example2": "Your brain controls your body.",
+    "example2Meaning": "너의 뇌는 몸을 조절해요.",
+    "status": 0
+  },
+  {
+    "word": "bread",
+    "meaning": "빵",
+    "pronunciation": "bred",
+    "example1": "She ate bread for breakfast.",
+    "example1Meaning": "그녀는 아침으로 빵을 먹었어요.",
+    "example2": "The bakery sells fresh bread every day.",
+    "example2Meaning": "빵집은 매일 신선한 빵을 팔아요.",
+    "status": 0
+  },
+  {
+    "word": "bridge",
+    "meaning": "다리",
+    "pronunciation": "brɪʤ",
+    "example1": "We crossed the bridge over the river.",
+    "example1Meaning": "우리는 강 위에 있는 다리를 건넜어요.",
+    "example2": "The bridge connects the two cities.",
+    "example2Meaning": "그 다리는 두 도시를 연결해요.",
+    "status": 0
+  },
+  {
+    "word": "broccoli",
+    "meaning": "브로콜리",
+    "pronunciation": "ˈbrɑːkəli",
+    "example1": "Broccoli is very healthy.",
+    "example1Meaning": "브로콜리는 아주 건강에 좋아요.",
+    "example2": "She added broccoli to the salad.",
+    "example2Meaning": "그녀는 샐러드에 브로콜리를 넣었어요.",
+    "status": 0
+  },
+  {
+    "word": "broom",
+    "meaning": "빗자루",
+    "pronunciation": "bruːm",
+    "example1": "He used a broom to clean the floor.",
+    "example1Meaning": "그는 바닥을 청소하기 위해 빗자루를 사용했어요.",
+    "example2": "The broom is in the closet.",
+    "example2Meaning": "빗자루는 옷장에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "bucket",
+    "meaning": "양동이",
+    "pronunciation": "ˈbʌkɪt",
+    "example1": "She filled the bucket with water.",
+    "example1Meaning": "그녀는 물로 양동이를 채웠어요.",
+    "example2": "We used a bucket to wash the car.",
+    "example2Meaning": "우리는 차를 씻기 위해 양동이를 사용했어요.",
+    "status": 0
+  },
+  {
+    "word": "bulldozer",
+    "meaning": "불도저",
+    "pronunciation": "ˈbʊlˌdoʊzər",
+    "example1": "The bulldozer cleared the land.",
+    "example1Meaning": "불도저가 땅을 정리했어요.",
+    "example2": "A bulldozer is very strong and big.",
+    "example2Meaning": "불도저는 매우 강하고 커요.",
+    "status": 0
+  },
+  {
+    "word": "bus",
+    "meaning": "버스",
+    "pronunciation": "bʌs",
+    "example1": "We took the bus to school.",
+    "example1Meaning": "우리는 학교에 가려고 버스를 탔어요.",
+    "example2": "The bus stop is near my house.",
+    "example2Meaning": "버스 정류장은 우리 집 근처에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "bush",
+    "meaning": "덤불",
+    "pronunciation": "bʊʃ",
+    "example1": "A bird is hiding in the bush.",
+    "example1Meaning": "새가 덤불 속에 숨어 있어요.",
+    "example2": "The bush has small green leaves.",
+    "example2Meaning": "덤불에는 작은 초록 잎이 있어요.",
+    "status": 0
+  },
+  {
+    "word": "butterfly",
+    "meaning": "나비",
+    "pronunciation": "ˈbʌtəˌflaɪ",
+    "example1": "The butterfly is flying over the flowers.",
+    "example1Meaning": "나비가 꽃 위를 날고 있어요.",
+    "example2": "I saw a beautiful butterfly in the garden.",
+    "example2Meaning": "나는 정원에서 아름다운 나비를 봤어요.",
+    "status": 0
+  },
+  {
+    "word": "cactus",
+    "meaning": "선인장",
+    "pronunciation": "ˈkæktəs",
+    "example1": "The cactus grows in the desert.",
+    "example1Meaning": "선인장은 사막에서 자라요.",
+    "example2": "Cactus plants need little water.",
+    "example2Meaning": "선인장은 물이 거의 필요 없어요.",
+    "status": 0
+  },
+  {
+    "word": "cake",
+    "meaning": "케이크",
+    "pronunciation": "keɪk",
+    "example1": "She baked a chocolate cake.",
+    "example1Meaning": "그녀는 초콜릿 케이크를 구웠어요.",
+    "example2": "We had cake at the party.",
+    "example2Meaning": "우리는 파티에서 케이크를 먹었어요.",
+    "status": 0
+  },
+    {
+      "word": "calculator",
+      "meaning": "계산기",
+      "pronunciation": "ˈkælkjʊˌleɪtər",
+      "example1": "I used a calculator to solve the math problem.",
+      "example1Meaning": "나는 수학 문제를 풀기 위해 계산기를 사용했어요.",
+      "example2": "The calculator helps me do my homework faster.",
+      "example2Meaning": "계산기는 내가 숙제를 더 빨리 할 수 있도록 도와줘요.",
+      "status": 0
+    },
+    {
+      "word": "calendar",
+      "meaning": "달력",
+      "pronunciation": "ˈkælɪndər",
+      "example1": "She marked her birthday on the calendar.",
+      "example1Meaning": "그녀는 달력에 자신의 생일을 표시했어요.",
+      "example2": "The calendar shows the days of each month.",
+      "example2Meaning": "달력은 각 달의 날짜를 보여줘요.",
+      "status": 0
+    },
+    {
+      "word": "camel",
+      "meaning": "낙타",
+      "pronunciation": "ˈkæməl",
+      "example1": "The camel lives in the desert.",
+      "example1Meaning": "낙타는 사막에서 살아요.",
+      "example2": "Camels have humps on their backs.",
+      "example2Meaning": "낙타는 등에 혹이 있어요.",
+      "status": 0
+    },
+    {
+      "word": "camera",
+      "meaning": "카메라",
+      "pronunciation": "ˈkæmərə",
+      "example1": "He used a camera to take pictures.",
+      "example1Meaning": "그는 사진을 찍기 위해 카메라를 사용했어요.",
+      "example2": "My camera has a zoom feature.",
+      "example2Meaning": "내 카메라에는 줌 기능이 있어요.",
+      "status": 0
+    },
+    {
+      "word": "camouflage",
+      "meaning": "위장",
+      "pronunciation": "ˈkæməˌflɑːʒ",
+      "example1": "The soldiers used camouflage to blend in.",
+      "example1Meaning": "군인들은 주변에 섞이기 위해 위장을 사용했어요.",
+      "example2": "The chameleon uses camouflage to hide.",
+      "example2Meaning": "카멜레온은 숨기 위해 위장을 사용해요.",
+      "status": 0
+    },
+    {
+      "word": "campfire",
+      "meaning": "캠프파이어",
+      "pronunciation": "ˈkæmpˌfaɪər",
+      "example1": "We made a campfire at the campsite.",
+      "example1Meaning": "우리는 캠핑장에서 캠프파이어를 했어요.",
+      "example2": "They roasted marshmallows over the campfire.",
+      "example2Meaning": "그들은 캠프파이어에서 마시멜로를 구웠어요.",
+      "status": 0
+    },
+    {
+      "word": "candle",
+      "meaning": "양초",
+      "pronunciation": "ˈkændl",
+      "example1": "She lit a candle during the blackout.",
+      "example1Meaning": "정전 동안 그녀는 양초를 켰어요.",
+      "example2": "The candle has a nice scent.",
+      "example2Meaning": "양초에서 좋은 향이 나요.",
+      "status": 0
+    },
+    {
+      "word": "cannon",
+      "meaning": "대포",
+      "pronunciation": "ˈkænən",
+      "example1": "The pirates fired a cannon.",
+      "example1Meaning": "해적들이 대포를 발사했어요.",
+      "example2": "The old castle has a cannon outside.",
+      "example2Meaning": "오래된 성에는 대포가 밖에 있어요.",
+      "status": 0
+    },
+    {
+      "word": "canoe",
+      "meaning": "카누",
+      "pronunciation": "kəˈnuː",
+      "example1": "They paddled a canoe on the lake.",
+      "example1Meaning": "그들은 호수에서 카누를 저었어요.",
+      "example2": "A canoe is a small, narrow boat.",
+      "example2Meaning": "카누는 작고 좁은 배예요.",
+      "status": 0
+    },
+    {
+      "word": "car",
+      "meaning": "자동차",
+      "pronunciation": "kɑːr",
+      "example1": "We drove the car to the beach.",
+      "example1Meaning": "우리는 해변으로 자동차를 몰고 갔어요.",
+      "example2": "My dad's car is blue.",
+      "example2Meaning": "아빠의 자동차는 파란색이에요.",
+      "status": 0
+    },
+    {
+      "word": "carrot",
+      "meaning": "당근",
+      "pronunciation": "ˈkærət",
+      "example1": "The rabbit ate a carrot.",
+      "example1Meaning": "토끼가 당근을 먹었어요.",
+      "example2": "Carrots are orange and crunchy.",
+      "example2Meaning": "당근은 주황색이고 아삭아삭해요.",
+      "status": 0
+    },
+    {
+      "word": "castle",
+      "meaning": "성",
+      "pronunciation": "ˈkæsl",
+      "example1": "The king lives in a castle.",
+      "example1Meaning": "왕은 성에 살고 있어요.",
+      "example2": "The castle has tall towers.",
+      "example2Meaning": "성에는 높은 탑들이 있어요.",
+      "status": 0
+    },
+  {
+    "word": "cat",
+    "meaning": "고양이",
+    "pronunciation": "kæt",
+    "example1": "The cat is sleeping on the couch.",
+    "example1Meaning": "고양이가 소파에서 자고 있어요.",
+    "example2": "She has a black and white cat.",
+    "example2Meaning": "그녀는 검은색과 흰색 고양이를 키워요.",
+    "status": 0
+  },
+  {
+    "word": "ceiling_fan",
+    "meaning": "천장 선풍기",
+    "pronunciation": "ˈsiːlɪŋ fæn",
+    "example1": "The ceiling fan keeps the room cool.",
+    "example1Meaning": "천장 선풍기가 방을 시원하게 해줘요.",
+    "example2": "We turned on the ceiling fan in summer.",
+    "example2Meaning": "우리는 여름에 천장 선풍기를 켰어요.",
+    "status": 0
+  },
+  {
+    "word": "cello",
+    "meaning": "첼로",
+    "pronunciation": "ˈʧɛloʊ",
+    "example1": "She plays the cello in the orchestra.",
+    "example1Meaning": "그녀는 오케스트라에서 첼로를 연주해요.",
+    "example2": "The cello makes a deep, beautiful sound.",
+    "example2Meaning": "첼로는 깊고 아름다운 소리를 내요.",
+    "status": 0
+  },
+  {
+    "word": "cell_phone",
+    "meaning": "휴대폰",
+    "pronunciation": "ˈsɛl foʊn",
+    "example1": "He forgot his cell phone at home.",
+    "example1Meaning": "그는 집에 휴대폰을 두고 왔어요.",
+    "example2": "I use my cell phone to call my friends.",
+    "example2Meaning": "나는 친구들에게 전화하려고 휴대폰을 사용해요.",
+    "status": 0
+  },
+  {
+    "word": "chair",
+    "meaning": "의자",
+    "pronunciation": "ʧɛr",
+    "example1": "Please sit on the chair.",
+    "example1Meaning": "의자에 앉으세요.",
+    "example2": "The chair is next to the table.",
+    "example2Meaning": "의자는 테이블 옆에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "chandelier",
+    "meaning": "샹들리에",
+    "pronunciation": "ˌʃændəˈlɪr",
+    "example1": "The chandelier lights up the room.",
+    "example1Meaning": "샹들리에가 방을 밝게 해줘요.",
+    "example2": "A beautiful chandelier hangs from the ceiling.",
+    "example2Meaning": "아름다운 샹들리에가 천장에 걸려 있어요.",
+    "status": 0
+  },
+  {
+    "word": "church",
+    "meaning": "교회",
+    "pronunciation": "ʧɜrʧ",
+    "example1": "They go to church every Sunday.",
+    "example1Meaning": "그들은 매주 일요일에 교회에 가요.",
+    "example2": "The church has a tall steeple.",
+    "example2Meaning": "교회에는 높은 첨탑이 있어요.",
+    "status": 0
+  },
+  {
+    "word": "circle",
+    "meaning": "원",
+    "pronunciation": "ˈsɜrkəl",
+    "example1": "He drew a circle on the paper.",
+    "example1Meaning": "그는 종이에 원을 그렸어요.",
+    "example2": "A circle has no corners.",
+    "example2Meaning": "원에는 모서리가 없어요.",
+    "status": 0
+  },
+  {
+    "word": "clarinet",
+    "meaning": "클라리넷",
+    "pronunciation": "ˌklærəˈnɛt",
+    "example1": "She learned to play the clarinet.",
+    "example1Meaning": "그녀는 클라리넷 연주를 배웠어요.",
+    "example2": "The clarinet is a woodwind instrument.",
+    "example2Meaning": "클라리넷은 목관악기예요.",
+    "status": 0
+  },
+  {
+    "word": "clock",
+    "meaning": "시계",
+    "pronunciation": "klɑk",
+    "example1": "The clock shows the time.",
+    "example1Meaning": "시계가 시간을 알려줘요.",
+    "example2": "We have a clock in the living room.",
+    "example2Meaning": "우리는 거실에 시계를 두고 있어요.",
+    "status": 0
+  },
+  {
+    "word": "cloud",
+    "meaning": "구름",
+    "pronunciation": "klaʊd",
+    "example1": "There is a big cloud in the sky.",
+    "example1Meaning": "하늘에 큰 구름이 있어요.",
+    "example2": "The cloud looks like a fluffy pillow.",
+    "example2Meaning": "구름이 푹신한 베개처럼 보여요.",
+    "status": 0
+  },
+  {
+    "word": "coffee_cup",
+    "meaning": "커피 컵",
+    "pronunciation": "ˈkɔfi kʌp",
+    "example1": "She drank coffee from a coffee cup.",
+    "example1Meaning": "그녀는 커피 컵으로 커피를 마셨어요.",
+    "example2": "The coffee cup is on the table.",
+    "example2Meaning": "커피 컵이 테이블 위에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "compass",
+    "meaning": "나침반",
+    "pronunciation": "ˈkʌmpəs",
+    "example1": "The compass shows us the direction.",
+    "example1Meaning": "나침반이 방향을 알려줘요.",
+    "example2": "He used a compass to find his way.",
+    "example2Meaning": "그는 길을 찾기 위해 나침반을 사용했어요.",
+    "status": 0
+  },
+  {
+    "word": "computer",
+    "meaning": "컴퓨터",
+    "pronunciation": "kəmˈpjutər",
+    "example1": "She does her homework on the computer.",
+    "example1Meaning": "그녀는 컴퓨터로 숙제를 해요.",
+    "example2": "I play games on my computer.",
+    "example2Meaning": "나는 컴퓨터로 게임을 해요.",
+    "status": 0
+  },
+  {
+    "word": "cookie",
+    "meaning": "쿠키",
+    "pronunciation": "ˈkʊki",
+    "example1": "He loves chocolate chip cookies.",
+    "example1Meaning": "그는 초콜릿 칩 쿠키를 좋아해요.",
+    "example2": "She baked cookies for her friends.",
+    "example2Meaning": "그녀는 친구들을 위해 쿠키를 구웠어요.",
+    "status": 0
+  },
+  {
+    "word": "cooler",
+    "meaning": "냉각기",
+    "pronunciation": "ˈkulər",
+    "example1": "They kept the drinks in the cooler.",
+    "example1Meaning": "그들은 음료를 냉각기에 넣어 보관했어요.",
+    "example2": "The cooler kept our food fresh.",
+    "example2Meaning": "냉각기가 우리의 음식을 신선하게 유지해줬어요.",
+    "status": 0
+  },
+  {
+    "word": "couch",
+    "meaning": "소파",
+    "pronunciation": "kaʊʧ",
+    "example1": "She is sitting on the couch.",
+    "example1Meaning": "그녀는 소파에 앉아 있어요.",
+    "example2": "The couch is very comfortable.",
+    "example2Meaning": "그 소파는 아주 편안해요.",
+    "status": 0
+  },
+  {
+    "word": "cow",
+    "meaning": "소",
+    "pronunciation": "kaʊ",
+    "example1": "The cow gives us milk.",
+    "example1Meaning": "소는 우리에게 우유를 줘요.",
+    "example2": "There is a cow in the field.",
+    "example2Meaning": "들판에 소 한 마리가 있어요.",
+    "status": 0
+  },
+  {
+    "word": "crab",
+    "meaning": "게",
+    "pronunciation": "kræb",
+    "example1": "We saw a crab at the beach.",
+    "example1Meaning": "우리는 해변에서 게를 봤어요.",
+    "example2": "The crab walks sideways.",
+    "example2Meaning": "게는 옆으로 걸어요.",
+    "status": 0
+  },
+  {
+    "word": "crayon",
+    "meaning": "크레용",
+    "pronunciation": "ˈkreɪɑn",
+    "example1": "She colored the picture with crayons.",
+    "example1Meaning": "그녀는 크레용으로 그림을 색칠했어요.",
+    "example2": "He has a box of crayons.",
+    "example2Meaning": "그는 크레용 한 상자가 있어요.",
+    "status": 0
+  },
+  {
+    "word": "crocodile",
+    "meaning": "악어",
+    "pronunciation": "ˈkrɑkəˌdaɪl",
+    "example1": "The crocodile lives in the river.",
+    "example1Meaning": "악어는 강에서 살아요.",
+    "example2": "She saw a big crocodile at the zoo.",
+    "example2Meaning": "그녀는 동물원에서 큰 악어를 봤어요.",
+    "status": 0
+  },
+  {
+    "word": "crown",
+    "meaning": "왕관",
+    "pronunciation": "kraʊn",
+    "example1": "The king wore a golden crown.",
+    "example1Meaning": "왕이 금색 왕관을 썼어요.",
+    "example2": "She made a crown from flowers.",
+    "example2Meaning": "그녀는 꽃으로 왕관을 만들었어요.",
+    "status": 0
+  },
+  {
+    "word": "cruise_ship",
+    "meaning": "유람선",
+    "pronunciation": "kruːz ʃɪp",
+    "example1": "They traveled on a cruise ship.",
+    "example1Meaning": "그들은 유람선을 타고 여행했어요.",
+    "example2": "The cruise ship was very large.",
+    "example2Meaning": "유람선은 아주 컸어요.",
+    "status": 0
+  },
+  {
+    "word": "cup",
+    "meaning": "컵",
+    "pronunciation": "kʌp",
+    "example1": "She poured juice into the cup.",
+    "example1Meaning": "그녀는 컵에 주스를 부었어요.",
+    "example2": "The cup is full of water.",
+    "example2Meaning": "컵이 물로 가득 차 있어요.",
+    "status": 0
+  },
+  {
+    "word": "diamond",
+    "meaning": "다이아몬드",
+    "pronunciation": "ˈdaɪəmənd",
+    "example1": "The ring has a big diamond.",
+    "example1Meaning": "반지에 큰 다이아몬드가 있어요.",
+    "example2": "Diamonds are very shiny.",
+    "example2Meaning": "다이아몬드는 아주 반짝거려요.",
+    "status": 0
+  },
+  {
+    "word": "dishwasher",
+    "meaning": "식기 세척기",
+    "pronunciation": "ˈdɪʃˌwɑʃər",
+    "example1": "They put the plates in the dishwasher.",
+    "example1Meaning": "그들은 접시를 식기 세척기에 넣었어요.",
+    "example2": "The dishwasher cleans the dishes.",
+    "example2Meaning": "식기 세척기가 그릇을 깨끗이 씻어줘요.",
+    "status": 0
+  },
+  {
+    "word": "diving_board",
+    "meaning": "다이빙 보드",
+    "pronunciation": "ˈdaɪvɪŋ bɔrd",
+    "example1": "He jumped off the diving board.",
+    "example1Meaning": "그는 다이빙 보드에서 뛰어내렸어요.",
+    "example2": "The diving board is at the pool.",
+    "example2Meaning": "다이빙 보드는 수영장에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "dog",
+    "meaning": "개",
+    "pronunciation": "dɔg",
+    "example1": "The dog is playing in the yard.",
+    "example1Meaning": "개가 마당에서 놀고 있어요.",
+    "example2": "She has a pet dog.",
+    "example2Meaning": "그녀는 애완견을 키워요.",
+    "status": 0
+  },
+  {
+    "word": "dolphin",
+    "meaning": "돌고래",
+    "pronunciation": "ˈdɑlfɪn",
+    "example1": "We saw a dolphin at the aquarium.",
+    "example1Meaning": "우리는 수족관에서 돌고래를 봤어요.",
+    "example2": "The dolphin is very smart.",
+    "example2Meaning": "돌고래는 아주 똑똑해요.",
+    "status": 0
+  },
+  {
+    "word": "donut",
+    "meaning": "도넛",
+    "pronunciation": "ˈdoʊnət",
+    "example1": "She likes chocolate donuts.",
+    "example1Meaning": "그녀는 초콜릿 도넛을 좋아해요.",
+    "example2": "I ate a donut for breakfast.",
+    "example2Meaning": "나는 아침으로 도넛을 먹었어요.",
+    "status": 0
+  },
+  {
+    "word": "door",
+    "meaning": "문",
+    "pronunciation": "dɔr",
+    "example1": "He opened the door and went inside.",
+    "example1Meaning": "그는 문을 열고 안으로 들어갔어요.",
+    "example2": "The door is made of wood.",
+    "example2Meaning": "문은 나무로 만들어졌어요.",
+    "status": 0
+  },
+
+  {
+    "word": "dragon",
+    "meaning": "용",
+    "pronunciation": "ˈdræɡən",
+    "example1": "The dragon breathes fire.",
+    "example1Meaning": "용은 불을 뿜어요.",
+    "example2": "She read a story about a dragon.",
+    "example2Meaning": "그녀는 용에 관한 이야기를 읽었어요.",
+    "status": 0
+  },
+  {
+    "word": "dresser",
+    "meaning": "서랍장",
+    "pronunciation": "ˈdrɛsər",
+    "example1": "She put her clothes in the dresser.",
+    "example1Meaning": "그녀는 옷을 서랍장에 넣었어요.",
+    "example2": "The dresser is next to the bed.",
+    "example2Meaning": "서랍장은 침대 옆에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "drill",
+    "meaning": "드릴",
+    "pronunciation": "drɪl",
+    "example1": "He used a drill to make a hole.",
+    "example1Meaning": "그는 드릴로 구멍을 뚫었어요.",
+    "example2": "The drill is in the toolbox.",
+    "example2Meaning": "드릴은 공구함에 있어요.",
+    "status": 0
+  },
+  {
+    "word": "drums",
+    "meaning": "드럼",
+    "pronunciation": "drʌmz",
+    "example1": "He plays the drums in a band.",
+    "example1Meaning": "그는 밴드에서 드럼을 연주해요.",
+    "example2": "The drums are very loud.",
+    "example2Meaning": "드럼 소리가 아주 커요.",
+    "status": 0
+  },
+  {
+    "word": "duck",
+    "meaning": "오리",
+    "pronunciation": "dʌk",
+    "example1": "The duck swims in the pond.",
+    "example1Meaning": "오리가 연못에서 헤엄쳐요.",
+    "example2": "We saw a duck at the park.",
+    "example2Meaning": "우리는 공원에서 오리를 봤어요.",
+    "status": 0
+  }
+]
