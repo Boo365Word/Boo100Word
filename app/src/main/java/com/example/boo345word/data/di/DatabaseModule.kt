@@ -19,13 +19,14 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context,
+        ioDispatchers: CoroutineDispatcher,
     ): WordDatabase =
         Room
             .databaseBuilder(
                 context.applicationContext,
                 WordDatabase::class.java,
                 "word_database",
-            ).addCallback(WordDatabase.PrepopulateCallBack(context))
+            ).addCallback(WordDatabase.PrepopulateCallBack(context, ioDispatchers = ioDispatchers))
             .build()
 
     @Provides
