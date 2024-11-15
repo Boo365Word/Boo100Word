@@ -19,13 +19,12 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context,
-    ): WordDatabase =
-        Room
+    ): WordDatabase = Room
             .databaseBuilder(
                 context.applicationContext,
                 WordDatabase::class.java,
                 "word_database",
-            ).addCallback(WordDatabase.PrepopulateCallBack(context))
+            ).createFromAsset("words.db")
             .build()
 
     @Provides

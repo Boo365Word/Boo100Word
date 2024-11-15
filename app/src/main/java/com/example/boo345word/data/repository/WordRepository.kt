@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class WordRepository
-    @Inject
+@Inject
     constructor(
         private val basicWordDao: BasicWordDao,
         private val detailWordDao: DetailWordDao,
