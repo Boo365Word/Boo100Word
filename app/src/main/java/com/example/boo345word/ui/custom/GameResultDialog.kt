@@ -68,8 +68,8 @@ class GameResultDialog(
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         binding.listCorrectWord.adapter = gameResultCorrectAdapter
         binding.listWrongWord.adapter = gameResultWrongAdapter
-        binding.txtCorrectWordCount.text = correctWordList?.size.toString()
         binding.imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        binding.txtGameResult.updateText(correctWordList.size)
 
         dialog?.window?.setGravity(Gravity.CENTER)
 
