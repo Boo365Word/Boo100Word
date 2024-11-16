@@ -1,32 +1,53 @@
 package com.example.boo345word.ui.custom
 
-import android.app.Dialog
-import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import com.example.boo345word.R
+import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.DialogGameResultBinding
-import com.example.boo345word.ui.game.GameActivity
+import com.example.boo345word.ui.game.adapter.GameResultCorrectListAdapter
+import com.example.boo345word.ui.game.adapter.GameResultWrongListAdapter
 import com.example.boo345word.ui.main.MainActivity
 
-class GameResultDialog(context: Context) : Dialog(context) {
+class GameResultDialog(
+    correctWordList: List<BasicWord>,
+    wrongWordList: List<BasicWord>,
+    listener: GameResultDialogListener,
+) : DialogFragment() {
+    @Suppress("ktlint:standard:backing-property-naming")
+    private var _binding: DialogGameResultBinding? = null
+    private val binding get() = _binding!!
+    private var correctWordList: List<BasicWord>? = null
+    private var wrongWordList: List<BasicWord>? = null
+    private var listener: GameResultDialogListener? = null
 
-    private lateinit var binding: DialogGameResultBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initGameResultBinding()
-        initGameResultListener()
+    init {
+        this.correctWordList = correctWordList
+        this.wrongWordList = wrongWordList
+        this.listener = listener
     }
 
-    private fun initGameResultBinding() {
-        binding = DialogGameResultBinding.inflate(layoutInflater).also { binding ->
-            setContentView(binding.root)
-        }
-        // 배경을 투명하게
-        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    interface GameResultDialogListener {
+        fun onRetryGame()
     }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = DialogGameResultBinding.inflate(inflater, container, false)
+        val view = binding.root
+        requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        isCancelable = false
 
     private fun initGameResultListener(){
         //todo : 처음으로 돌아가기
@@ -34,12 +55,57 @@ class GameResultDialog(context: Context) : Dialog(context) {
             dismiss()
             MainActivity.start(context)
         }
-        //todo : 다시 하기
         binding.btnRetry.setOnClickListener {
+            this.listener?.onRetryGame()
             dismiss()
-            GameActivity.start(context)
         }
-        // 다이얼로그 바깥쪽 클릭시 종료되도록 함
-        setCanceledOnTouchOutside(true)
+
+        return view
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
+        requireActivity().setFinishOnTouchOutside(true)
+
+        val gameResultCorrectAdapter = correctWordList?.let { GameResultCorrectListAdapter(it) }
+        val gameResultWrongAdapter = wrongWordList?.let { GameResultWrongListAdapter(it) }
+        binding.listCorrectWord.adapter = gameResultCorrectAdapter
+        binding.listWrongWord.adapter = gameResultWrongAdapter
+        binding.txtCorrectWordCount.text = correctWordList?.size.toString()
+        binding.imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        // 배경을 투명하게 해줌
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        dialog?.window?.setGravity(Gravity.CENTER)
+
+        when (correctWordList?.size) {
+            1 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+            }
+            2 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+            }
+            3 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+            }
+            4 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
+            }
+            5 -> {
+                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
+                binding.heart5.setImageResource(R.drawable.ic_filled_heart)
+            }
+            dismiss()
+        }
     }
 }

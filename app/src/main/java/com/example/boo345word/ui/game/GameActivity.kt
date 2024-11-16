@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityGameBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GameActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityGameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,26 +21,17 @@ class GameActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add(R.id.game_fragment_container_view, GameFragment.newInstance(1))
+                add(R.id.game_fragment_container_view, GameFragment.newInstance())
             }
         }
     }
 
     private fun initGameBinding() {
-        binding = ActivityGameBinding.inflate(layoutInflater).also { binding ->
-            setContentView(binding.root)
-        }
-    }
+        binding = ActivityGameBinding.inflate(layoutInflater).also { binding -> setContentView(binding.root) }
 
-    fun skipState(currentState: Int) {
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add(R.id.game_fragment_container_view, GameFragment.newInstance(currentState))
-        }
     }
 
     companion object {
-
         fun start(context: Context) {
             Intent(context, GameActivity::class.java).also {
                 context.startActivity(it)
@@ -47,5 +39,3 @@ class GameActivity : AppCompatActivity() {
         }
     }
 }
-
-
