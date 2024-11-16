@@ -138,7 +138,7 @@ class GameFragment :
         if (currentState == 1) {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.basicWordList.observe(viewLifecycleOwner) {
+                    viewModel.basicWordList.collect {
                         if (it.isNotEmpty()) {
                             wordList = it
                             startGame()
@@ -239,8 +239,11 @@ class GameFragment :
 
     private fun showGameResult() {
         gameTimer.stopTimer()
-        val dialog = GameResultDialog(viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
-        dialog.show(parentFragmentManager, "GameResultDialog")
+        val dialog =
+            context?.let {
+                GameResultDialog(it, viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
+            }
+        dialog?.show(parentFragmentManager, "GameResultDialog")
     }
 
     companion object {
@@ -257,7 +260,7 @@ class GameFragment :
         lifecycleScope.launch {
             init()
             viewModel.loadData()
-            viewModel.basicWordList.observe(viewLifecycleOwner) {
+            viewModel.basicWordList.collect {
                 if (it.isNotEmpty()) {
                     startGame()
                 }
