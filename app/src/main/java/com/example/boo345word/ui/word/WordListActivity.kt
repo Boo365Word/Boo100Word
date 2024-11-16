@@ -53,6 +53,7 @@ class WordListActivity : AppCompatActivity() {
     }
 
     private fun showFilteredWords() {
+        //todo: 비즈니스 로직으로 분리? or not
         when {
             binding.cbRightWords.isChecked && binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(viewModel.words.value.value)
