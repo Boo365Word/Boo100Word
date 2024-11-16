@@ -43,7 +43,7 @@ class GameViewModel
         fun loadData() {
             viewModelScope.launch {
                 _basicWordList.value = repository.getFiveBasicWords().first()
-                _basicWordList.value!!.forEach {
+                _basicWordList.value.forEach {
                     repository.markWordAsLearned(it.word)
                 }
             }
