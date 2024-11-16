@@ -28,6 +28,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun initGameBinding() {
         binding = ActivityGameBinding.inflate(layoutInflater).also { binding -> setContentView(binding.root) }
+
     }
 
     companion object {

@@ -49,11 +49,11 @@ class GameResultDialog(
         requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         isCancelable = false
 
+    private fun initGameResultListener(){
+        //todo : 처음으로 돌아가기
         binding.btnGoFirst.setOnClickListener {
-            Toast.makeText(context, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
             dismiss()
+            MainActivity.start(context)
         }
         binding.btnRetry.setOnClickListener {
             this.listener?.onRetryGame()
@@ -105,6 +105,7 @@ class GameResultDialog(
                 binding.heart4.setImageResource(R.drawable.ic_filled_heart)
                 binding.heart5.setImageResource(R.drawable.ic_filled_heart)
             }
+            dismiss()
         }
     }
 }

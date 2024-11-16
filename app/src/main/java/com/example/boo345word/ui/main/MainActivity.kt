@@ -1,5 +1,7 @@
 package com.example.boo345word.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMainClickListener() {
         with(binding) {
-            heartProgressBar.setProgress(INITIAL_PROGRESS_VALUE)
+            customHeartProgressBar.updateProgress(INITIAL_PROGRESS_VALUE)
 
             btnGameStart.setOnClickListener {
                 GameActivity.start(this@MainActivity)
@@ -52,5 +54,11 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val INITIAL_PROGRESS_VALUE = 0.8f
+
+        fun start(context: Context){
+            val intent = Intent(context, MainActivity::class.java)
+
+            context.startActivity(intent)
+        }
     }
 }
