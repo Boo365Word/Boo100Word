@@ -1,5 +1,6 @@
 package com.example.boo345word.mapper
 
+import android.util.Log
 import com.example.boo345word.data.entity.DetailWord
 import com.example.boo345word.ui.detail.Sentence
 import com.example.boo345word.ui.detail.WordDetail
@@ -8,11 +9,12 @@ import com.example.boo345word.ui.word.Word
 object DetailWordMapper {
 
     fun List<DetailWord>.toDomain(): List<Word> = this.map {
+        Log.d("woogi", "toDomain: $this")
         Word(
             english = it.word,
             korean = it.meaning,
             isCorrect = when (it.status) {
-                0, 1 -> false
+                0, 2 -> false
                 else -> true
             }
         )

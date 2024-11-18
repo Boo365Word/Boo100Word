@@ -74,6 +74,7 @@ class WordListActivity : AppCompatActivity() {
         repeatOnStarted(this) {
             viewModel.words.collect { words ->
                 wordListAdapter.updateWords(words.value)
+                showFilteredWords()
 
                 if (words.value.isEmpty()) {
                     binding.ivNoMatchingWords.visibility = View.VISIBLE
