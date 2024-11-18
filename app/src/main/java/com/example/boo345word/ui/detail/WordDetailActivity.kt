@@ -3,13 +3,16 @@ package com.example.boo345word.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.boo345word.R
 import com.example.boo345word.databinding.ActivityWordDetailBinding
 import com.example.boo345word.ui.util.repeatOnStarted
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WordDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWordDetailBinding
@@ -30,6 +33,7 @@ class WordDetailActivity : AppCompatActivity() {
          * WordListActivity에서 intent로 전달한 Word를 수신
          */
         intent.getStringExtra(KEY)?.also { word ->
+            Log.d("woogi", "initWordDetailBinding: $word")
             viewModel.fetchWordDetail(word)
             binding.tvWordEnglishDetailTitle.text = word
         } ?: finish()

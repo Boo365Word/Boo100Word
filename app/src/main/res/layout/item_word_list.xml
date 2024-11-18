@@ -17,42 +17,37 @@
         android:background="@drawable/rounded_shape_20_top"
         android:clipToOutline="true"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@id/ly_word_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_launcher_background" />
 
-    <LinearLayout
-        android:id="@+id/ly_word_description"
+    <TextView
+        android:id="@+id/tv_word_english"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/iv_word_symbol_image"
+        app:layout_constraintStart_toStartOf="@id/iv_word_symbol_image"
+        app:layout_constraintTop_toBottomOf="@id/iv_word_symbol_image"
+        tools:text="apple" />
+
+    <TextView
+        android:id="@+id/tv_word_korean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_word_symbol_image">
-
-        <TextView
-            android:id="@+id/tv_word_english"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="apple" />
-
-        <TextView
-            android:id="@+id/tv_word_korean"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="사과" />
-    </LinearLayout>
-
+        app:layout_constraintEnd_toEndOf="@id/tv_word_english"
+        app:layout_constraintStart_toStartOf="@id/tv_word_english"
+        app:layout_constraintTop_toBottomOf="@id/tv_word_english"
+        tools:text="사과" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

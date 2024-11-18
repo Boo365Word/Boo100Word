@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.boo345word.databinding.ActivityWordListBinding
 import com.example.boo345word.ui.detail.WordDetailActivity
 import com.example.boo345word.ui.util.repeatOnStarted
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WordListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWordListBinding
@@ -41,7 +43,7 @@ class WordListActivity : AppCompatActivity() {
     private fun initWordListListener() {
         with(binding) {
             tfWordSearchingField.setOnSearchingTextFieldListener { keyword ->
-                viewModel.fetchWords(keyword)
+                viewModel.fetchWordsByKeyword(keyword)
             }
             cbRightWords.setOnCheckedChangeListener { _, _ ->
                 showFilteredWords()
@@ -53,7 +55,6 @@ class WordListActivity : AppCompatActivity() {
     }
 
     private fun showFilteredWords() {
-        // todo: 비즈니스 로직으로 분리? or not
         when {
             binding.cbRightWords.isChecked && binding.cbWrongWords.isChecked ->
                 wordListAdapter.submitList(viewModel.words.value.value)

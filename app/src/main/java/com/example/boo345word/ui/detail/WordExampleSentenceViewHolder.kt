@@ -15,7 +15,7 @@ class WordExampleSentenceViewHolder private constructor(
 
     fun bind(sentence: Sentence, targetWord: String) {
         binding.tvSentenceKorean.text = sentence.korean
-        val from = sentence.english.indexOf(targetWord)
+        val from = sentence.english.indexOf(targetWord.replace('_', ' '))
         val to = from + targetWord.length
 
         /**
