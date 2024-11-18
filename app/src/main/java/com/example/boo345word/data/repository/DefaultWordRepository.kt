@@ -5,7 +5,7 @@ import com.example.boo345word.data.source.WordDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class WordRepositoryImpl
+class DefaultWordRepository
     @Inject
     constructor(
         private val dataSource: WordDataSource,

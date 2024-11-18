@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class WordDataSourceImpl
+class DefaultWordDataSource
     @Inject
     constructor(
         private val basicWordDao: BasicWordDao,

@@ -1,7 +1,7 @@
 package com.example.boo345word.data.di
 
+import com.example.boo345word.data.repository.DefaultWordRepository
 import com.example.boo345word.data.repository.WordRepository
-import com.example.boo345word.data.repository.WordRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @Module
 interface RepositoryModule {
     @Binds
-    fun provideWordRepositoryImpl(repositoryImpl: WordRepositoryImpl): WordRepository
+    fun provideWordRepositoryImpl(repositoryImpl: DefaultWordRepository): WordRepository
 }
