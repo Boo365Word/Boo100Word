@@ -12,5 +12,5 @@ class WordRepositoryImpl
     ) : WordRepository {
         override suspend fun getFiveBasicWords(): Flow<List<BasicWord>> = dataSource.getFiveBasicWords()
 
-        override suspend fun markWordAsLearned(word: String) = dataSource.markWordAsLearned(word)
+        override suspend fun updateStatus(word: String) = dataSource.markWordAsLearned(word)
     }
