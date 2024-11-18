@@ -1,6 +1,6 @@
 package com.example.boo345word.ui.custom
 
-import android.content.Intent
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.boo345word.R
 import com.example.boo345word.data.entity.BasicWord
@@ -18,22 +17,14 @@ import com.example.boo345word.ui.game.adapter.GameResultWrongListAdapter
 import com.example.boo345word.ui.main.MainActivity
 
 class GameResultDialog(
-    correctWordList: List<BasicWord>,
-    wrongWordList: List<BasicWord>,
-    listener: GameResultDialogListener
+    private val context: Context,
+    private val correctWordList: List<BasicWord>,
+    private val wrongWordList: List<BasicWord>,
+    private val listener: GameResultDialogListener,
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: DialogGameResultBinding? = null
     private val binding get() = _binding!!
-    private var correctWordList: List<BasicWord>? = null
-    private var wrongWordList: List<BasicWord>? = null
-    private var listener: GameResultDialogListener? = null
-
-    init {
-        this.correctWordList = correctWordList
-        this.wrongWordList = wrongWordList
-        this.listener = listener
-    }
 
     interface GameResultDialogListener {
         fun onRetryGame()
@@ -42,41 +33,44 @@ class GameResultDialog(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
         requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         isCancelable = false
 
-        binding.btnGoFirst.setOnClickListener {
-            Toast.makeText(context, "메인 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
-            dismiss()
-        }
-        binding.btnRetry.setOnClickListener {
-            this.listener?.onRetryGame()
-            dismiss()
-        }
+        initGameResultListener()
 
         return view
     }
 
+    private fun initGameResultListener() {
+        // todo : 처음으로 돌아가기
+        binding.btnGoFirst.setOnClickListener {
+            dismiss()
+            MainActivity.start(context)
+        }
+        binding.btnRetry.setOnClickListener {
+            this.listener.onRetryGame()
+            dismiss()
+        }
+    }
+
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) {
         requireActivity().setFinishOnTouchOutside(true)
 
         val gameResultCorrectAdapter = correctWordList?.let { GameResultCorrectListAdapter(it) }
         val gameResultWrongAdapter = wrongWordList?.let { GameResultWrongListAdapter(it) }
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         binding.listCorrectWord.adapter = gameResultCorrectAdapter
         binding.listWrongWord.adapter = gameResultWrongAdapter
-        binding.txtCorrectWordCount.text = correctWordList?.size.toString()
         binding.imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        // 배경을 투명하게 해줌
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+        binding.txtGameResult.updateText(correctWordList.size)
+
         dialog?.window?.setGravity(Gravity.CENTER)
 
         when (correctWordList?.size) {
