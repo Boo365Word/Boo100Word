@@ -29,7 +29,7 @@ class WordDetailActivity : AppCompatActivity() {
             setContentView(it.root)
         }
         /**
-         * WordListActivity에서 intent로 전달한 Word를 수신
+         * WordListActivity에서 intent로 전달한 Word(String)를 수신
          */
         intent.getStringExtra(KEY)?.also { word ->
             viewModel.fetchWordDetail(word)
