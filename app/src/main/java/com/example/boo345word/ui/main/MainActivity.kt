@@ -9,9 +9,10 @@ import com.example.boo345word.databinding.ActivityMainBinding
 import com.example.boo345word.ui.custom.InfoDialog
 import com.example.boo345word.ui.game.GameActivity
 import com.example.boo345word.ui.word.WordListActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +23,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMainBinding() {
-        binding = ActivityMainBinding.inflate(layoutInflater).also { binding ->
-            setContentView(binding.root)
-        }
+        binding =
+            ActivityMainBinding.inflate(layoutInflater).also { binding ->
+                setContentView(binding.root)
+            }
     }
 
     private fun initMainClickListener() {
@@ -51,8 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        private const val INITIAL_PROGRESS_VALUE = 0.5f
+        private const val INITIAL_PROGRESS_VALUE = 0.8f
 
         fun start(context: Context) {
             val intent = Intent(context, MainActivity::class.java)

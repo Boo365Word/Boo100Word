@@ -10,18 +10,36 @@ import java.io.IOException
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 
-class DrawClassifier(activity: Activity) {
+class DrawClassifier(
+    activity: Activity
+) {
+    @Suppress("ktlint:standard:property-naming")
     private val TAG = this.javaClass.simpleName
 
     // 모델 로드에 필요한 인터프리터 null로 초기화
     private var tflite: Interpreter? = null
 
     // 모델이 인식하는 카테고리 배열로 선언
-    private val classNames = arrayOf(
-        "aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
-        "animal_migration", "ant", "anvil", "apple", "arm", "asparagus", "axe", "backpack", "banana", "bandage"
-    )
+    private val classNames =
+        arrayOf(
+            "aircraft_carrier",
+            "airplane",
+            "alarm_clock",
+            "ambulance",
+            "angel",
+            "animal_migration",
+            "ant",
+            "anvil",
+            "apple",
+            "arm",
+            "asparagus",
+            "axe",
+            "backpack",
+            "banana",
+            "bandage"
+        )
 
+    @Suppress("ktlint:standard:property-naming")
     // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)
     private val MODEL_PATH = "quick_draw_model.tflite"
 
@@ -35,13 +53,16 @@ class DrawClassifier(activity: Activity) {
         }
     }
 
-    fun classify(bitmap: Bitmap): String {
+    // 예측할 타겟 단어를 넘겨준다.
+    fun classify(
+        bitmap: Bitmap,
+        targetWord: String
+    ): Boolean {
         if (tflite == null) {
             Log.e(TAG, "Image classifier has not been initialized; Skipped.")
-            return ""
+            return false
         }
-
-        return predict(bitmap)
+        return predict(bitmap, targetWord)
     }
 
     // 모델 파일 로드
@@ -67,7 +88,10 @@ class DrawClassifier(activity: Activity) {
     }
 
     // 전처리하여 모델에 예측 수행
-    private fun predict(bitmap: Bitmap): String {
+    private fun predict(
+        bitmap: Bitmap,
+        targetWord: String
+    ): Boolean {
         // 1. 그림판의 비트맵을 전처리 (28x28 크기, 그레이스케일, 0~1 정규화)
         val inputArray = preprocessImageForModel(bitmap)
 
@@ -79,12 +103,13 @@ class DrawClassifier(activity: Activity) {
         val maxIndex = output[0].indices.maxByOrNull { output[0][it] } ?: -1
         val confidence = if (maxIndex >= 0) output[0][maxIndex] * 100 else 0f // 확률을 퍼센트로 변환
 
-        // 4. 결과 표시
-        return if (maxIndex >= 0) {
-            "Prediction: ${classNames[maxIndex]}, Confidence: ${"%.2f".format(confidence)}%"
-        } else {
-            "Unknown"
-        }
+        // 4. 모델이 예측한 단어
+        val predictedWord = if (maxIndex >= 0) classNames[maxIndex] else "Unknown"
+
+        // 만약 모델이 예측한 단어와 게임에 제시된 단어가 동일하다면 정답 처리
+        val result = predictedWord == targetWord
+
+        return result
     }
 
     // 그림을 모델 입력 형식으로 전처리
@@ -109,20 +134,22 @@ class DrawClassifier(activity: Activity) {
                 val pixel = resizedBitmap.getPixel(j, i)
 
                 // RGB -> 그레이스케일 변환 및 반전 (1.0 - grayscale)
-                val grayscale = 1.0f - (
-                    (
-                        Color.red(pixel) * 0.299f +
-                            Color.green(pixel) * 0.587f +
-                            Color.blue(pixel) * 0.114f
-                        ) / 255.0f
-                    )
+                val grayscale =
+                    1.0f - (
+                        (
+                            Color.red(pixel) * 0.299f +
+                                Color.green(pixel) * 0.587f +
+                                Color.blue(pixel) * 0.114f
+                            ) / 255.0f
+                        )
 
                 // 다중 임계값에 따른 값 설정
-                val transformedValue = when {
-                    grayscale > thresholdHigh -> 1.0f // 흰색
-                    grayscale > thresholdLow -> 0.7f // 회색
-                    else -> 0.0f // 검은색
-                }
+                val transformedValue =
+                    when {
+                        grayscale > thresholdHigh -> 1.0f // 흰색
+                        grayscale > thresholdLow -> 0.7f // 회색
+                        else -> 0.0f // 검은색
+                    }
                 inputArray[0][i][j][0] = transformedValue
             }
         }

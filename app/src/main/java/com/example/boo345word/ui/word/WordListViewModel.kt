@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class WordListViewModel(
-    private val wordRepository: WordRepository = DefaultWordRepository(),
+//    private val wordRepository: WordRepository = DefaultWordRepository()
 ) : ViewModel() {
 
     private val _words: MutableStateFlow<Words> = MutableStateFlow(Words(listOf()))
@@ -31,12 +31,12 @@ class WordListViewModel(
 
     fun fetchWords(keyword: String) {
         viewModelScope.launch {
-            wordRepository.fetchWords(keyword)
-                .catch {
-                    _event.emit(WordsEvent.Error)
-                }.collect { value ->
-                    _words.value = Words(value)
-                }
+//            wordRepository.fetchWords(keyword)
+//                .catch {
+//                    _event.emit(WordsEvent.Error)
+//                }.collect { value ->
+//                    _words.value = Words(value)
+//                }
         }
     }
 }

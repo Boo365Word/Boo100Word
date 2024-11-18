@@ -59,7 +59,7 @@ class DefaultWordRepository : WordRepository {
         if (keyword.isEmpty()) emit(words)
 
         emit(
-            words.filter { word -> word.english.contains(keyword) || word.korean.contains(keyword)}
+            words.filter { word -> word.english.contains(keyword) || word.korean.contains(keyword) }
         )
     }
 
