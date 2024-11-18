@@ -1,6 +1,5 @@
 package com.example.boo345word.mapper
 
-import android.util.Log
 import com.example.boo345word.data.entity.DetailWord
 import com.example.boo345word.ui.detail.Sentence
 import com.example.boo345word.ui.detail.WordDetail
