@@ -51,6 +51,9 @@ class WordListActivity : AppCompatActivity() {
             cbWrongWords.setOnCheckedChangeListener { _, _ ->
                 showFilteredWords()
             }
+            imgBtnBack.setOnClickListener {
+                finish()
+            }
         }
     }
 

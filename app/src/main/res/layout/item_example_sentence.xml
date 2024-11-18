@@ -10,9 +10,8 @@
         android:id="@+id/tv_sentence_english"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,12 +22,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+        android:layout_marginBottom="20dp"
         android:textAlignment="center"
         android:textColor="#ABABAB"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/tv_sentence_english"
         app:layout_constraintTop_toBottomOf="@id/tv_sentence_english"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="그는 그 사과를 속심까지 다 먹었다" />
 
 

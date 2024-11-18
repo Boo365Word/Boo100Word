@@ -3,6 +3,7 @@ package com.example.boo345word.ui.detail
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,8 +16,10 @@ class WordExampleSentenceViewHolder private constructor(
 
     fun bind(sentence: Sentence, targetWord: String) {
         binding.tvSentenceKorean.text = sentence.korean
+        binding.tvSentenceEnglish.text = sentence.english
+        Log.d("woogi", "bind: ${sentence.english}")
         val from = sentence.english.indexOf(
-            targetWord.replace('_', ' '),
+            targetWord,
             0,
             true
         )
@@ -25,14 +28,16 @@ class WordExampleSentenceViewHolder private constructor(
         /**
          * 검색한 단어의 색깔은 예문에서 다르게 표현하기 위한 코드
          */
-        SpannableStringBuilder(sentence.english).also {
-            it.setSpan(
-                ForegroundColorSpan(binding.root.context.getColor(R.color.highlighting_word)),
-                from,
-                to,
-                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
-            )
-            binding.tvSentenceEnglish.text = it
+        if (from != -1) {
+            SpannableStringBuilder(sentence.english).also {
+                it.setSpan(
+                    ForegroundColorSpan(binding.root.context.getColor(R.color.highlighting_word)),
+                    from,
+                    to,
+                    Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+                )
+                binding.tvSentenceEnglish.text = it
+            }
         }
     }
 

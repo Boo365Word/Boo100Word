@@ -39,14 +39,14 @@ constructor(
 
     suspend fun getWordsByKeyword(keyword: String): Flow<List<Word>> = withContext(ioDispatchers) {
         detailWordDao
-            .selectWordsByKeyword(keyword)
+            .selectWordsByKeyword(keyword.replace(' ', '_'))
             .map {
                 it.toDomain()
             }
     }
     suspend fun getWordDetailByKeyword(keyword: String): Flow<WordDetail> = withContext(ioDispatchers) {
         detailWordDao
-            .selectWordByKeyword(keyword)
+            .selectWordByKeyword(keyword.replace(' ', '_'))
             .map {
                 it.toDomain()
             }

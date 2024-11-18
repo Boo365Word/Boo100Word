@@ -9,7 +9,7 @@ object DetailWordMapper {
 
     fun List<DetailWord>.toDomain(): List<Word> = this.map {
         Word(
-            english = it.word,
+            english = it.word.replace('_', ' '),
             korean = it.meaning,
             isCorrect = when (it.status) {
                 0, 2 -> false
@@ -19,7 +19,7 @@ object DetailWordMapper {
     }
 
     fun DetailWord.toDomain(): WordDetail = WordDetail(
-        english = word,
+        english = word.replace('_', ' '),
         korean = meaning,
         pronunciation = pronunciation,
         sentences = listOf(
