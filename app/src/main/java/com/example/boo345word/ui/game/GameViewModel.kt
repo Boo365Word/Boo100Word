@@ -46,7 +46,6 @@ class GameViewModel @Inject constructor(
         viewModelScope.launch {
             _basicWordList.value = repository.getFiveBasicWords().first()
             _basicWordList.value!!.forEach {
-                Log.d("Woogi", "loadData: ${it.word}")
                 repository.markWordAsLearned(it.word)
             }
         }

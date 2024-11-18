@@ -9,7 +9,6 @@ import com.example.boo345word.ui.word.Word
 object DetailWordMapper {
 
     fun List<DetailWord>.toDomain(): List<Word> = this.map {
-        Log.d("woogi", "toDomain: $this")
         Word(
             english = it.word,
             korean = it.meaning,

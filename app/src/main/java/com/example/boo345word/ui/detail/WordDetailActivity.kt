@@ -33,7 +33,6 @@ class WordDetailActivity : AppCompatActivity() {
          * WordListActivity에서 intent로 전달한 Word를 수신
          */
         intent.getStringExtra(KEY)?.also { word ->
-            Log.d("woogi", "initWordDetailBinding: $word")
             viewModel.fetchWordDetail(word)
             binding.tvWordEnglishDetailTitle.text = word
         } ?: finish()
