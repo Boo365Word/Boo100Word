@@ -8,11 +8,11 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
         android:layout_marginBottom="4dp"
-        android:src="@drawable/game_result"
+        android:minHeight="450dp"
+        android:src="@drawable/item_result_dialog"
         app:layout_constraintBottom_toTopOf="@+id/btn_retry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,10 +20,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="350dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView7" />
+
     <ImageView
         android:id="@+id/heart5"
         android:layout_width="35dp"
         android:layout_height="33dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_heart"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +63,7 @@
         android:id="@+id/heart3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="@+id/heart1"
@@ -62,6 +76,7 @@
         android:id="@+id/heart2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="@+id/heart1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +89,7 @@
         android:id="@+id/heart1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,55 +137,20 @@
         android:id="@+id/list_wrong_word"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:listitem="@layout/game_result_word_item" />
+        tools:listitem="@layout/game_result_word_item"/>
 
-
-    <TextView
-        android:id="@+id/correct_word_list"
-        android:layout_width="wrap_content"
+    <com.example.boo345word.ui.custom.GameResultText
+        android:id="@+id/txt_game_result"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintEnd_toEndOf="@+id/list_wrong_word"
-        app:layout_constraintStart_toStartOf="@+id/list_correct_word">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="10dp"
-            android:text="5단어 중 "
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txt_correct_word_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="단어를 맞췄어요"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view" />
 
     <ImageButton
         android:id="@+id/btn_retry"

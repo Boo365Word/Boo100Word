@@ -37,18 +37,12 @@ class GameFragment :
     private var falseCount = 0
     private var isPaused: Boolean = false
 
-    private val gameTimer = GameTimer
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentGameBinding.inflate(inflater)
-//        val database = WordDatabase.getDatabase(requireContext())
-//        val repository = WordRepository(database.getBasicWordDao(), database.getDetailWordDao())
-//        val viewModelFactory = GameViewModelFactory(repository)
-//        viewmodel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
         return binding.root
     }
 
@@ -61,7 +55,7 @@ class GameFragment :
             //  새 게임을 위한 뷰를 준비한다..
             prepareGameView()
             // 타이머 시작하기
-            gameTimer.startTimer()
+            GameTimer.startTimer()
         } else {
             // 게임이 끝난 경우 결과 다이얼로그를 보여준다.
             showGameResult()
@@ -88,13 +82,11 @@ class GameFragment :
 
     // 매 게임마다 게임 결과를 뷰모델에 저장한다.
     private fun saveGameResult(result: Boolean) {
-        lifecycleScope.launch {
-            if (currentWord != null) {
-                if (result) {
-                    viewModel.saveCorrectWord(currentWord!!)
-                } else {
-                    viewModel.saveWrongWord(currentWord!!)
-                }
+        if (currentWord != null) {
+            if (result) {
+                viewModel.saveCorrectWord(currentWord!!)
+            } else {
+                viewModel.saveWrongWord(currentWord!!)
             }
         }
     }
@@ -107,7 +99,7 @@ class GameFragment :
         if (currentState < stateCount) {
             currentState++
             viewModel.updateState(currentState)
-            gameTimer.stopTimer()
+            GameTimer.stopTimer()
             startGame()
         } else {
             // 만약 현재 단계 >= 5 라면 결과창 보이기
@@ -125,7 +117,7 @@ class GameFragment :
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // 여기서 두번째 Job이 생성됨 -> 결과적으로 타이머가 동시에 2번 실행됨
-                gameTimer.currentTimer.collect {
+                GameTimer.currentTimer.collect {
                     binding.timeProgressBar.progress = it
                     if (it == 20) {
                         // 시간이 다 된 경우 넘어가기
@@ -138,7 +130,7 @@ class GameFragment :
         if (currentState == 1) {
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.basicWordList.observe(viewLifecycleOwner) {
+                    viewModel.basicWordList.collect {
                         if (it.isNotEmpty()) {
                             wordList = it
                             startGame()
@@ -153,11 +145,11 @@ class GameFragment :
                 isPaused = !isPaused
                 if (isPaused) {
                     // 중지버튼 누른 경우 타이머 중지
-                    gameTimer.stopTimer()
+                    GameTimer.stopTimer()
                     binding.btnPause.setImageResource(R.drawable.btn_play)
                 } else {
                     // 다시 한번 누른 경우 타이머 재시작
-                    gameTimer.restartTimer()
+                    GameTimer.restartTimer()
                     binding.btnPause.setImageResource(R.drawable.btn_pause)
                 }
             }
@@ -238,9 +230,12 @@ class GameFragment :
     }
 
     private fun showGameResult() {
-        gameTimer.stopTimer()
-        val dialog = GameResultDialog(viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
-        dialog.show(parentFragmentManager, "GameResultDialog")
+        GameTimer.stopTimer()
+        val dialog =
+            context?.let {
+                GameResultDialog(it, viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
+            }
+        dialog?.show(parentFragmentManager, "GameResultDialog")
     }
 
     companion object {
@@ -254,12 +249,14 @@ class GameFragment :
 
     override fun onRetryGame() {
         // 다시 게임을 하는 경우에도 새로운 랜덤 5개의 단어를 가져온다.
-        lifecycleScope.launch {
-            init()
-            viewModel.loadData()
-            viewModel.basicWordList.observe(viewLifecycleOwner) {
-                if (it.isNotEmpty()) {
-                    startGame()
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                init()
+                viewModel.loadData()
+                viewModel.basicWordList.collect {
+                    if (it.isNotEmpty()) {
+                        startGame()
+                    }
                 }
             }
         }
