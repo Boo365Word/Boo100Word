@@ -8,7 +8,7 @@ import com.example.boo345word.databinding.CustomResultTextBinding
 
 class GameResultText(
     context: Context,
-    attrs: AttributeSet,
+    attrs: AttributeSet
 ) : ConstraintLayout(context, attrs) {
     private val binding = CustomResultTextBinding.inflate(LayoutInflater.from(context), this, true)
 
