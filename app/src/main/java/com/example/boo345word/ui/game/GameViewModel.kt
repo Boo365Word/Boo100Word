@@ -69,8 +69,5 @@ constructor(
 
     fun saveWrongWord(result: BasicWord) {
         _wrongWordList.value.add(result)
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateStatus(result.word)
-        }
     }
 }
