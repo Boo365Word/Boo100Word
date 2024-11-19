@@ -31,7 +31,7 @@ class WordListViewModel @Inject constructor(
         getAllWords()
     }
 
-    private fun getAllWords() {
+    fun getAllWords() {
         viewModelScope.launch {
             wordRepository.getAllWords()
                 .catch {

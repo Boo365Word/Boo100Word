@@ -23,7 +23,6 @@ class GameViewModel
 constructor(
     private val repository: WordRepository
 ) : ViewModel() {
-
     private val _basicWordList = MutableStateFlow<List<BasicWord>>(emptyList())
     val basicWordList: StateFlow<List<BasicWord>> = _basicWordList
 
@@ -34,6 +33,7 @@ constructor(
     val wrongWordList: StateFlow<MutableList<BasicWord>> = _wrongWordList
 
     private val _currentState = MutableStateFlow<Int>(1)
+
     val currentState: StateFlow<Int> = _currentState
 
     init {
@@ -43,9 +43,6 @@ constructor(
     fun loadData() {
         viewModelScope.launch {
             _basicWordList.value = repository.getFiveBasicWords().first()
-            _basicWordList.value!!.forEach {
-                repository.markWordAsLearned(it.word)
-            }
         }
     }
 
@@ -64,12 +61,16 @@ constructor(
 
     fun saveCorrectWord(result: BasicWord) {
         _correctWordList.value.add(result)
+        // db에 해당 내용 반영하기
         viewModelScope.launch(Dispatchers.IO) {
-            repository.markWordAsLearned(result.word)
+            repository.updateStatus(result.word)
         }
     }
 
     fun saveWrongWord(result: BasicWord) {
         _wrongWordList.value.add(result)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateStatus(result.word)
+        }
     }
 }

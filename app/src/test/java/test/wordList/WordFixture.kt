@@ -7,28 +7,24 @@ object WordFixture {
     fun get(): Word = Word(
         english = "no",
         korean = "nibh",
-        isCorrect = false,
-        symbol = null
+        isCorrect = false
     )
 
     fun getWords(): List<Word> = listOf(
         Word(
             english = "no",
             korean = "nibh",
-            isCorrect = false,
-            symbol = null
+            isCorrect = false
         ),
         Word(
             english = "no",
             korean = "nibh",
-            isCorrect = false,
-            symbol = null
+            isCorrect = false
         ),
         Word(
             english = "no",
             korean = "nibh",
-            isCorrect = false,
-            symbol = null
+            isCorrect = false
         )
     )
 }

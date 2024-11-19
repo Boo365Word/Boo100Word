@@ -1,61 +1,20 @@
 package com.example.boo345word.data.repository
 
-import com.example.boo345word.data.dao.BasicWordDao
-import com.example.boo345word.data.dao.DetailWordDao
 import com.example.boo345word.data.entity.BasicWord
-import com.example.boo345word.mapper.DetailWordMapper.toDomain
 import com.example.boo345word.ui.detail.WordDetail
 import com.example.boo345word.ui.word.Word
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class WordRepository
-@Inject
-constructor(
-    private val basicWordDao: BasicWordDao,
-    private val detailWordDao: DetailWordDao,
-    private val ioDispatchers: CoroutineDispatcher
-) {
-    // 프로퍼티로 선언된 Flow는 싱글톤처럼 동작한다.
-    // 이 Flow는 클래스가 초기화될 때 한번만 생성되며
-    // 같은 데이터 스트림을 계속 재사용하게 된다.
-    // 즉 최초 생성된 Flow 데이터만 계속 방출한다.
-//    val basicWordList: Flow<List<BasicWord>> = wordDao.getFiveBasicWords()
-
+interface WordRepository {
     // 학습되지 않은 5개의 단어 랜덤으로 가져오기위해서는 메서드로 정의해줘야함
-    suspend fun getFiveBasicWords(): Flow<List<BasicWord>> =
-        withContext(ioDispatchers) { basicWordDao.getFiveBasicWords() }
+    suspend fun getFiveBasicWords(): Flow<List<BasicWord>>
 
-    suspend fun getAllWords(): Flow<List<Word>> = withContext(ioDispatchers) {
-        detailWordDao
-            .selectWords()
-            .map {
-                it.toDomain()
-            }
-    }
+    // 학습 상태 업데이트
+    suspend fun updateStatus(word: String)
 
-    suspend fun getWordsByKeyword(keyword: String): Flow<List<Word>> = withContext(ioDispatchers) {
-        detailWordDao
-            .selectWordsByKeyword(keyword.replace(' ', '_'))
-            .map {
-                it.toDomain()
-            }
-    }
-    suspend fun getWordDetailByKeyword(keyword: String): Flow<WordDetail> = withContext(ioDispatchers) {
-        detailWordDao
-            .selectWordByKeyword(keyword.replace(' ', '_'))
-            .map {
-                it.toDomain()
-            }
-    }
+    suspend fun getAllWords(): Flow<List<Word>>
 
-    // 정답 완료로 업데이트
-    suspend fun markWordAsLearned(word: String) {
-        withContext(ioDispatchers) {
-            detailWordDao.updateCorrectStatus(word)
-        }
-    }
+    suspend fun getWordsByKeyword(keyword: String): Flow<List<Word>>
+
+    suspend fun getWordDetailByKeyword(keyword: String): Flow<WordDetail>
 }

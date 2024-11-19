@@ -4,7 +4,6 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
-    id("kotlin-kapt")
 }
 
 android {
@@ -57,7 +56,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
-    // ksp(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler) // Replace with your Room version
     testImplementation(libs.androidx.room.testing)
 
