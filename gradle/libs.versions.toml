@@ -12,7 +12,8 @@ kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+espressoCore = "3.3.0"
+espressoContrib = "3.3.0"
 appcompat = "1.7.0"
 lifecycleLivedataKtx = "2.8.7"
 lottie = "6.5.2"
@@ -27,6 +28,14 @@ roomRuntime = "2.6.1"
 tensorflowLite = "2.8.0"
 tensorflowLiteSupport = "0.3.0"
 firebaseMlModelInterpreter = "22.0.4"
+coroutinesTest = "1.7.3"
+coroutinesCore = "1.5.0"
+coroutinesAndroid = "1.5.0"
+mockk = "1.13.5"
+turbine = "1.0.0"
+runner = "1.6.2"
+rules = "1.6.1"
+junitKtx = "1.2.1"
 
 [libraries]
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
@@ -43,21 +52,32 @@ digital-ink-recognition = { module = "com.google.mlkit:digital-ink-recognition",
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-ml-model-interpreter-v2203 = { module = "com.google.firebase:firebase-ml-model-interpreter", version.ref = "firebaseMlModelInterpreterVersion" }
+
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+turbine = {group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
+androidx-runner = {group = "androidx.test", name = "runner", version.ref = "runner"}
+androidx-rules = {group = "androidx.test", name = "rules", version.ref = "rules"}
+
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-espresso-contrib = {group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoContrib"}
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-androidx-fragment = {group = "androidx.fragment", name ="fragment-ktx", version.ref = "fragment"}
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
 tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
 tensorflow-lite-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 
 [plugins]

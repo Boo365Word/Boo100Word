@@ -11,7 +11,7 @@ import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 
 class DrawClassifier(
-    activity: Activity,
+    activity: Activity
 ) {
     @Suppress("ktlint:standard:property-naming")
     private val TAG = this.javaClass.simpleName
@@ -36,7 +36,7 @@ class DrawClassifier(
             "axe",
             "backpack",
             "banana",
-            "bandage",
+            "bandage"
         )
 
     @Suppress("ktlint:standard:property-naming")
@@ -56,7 +56,7 @@ class DrawClassifier(
     // 예측할 타겟 단어를 넘겨준다.
     fun classify(
         bitmap: Bitmap,
-        targetWord: String,
+        targetWord: String
     ): Boolean {
         if (tflite == null) {
             Log.e(TAG, "Image classifier has not been initialized; Skipped.")
@@ -90,7 +90,7 @@ class DrawClassifier(
     // 전처리하여 모델에 예측 수행
     private fun predict(
         bitmap: Bitmap,
-        targetWord: String,
+        targetWord: String
     ): Boolean {
         // 1. 그림판의 비트맵을 전처리 (28x28 크기, 그레이스케일, 0~1 정규화)
         val inputArray = preprocessImageForModel(bitmap)
@@ -140,8 +140,8 @@ class DrawClassifier(
                             Color.red(pixel) * 0.299f +
                                 Color.green(pixel) * 0.587f +
                                 Color.blue(pixel) * 0.114f
-                        ) / 255.0f
-                    )
+                            ) / 255.0f
+                        )
 
                 // 다중 임계값에 따른 값 설정
                 val transformedValue =

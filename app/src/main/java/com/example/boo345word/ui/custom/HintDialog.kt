@@ -12,7 +12,7 @@ import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.HintDialogBinding
 
 class HintDialog(
-    word: BasicWord,
+    word: BasicWord
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: HintDialogBinding? = null
@@ -26,7 +26,7 @@ class HintDialog(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)

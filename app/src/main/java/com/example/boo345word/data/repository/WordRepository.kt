@@ -1,6 +1,8 @@
 package com.example.boo345word.data.repository
 
 import com.example.boo345word.data.entity.BasicWord
+import com.example.boo345word.ui.detail.WordDetail
+import com.example.boo345word.ui.word.Word
 import kotlinx.coroutines.flow.Flow
 
 interface WordRepository {
@@ -9,4 +11,10 @@ interface WordRepository {
 
     // 학습 상태 업데이트
     suspend fun updateStatus(word: String)
+
+    suspend fun getAllWords(): Flow<List<Word>>
+
+    suspend fun getWordsByKeyword(keyword: String): Flow<List<Word>>
+
+    suspend fun getWordDetailByKeyword(keyword: String): Flow<WordDetail>
 }

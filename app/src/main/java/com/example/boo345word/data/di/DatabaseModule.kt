@@ -18,14 +18,14 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(
-        @ApplicationContext context: Context,
+        @ApplicationContext context: Context
     ): WordDatabase = Room
-            .databaseBuilder(
-                context.applicationContext,
-                WordDatabase::class.java,
-                "word_database",
-            ).createFromAsset("words.db")
-            .build()
+        .databaseBuilder(
+            context.applicationContext,
+            WordDatabase::class.java,
+            "word_database"
+        ).createFromAsset("words.db")
+        .build()
 
     @Provides
     @Singleton

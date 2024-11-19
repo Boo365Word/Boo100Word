@@ -40,7 +40,7 @@ class GameFragment :
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentGameBinding.inflate(inflater)
         return binding.root
@@ -110,7 +110,7 @@ class GameFragment :
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ) {
         val classifier = DrawClassifier(requireActivity())
 

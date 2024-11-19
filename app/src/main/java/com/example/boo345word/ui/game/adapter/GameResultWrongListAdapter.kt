@@ -9,7 +9,7 @@ import com.example.boo345word.R
 import com.example.boo345word.data.entity.BasicWord
 
 class GameResultWrongListAdapter(
-    private val wrongWordList: List<BasicWord>,
+    private val wrongWordList: List<BasicWord>
 ) : BaseAdapter() {
     override fun getCount(): Int = wrongWordList.size
 
@@ -20,7 +20,7 @@ class GameResultWrongListAdapter(
     override fun getView(
         position: Int,
         convertView: View?,
-        parent: ViewGroup?,
+        parent: ViewGroup?
     ): View {
         val view: View =
             LayoutInflater.from(parent?.context).inflate(R.layout.game_result_word_item, null)

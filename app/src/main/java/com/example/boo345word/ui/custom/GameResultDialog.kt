@@ -20,7 +20,7 @@ class GameResultDialog(
     private val context: Context,
     private val correctWordList: List<BasicWord>,
     private val wrongWordList: List<BasicWord>,
-    private val listener: GameResultDialogListener,
+    private val listener: GameResultDialogListener
 ) : DialogFragment() {
     @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: DialogGameResultBinding? = null
@@ -33,7 +33,7 @@ class GameResultDialog(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -59,7 +59,7 @@ class GameResultDialog(
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ) {
         requireActivity().setFinishOnTouchOutside(true)
 

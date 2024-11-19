@@ -29,7 +29,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
+                "proguard-rules.pro"
             )
         }
     }
@@ -45,7 +45,10 @@ android {
         noCompress += "tflite"
     }
 }
+
 dependencies {
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
@@ -66,9 +69,21 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.coroutines.android)
+    implementation(libs.coroutines.core)
+    implementation(libs.androidx.junit.ktx)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.rules)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.cardview)
+    androidTestImplementation(libs.androidx.espresso.contrib)
     implementation(libs.androidx.cardview)
 
     implementation(libs.androidx.cardview)

@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "basic_words")
 data class BasicWord(
     @PrimaryKey val word: String,
-    val meaning: String,
+    val meaning: String
 )

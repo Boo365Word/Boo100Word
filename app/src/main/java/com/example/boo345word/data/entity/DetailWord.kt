@@ -13,7 +13,7 @@ data class DetailWord(
     val example1Meaning: String,
     val example2: String,
     val example2Meaning: String,
-    val status: Int = 0,
+    val status: Int = 0
     /*
     0 -> 학습 x
     1 -> 정답
