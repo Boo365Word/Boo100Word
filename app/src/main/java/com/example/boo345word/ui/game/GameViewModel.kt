@@ -43,9 +43,6 @@ class GameViewModel
         fun loadData() {
             viewModelScope.launch {
                 _basicWordList.value = repository.getFiveBasicWords().first()
-                _basicWordList.value!!.forEach {
-                    repository.markWordAsLearned(it.word)
-                }
             }
         }
 
@@ -66,11 +63,14 @@ class GameViewModel
             _correctWordList.value.add(result)
             // db에 해당 내용 반영하기
             viewModelScope.launch(Dispatchers.IO) {
-                repository.markWordAsLearned(result.word)
+                repository.updateStatus(result.word)
             }
         }
 
         fun saveWrongWord(result: BasicWord) {
             _wrongWordList.value.add(result)
+            viewModelScope.launch(Dispatchers.IO) {
+                repository.updateStatus(result.word)
+            }
         }
     }
