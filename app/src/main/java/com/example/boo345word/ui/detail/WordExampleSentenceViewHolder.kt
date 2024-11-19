@@ -3,7 +3,6 @@ package com.example.boo345word.ui.detail
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,7 @@ class WordExampleSentenceViewHolder private constructor(
     fun bind(sentence: Sentence, targetWord: String) {
         binding.tvSentenceKorean.text = sentence.korean
         binding.tvSentenceEnglish.text = sentence.english
-        Log.d("woogi", "bind: ${sentence.english}")
+
         val from = sentence.english.indexOf(
             targetWord,
             0,

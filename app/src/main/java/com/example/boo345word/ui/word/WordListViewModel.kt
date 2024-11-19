@@ -28,10 +28,10 @@ class WordListViewModel @Inject constructor(
         get() = _event.asSharedFlow()
 
     init {
-        fetchWords()
+        getAllWords()
     }
 
-    private fun fetchWords() {
+    private fun getAllWords() {
         viewModelScope.launch {
             wordRepository.getAllWords()
                 .catch {
@@ -42,9 +42,9 @@ class WordListViewModel @Inject constructor(
         }
     }
 
-    fun fetchWordsByKeyword(keyword: String) {
+    fun getWordsByKeyword(keyword: String) {
         if (keyword.isEmpty()) {
-            fetchWords()
+            getAllWords()
             return
         }
         viewModelScope.launch {

@@ -53,6 +53,9 @@ class WordDetailActivity : AppCompatActivity() {
                         word = it.english,
                         sentences = it.sentences
                     )
+                    it.symbol?.let { symbol ->
+                        binding.ivWordSymbolImage.setImageResource(symbol)
+                    } ?: binding.ivWordSymbolImage.setImageResource(0)
                 }
             }
         }

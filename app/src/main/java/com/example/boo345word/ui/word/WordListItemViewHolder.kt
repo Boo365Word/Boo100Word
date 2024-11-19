@@ -12,6 +12,9 @@ class WordListItemViewHolder(
     fun bind(word: Word) {
         binding.tvWordEnglish.text = word.english
         binding.tvWordKorean.text = word.korean
+        word.symbol?.let {
+            binding.ivWordSymbolImage.setImageResource(it)
+        } ?: binding.ivWordSymbolImage.setImageResource(0)
     }
 
     companion object {

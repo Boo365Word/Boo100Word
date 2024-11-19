@@ -1,6 +1,5 @@
 package com.example.boo345word.ui.detail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.boo345word.data.repository.WordRepository
@@ -41,7 +40,6 @@ class WordDetailViewModel @Inject constructor(
                 .catch {
                     _event.emit(WordDetailEvent.Error)
                 }.collect { detail ->
-                    Log.d("woogi", "fetchWordDetail: $detail")
                     _wordDetail.value = detail
                 }
         }
