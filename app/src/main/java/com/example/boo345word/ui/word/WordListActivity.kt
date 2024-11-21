@@ -43,7 +43,7 @@ class WordListActivity : AppCompatActivity() {
     private fun initWordListListener() {
         with(binding) {
             tfWordSearchingField.setOnSearchingTextFieldListener { keyword ->
-                viewModel.getWordsByKeyword(keyword)
+                viewModel.searchWords(keyword)
             }
             cbRightWords.setOnCheckedChangeListener { _, _ ->
                 showFilteredWords()

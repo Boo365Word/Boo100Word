@@ -42,7 +42,7 @@ class WordListViewModel @Inject constructor(
         }
     }
 
-    fun getWordsByKeyword(keyword: String) {
+    fun searchWords(keyword: String) {
         if (keyword.isEmpty()) {
             getAllWords()
             return

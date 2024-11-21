@@ -16,6 +16,7 @@ constructor(
     private val detailWordDao: DetailWordDao,
     private val ioDispatchers: CoroutineDispatcher
 ) : WordDataSource {
+
     override suspend fun getFiveBasicWords(): Flow<List<BasicWord>> = withContext(ioDispatchers) { basicWordDao.getFiveBasicWords() }
 
     override suspend fun markWordAsLearned(word: String) {
