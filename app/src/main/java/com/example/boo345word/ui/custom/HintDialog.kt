@@ -35,7 +35,7 @@ class HintDialog(
         val view = binding.root
 
         binding.txtHintWord.text = word?.meaning
-        val imageSource = "example_${word?.word}"
+        val imageSource = "${word?.word}"
         val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
         binding.btnClose.setOnClickListener {
             dismiss()

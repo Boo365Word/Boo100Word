@@ -22,26 +22,31 @@ class DrawClassifier(
     // 모델이 인식하는 카테고리 배열로 선언
     private val classNames =
         arrayOf(
-            "aircraft_carrier",
-            "airplane",
-            "alarm_clock",
-            "ambulance",
-            "angel",
-            "animal_migration",
-            "ant",
-            "anvil",
-            "apple",
-            "arm",
-            "asparagus",
-            "axe",
-            "backpack",
-            "banana",
-            "bandage"
+            "aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
+            "animal_migration", "ant", "anvil", "apple", "arm",
+            "asparagus", "axe", "backpack", "banana", "bandage",
+            "barn", "baseball_bat", "baseball", "basket", "basketball",
+            "bat", "bathtub", "beach", "bear", "beard",
+            "bed", "bee", "belt", "bench", "bicycle",
+            "binoculars", "bird", "birthday_cake", "blackberry", "blueberry",
+            "book", "boomerang", "bottlecap", "bowtie", "bracelet",
+            "brain", "bread", "bridge", "broccoli", "broom",
+            "bucket", "bulldozer", "bus", "bush", "butterfly",
+            "cactus", "cake", "calculator", "calendar", "camel",
+            "camera", "camouflage", "campfire", "candle", "cannon",
+            "canoe", "car", "carrot", "castle", "cat",
+            "ceiling_fan", "cell_phone", "cello", "chair", "chandelier",
+            "church", "circle", "clarinet", "clock", "cloud",
+            "coffee_cup", "compass", "computer", "cookie", "cooler",
+            "couch", "cow", "crab", "crayon", "crocodile",
+            "crown", "cruise_ship", "cup", "diamond", "dishwasher",
+            "diving_board", "dog", "dolphin", "donut", "door",
+            "dragon", "dresser", "drill", "drums", "duck"
         )
 
     @Suppress("ktlint:standard:property-naming")
     // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)
-    private val MODEL_PATH = "quick_draw_model.tflite"
+    private val MODEL_PATH = "model_r_90000.tflite"
 
     // 초기화 한 인터프리터 객체 생성 (모델 불러오기)
     init {
@@ -56,13 +61,14 @@ class DrawClassifier(
     // 예측할 타겟 단어를 넘겨준다.
     fun classify(
         bitmap: Bitmap,
+        strokes: List<List<Pair<Float, Float>>>,
         targetWord: String
     ): Boolean {
         if (tflite == null) {
             Log.e(TAG, "Image classifier has not been initialized; Skipped.")
             return false
         }
-        return predict(bitmap, targetWord)
+        return predict(bitmap, strokes, targetWord)
     }
 
     // 모델 파일 로드
@@ -90,14 +96,16 @@ class DrawClassifier(
     // 전처리하여 모델에 예측 수행
     private fun predict(
         bitmap: Bitmap,
+        strokes: List<List<Pair<Float, Float>>>,
         targetWord: String
     ): Boolean {
-        // 1. 그림판의 비트맵을 전처리 (28x28 크기, 그레이스케일, 0~1 정규화)
-        val inputArray = preprocessImageForModel(bitmap)
+        // 1. 그림판의 비트맵과 스트로크 전처리 (0~1 정규화)
+        val bitmapInput = preprocessBitmapTo64x64(bitmap)
+        val strokeInput = preprocessStrokes(strokes)
 
         // 2. 모델 예측 수행
         val output = Array(1) { FloatArray(classNames.size) }
-        tflite?.run(inputArray, output)
+        tflite?.runForMultipleInputsOutputs(arrayOf(bitmapInput, strokeInput), mapOf(0 to output))
 
         // 3. 예측 확률이 가장 높은 클래스 및 확률 값 추출
         val maxIndex = output[0].indices.maxByOrNull { output[0][it] } ?: -1
@@ -113,44 +121,43 @@ class DrawClassifier(
     }
 
     // 그림을 모델 입력 형식으로 전처리
-    private fun preprocessImageForModel(bitmap: Bitmap): Array<Array<Array<FloatArray>>> {
-        // 이진화 임계값 설정
-        val thresholdHigh = 0.05f
-        val thresholdLow = 0.00f
+    private fun preprocessStrokes(strokes: List<List<Pair<Float, Float>>>, maxStrokes: Int = 15, maxLen: Int = 100): Array<Array<Array<FloatArray>>> {
+        val input = Array(1) { Array(maxStrokes) { Array(maxLen) { FloatArray(2) } } }
 
-        // 고해상도에서 28*28까지 축소
-        val highResBitmap0 = Bitmap.createScaledBitmap(bitmap, 896, 896, true)
-        val highResBitmap1 = Bitmap.createScaledBitmap(highResBitmap0, 448, 448, true)
-        val highResBitmap2 = Bitmap.createScaledBitmap(highResBitmap1, 224, 224, true)
-        val highResBitmap3 = Bitmap.createScaledBitmap(highResBitmap2, 112, 112, true)
-        val highResBitmap4 = Bitmap.createScaledBitmap(highResBitmap3, 56, 56, true)
-        val resizedBitmap = Bitmap.createScaledBitmap(highResBitmap4, 28, 28, true)
+        val allX = strokes.flatMap { stroke -> stroke.map { it.first } }
+        val allY = strokes.flatMap { stroke -> stroke.map { it.second } }
+        val minX = allX.minOrNull() ?: 0f
+        val maxX = allX.maxOrNull() ?: 1f
+        val minY = allY.minOrNull() ?: 0f
+        val maxY = allY.maxOrNull() ?: 1f
+        val width = maxX - minX
+        val height = maxY - minY
 
-        // 0~1로 정규화된 그레이스케일 float 배열 생성, 배경-그림 색상 반전
-        val inputArray = Array(1) { Array(28) { Array(28) { FloatArray(1) } } }
-        for (i in 0 until 28) {
-            for (j in 0 until 28) {
-                // 각 픽셀 색상 가져오기
-                val pixel = resizedBitmap.getPixel(j, i)
+        for (i in strokes.indices) {
+            if (i >= maxStrokes) break
+            val stroke = strokes[i]
+            for (j in stroke.indices) {
+                if (j >= maxLen) break
+                input[0][i][j][0] = (stroke[j].first - minX) / (width.takeIf { it != 0f } ?: 1f)
+                input[0][i][j][1] = (stroke[j].second - minY) / (height.takeIf { it != 0f } ?: 1f)
+            }
+        }
+        return input
+    }
 
-                // RGB -> 그레이스케일 변환 및 반전 (1.0 - grayscale)
-                val grayscale =
-                    1.0f - (
-                        (
-                            Color.red(pixel) * 0.299f +
-                                Color.green(pixel) * 0.587f +
-                                Color.blue(pixel) * 0.114f
-                            ) / 255.0f
-                        )
+    private fun preprocessBitmapTo64x64(bitmap: Bitmap): Array<Array<Array<FloatArray>>> {
+        // 64x64로 바로 리사이즈
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 64, 64, true)
 
-                // 다중 임계값에 따른 값 설정
-                val transformedValue =
-                    when {
-                        grayscale > thresholdHigh -> 1.0f // 흰색
-                        grayscale > thresholdLow -> 0.7f // 회색
-                        else -> 0.0f // 검은색
-                    }
-                inputArray[0][i][j][0] = transformedValue
+        // 전처리된 배열 생성
+        val inputArray = Array(1) { Array(64) { Array(64) { FloatArray(1) } } }
+
+        // 그레이스케일 및 정규화
+        for (y in 0 until 64) {
+            for (x in 0 until 64) {
+                val pixel = resizedBitmap.getPixel(x, y)
+                val grayscale = 0.299 * Color.red(pixel) + 0.587 * Color.green(pixel) + 0.114 * Color.blue(pixel)
+                inputArray[0][y][x][0] = (grayscale / 255.0).toFloat()  // [0, 1]로 정규화
             }
         }
 

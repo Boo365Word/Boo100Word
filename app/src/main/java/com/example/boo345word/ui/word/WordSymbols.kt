@@ -8,13 +8,13 @@ enum class WordSymbols(
     @DrawableRes
     val symbol: Int
 ) {
-    AIRCRAFT_CARRIER("aircraft carrier", R.drawable.example_aircraft_carrier),
-    AIRPLANE("airplane", R.drawable.example_airplane),
-    ALARM_CLOCK("alarm clock", R.drawable.example_alarm_clock),
-    AMBULANCE("ambulance", R.drawable.example_ambulance),
-    ANGEL("angel", R.drawable.example_angel),
-    ANIMAL_MIGRATION("animal migration", R.drawable.example_animal_migration),
-    ANT("ant", R.drawable.example_ant),
+    AIRCRAFT_CARRIER("aircraft carrier", R.drawable.aircraft_carrier),
+    AIRPLANE("airplane", R.drawable.airplane),
+    ALARM_CLOCK("alarm clock", R.drawable.alarm_clock),
+    AMBULANCE("ambulance", R.drawable.ambulance),
+    ANGEL("angel", R.drawable.angel),
+    ANIMAL_MIGRATION("animal migration", R.drawable.animal_migration),
+    ANT("ant", R.drawable.ant),
     ANVIL("anvil", R.drawable.anvil),
     APPLE("apple", R.drawable.apple),
     ARM("arm", R.drawable.arm),
