@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,18 +24,22 @@ class GameViewModel
 constructor(
     private val repository: WordRepository
 ) : ViewModel() {
+
     private val _basicWordList = MutableStateFlow<List<BasicWord>>(emptyList())
-    val basicWordList: StateFlow<List<BasicWord>> = _basicWordList
+    val basicWordList: StateFlow<List<BasicWord>>
+        get() = _basicWordList.asStateFlow()
 
     private val _correctWordList = MutableStateFlow<MutableList<BasicWord>>(mutableListOf())
-    val correctWordList: StateFlow<MutableList<BasicWord>> = _correctWordList
+    val correctWordList: StateFlow<MutableList<BasicWord>>
+        get() = _correctWordList.asStateFlow()
 
-    private val _wrongWordList = MutableStateFlow<MutableList<BasicWord>>(mutableListOf())
-    val wrongWordList: StateFlow<MutableList<BasicWord>> = _wrongWordList
+    private val _wrongWordSet = MutableStateFlow<MutableSet<BasicWord>>(mutableSetOf())
+    val wrongWordSet: StateFlow<Set<BasicWord>>
+        get() = _wrongWordSet.asStateFlow()
 
     private val _currentState = MutableStateFlow<Int>(1)
-
-    val currentState: StateFlow<Int> = _currentState
+    val currentState: StateFlow<Int>
+        get() = _currentState.asStateFlow()
 
     init {
         loadData()
@@ -49,7 +54,7 @@ constructor(
     fun clearWordList() {
         _basicWordList.value = emptyList()
         _correctWordList.value = mutableListOf()
-        _wrongWordList.value = mutableListOf()
+        _wrongWordSet.value = mutableSetOf()
         gameResult.clear()
     }
 
@@ -68,6 +73,6 @@ constructor(
     }
 
     fun saveWrongWord(result: BasicWord) {
-        _wrongWordList.value.add(result)
+        _wrongWordSet.value.add(result)
     }
 }

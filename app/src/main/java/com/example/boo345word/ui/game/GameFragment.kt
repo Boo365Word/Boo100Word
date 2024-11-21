@@ -203,7 +203,8 @@ class GameFragment :
                     (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)
                 ) {
                     if (binding.editHint.text.toString() == currentWord?.meaning) {
-                        Toast.makeText(context, "맞았어요!! 힌트를 보고 다시 그려볼까요?", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "맞았어요!! 힌트를 보고 다시 그려볼까요?", Toast.LENGTH_SHORT)
+                            .show()
                         binding.btnHint.visibility = View.VISIBLE
                     } else {
                         Toast.makeText(context, "다시 입력해주세요!", Toast.LENGTH_SHORT).show()
@@ -234,7 +235,12 @@ class GameFragment :
         GameTimer.stopTimer()
         val dialog =
             context?.let {
-                GameResultDialog(it, viewModel.correctWordList.value!!.toList(), viewModel.wrongWordList.value!!.toList(), this)
+                GameResultDialog(
+                    it,
+                    viewModel.correctWordList.value!!.toList(),
+                    viewModel.wrongWordSet.value!!.toList(),
+                    this
+                )
             }
         dialog?.show(parentFragmentManager, "GameResultDialog")
     }
