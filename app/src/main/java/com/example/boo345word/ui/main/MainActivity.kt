@@ -99,6 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+
         private const val INITIAL_PROGRESS_VALUE = 0.8f
 
         fun start(context: Context) {

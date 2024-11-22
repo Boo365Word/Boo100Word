@@ -28,20 +28,37 @@ class HintDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
-
         _binding = HintDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.txtHintWord.text = word?.meaning
-        val imageSource = "${word?.word}"
-        val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
-        binding.btnClose.setOnClickListener {
-            dismiss()
+        dialog?.window?.let { window ->
+            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window.requestFeature(Window.FEATURE_NO_TITLE)
         }
-        binding.imageHint.setImageResource(imageId)
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initHintDialogView()
+    }
+
+    private fun initHintDialogView() {
+        val imageSource = "${word?.word}"
+        val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
+
+        with(binding) {
+            txtHintWord.text = word?.meaning
+            btnClose.setOnClickListener { dismiss() }
+            imageHint.setImageResource(imageId)
+        }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+
+        super.onDestroyView()
     }
 }

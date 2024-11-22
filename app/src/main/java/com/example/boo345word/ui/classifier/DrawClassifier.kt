@@ -21,7 +21,7 @@ class DrawClassifier(
     private var tflite: Interpreter? = null
 
     // 모델이 인식하는 카테고리 배열로 선언
-    private val classNames = WordSymbols.entries.map{it.english}
+    private val classNames = WordSymbols.entries.map { it.english.replace(' ', '_') }
 
     @Suppress("ktlint:standard:property-naming")
     // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)
@@ -100,7 +100,11 @@ class DrawClassifier(
     }
 
     // 그림을 모델 입력 형식으로 전처리
-    private fun preprocessStrokes(strokes: List<List<Pair<Float, Float>>>, maxStrokes: Int = 15, maxLen: Int = 100): Array<Array<Array<FloatArray>>> {
+    private fun preprocessStrokes(
+        strokes: List<List<Pair<Float, Float>>>,
+        maxStrokes: Int = 15,
+        maxLen: Int = 100
+    ): Array<Array<Array<FloatArray>>> {
         val input = Array(1) { Array(maxStrokes) { Array(maxLen) { FloatArray(2) } } }
 
         val allX = strokes.flatMap { stroke -> stroke.map { it.first } }
@@ -135,8 +139,9 @@ class DrawClassifier(
         for (y in 0 until 64) {
             for (x in 0 until 64) {
                 val pixel = resizedBitmap.getPixel(x, y)
-                val grayscale = 0.299 * Color.red(pixel) + 0.587 * Color.green(pixel) + 0.114 * Color.blue(pixel)
-                inputArray[0][y][x][0] = (grayscale / 255.0).toFloat()  // [0, 1]로 정규화
+                val grayscale =
+                    0.299 * Color.red(pixel) + 0.587 * Color.green(pixel) + 0.114 * Color.blue(pixel)
+                inputArray[0][y][x][0] = (grayscale / 255.0).toFloat() // [0, 1]로 정규화
             }
         }
 

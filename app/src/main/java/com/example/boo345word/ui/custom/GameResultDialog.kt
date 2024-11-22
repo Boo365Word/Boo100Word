@@ -22,13 +22,9 @@ class GameResultDialog(
     private val wrongWordList: List<BasicWord>,
     private val listener: GameResultDialogListener
 ) : DialogFragment() {
-    @Suppress("ktlint:standard:backing-property-naming")
+
     private var _binding: DialogGameResultBinding? = null
     private val binding get() = _binding!!
-
-    interface GameResultDialogListener {
-        fun onRetryGame()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,16 +33,53 @@ class GameResultDialog(
     ): View {
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
-        requireActivity().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        isCancelable = false
 
-        initGameResultListener()
+        initGameResultDialog()
 
         return view
     }
 
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        initGameResultDialogView()
+        initGameResultListener()
+    }
+
+    private fun initGameResultDialog() {
+        dialog?.window?.let { window ->
+            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window.setGravity(Gravity.CENTER)
+        }
+        isCancelable = false
+        requireActivity().setFinishOnTouchOutside(true)
+    }
+
+    private fun initGameResultDialogView() {
+        with(binding) {
+            listCorrectWord.adapter = GameResultCorrectListAdapter(correctWordList)
+            listWrongWord.adapter = GameResultWrongListAdapter(wrongWordList)
+            imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            txtGameResult.updateText(correctWordList.size)
+        }
+        fillHeartsOnCorrectWords()
+    }
+
+    private fun fillHeartsOnCorrectWords() {
+        val hearts = listOf(
+            binding.heart1,
+            binding.heart2,
+            binding.heart3,
+            binding.heart4,
+            binding.heart5
+        )
+        repeat(correctWordList.size) { idx ->
+            hearts[idx].setImageResource(R.drawable.ic_filled_heart)
+        }
+    }
+
     private fun initGameResultListener() {
-        // todo : 처음으로 돌아가기
         binding.btnGoFirst.setOnClickListener {
             dismiss()
             MainActivity.start(context)
@@ -54,55 +87,6 @@ class GameResultDialog(
         binding.btnRetry.setOnClickListener {
             this.listener.onRetryGame()
             dismiss()
-        }
-    }
-
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
-        requireActivity().setFinishOnTouchOutside(true)
-
-        val gameResultCorrectAdapter = correctWordList?.let { GameResultCorrectListAdapter(it) }
-        val gameResultWrongAdapter = wrongWordList?.let { GameResultWrongListAdapter(it) }
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        binding.listCorrectWord.adapter = gameResultCorrectAdapter
-        binding.listWrongWord.adapter = gameResultWrongAdapter
-        binding.imageView7.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        binding.txtGameResult.updateText(correctWordList.size)
-
-        dialog?.window?.setGravity(Gravity.CENTER)
-
-        when (correctWordList?.size) {
-            1 -> {
-                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
-            }
-
-            2 -> {
-                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
-            }
-
-            3 -> {
-                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
-            }
-
-            4 -> {
-                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
-            }
-
-            5 -> {
-                binding.heart1.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart2.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart3.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart4.setImageResource(R.drawable.ic_filled_heart)
-                binding.heart5.setImageResource(R.drawable.ic_filled_heart)
-            }
         }
     }
 }

@@ -47,32 +47,28 @@ class WordDetailActivity : AppCompatActivity() {
 
     private fun initWordDetailObserver() {
         repeatOnStarted(this) {
-            viewModel.wordDetail.collect {
-                if (it.english.isNotEmpty()) {
+            viewModel.wordDetail.collect { word ->
+                if (word.english.isNotEmpty()) {
                     binding.rvExampleSentence.adapter = WordExampleSentenceAdapter(
-                        word = it.english,
-                        sentences = it.sentences
+                        word = word.english,
+                        sentences = word.sentences
                     )
-                    it.symbol?.let { symbol ->
+                    word.symbol?.let { symbol ->
                         binding.ivWordSymbolImage.setImageResource(symbol)
                     } ?: binding.ivWordSymbolImage.setImageResource(0)
                 }
             }
         }
         repeatOnStarted(this) {
-            handleWordDetailEvent()
-        }
-    }
-
-    private suspend fun handleWordDetailEvent() {
-        viewModel.event.collect { event ->
-            when (event) {
-                is WordDetailEvent.Error -> {
-                    Toast.makeText(
-                        this@WordDetailActivity,
-                        getString(R.string.word_detail_error_message),
-                        Toast.LENGTH_SHORT
-                    ).show()
+            viewModel.event.collect { event ->
+                when (event) {
+                    is WordDetailEvent.Error -> {
+                        Toast.makeText(
+                            this@WordDetailActivity,
+                            getString(R.string.word_detail_error_message),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }

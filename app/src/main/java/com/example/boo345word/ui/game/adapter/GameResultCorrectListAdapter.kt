@@ -27,7 +27,7 @@ class GameResultCorrectListAdapter(
         val wordName = view.findViewById<TextView>(R.id.txt_word_name)
         val wordMeaning = view.findViewById<TextView>(R.id.txt_word_meaning)
 
-        wordName.text = correctWordList[position].word
+        wordName.text = correctWordList[position].word.replace('_', ' ')
         wordMeaning.text = correctWordList[position].meaning
 
         return view
