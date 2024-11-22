@@ -11,8 +11,10 @@ import androidx.fragment.app.DialogFragment
 import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.HintDialogBinding
 
-class HintDialog(word: BasicWord) : DialogFragment() {
-
+class HintDialog(
+    word: BasicWord
+) : DialogFragment() {
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: HintDialogBinding? = null
     private val binding get() = _binding!!
     private var word: BasicWord? = null
@@ -44,7 +46,7 @@ class HintDialog(word: BasicWord) : DialogFragment() {
     }
 
     private fun initHintDialogView() {
-        val imageSource = "example_${word?.word}"
+        val imageSource = "${word?.word}"
         val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
 
         with(binding) {

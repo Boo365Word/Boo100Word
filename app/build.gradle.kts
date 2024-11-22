@@ -47,8 +47,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.tensorflow.lite.support)
-    implementation(libs.tensorflow.lite)
+    implementation("org.tensorflow:tensorflow-lite:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.12.0")  // TensorFlow 연산 지원
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
