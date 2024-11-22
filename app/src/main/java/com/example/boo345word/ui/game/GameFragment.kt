@@ -65,7 +65,7 @@ class GameFragment :
     private fun getWordItem() {
         // 가져온 5개 단어 중 현재 게임 단계에 맞는 단어를 얻는다.
         currentWord = wordList[currentState - 1]
-        binding.txtWord.text = currentWord?.word
+        binding.txtWord.text = currentWord?.word?.replace('_', ' ')
     }
 
     private fun prepareGameView() {
