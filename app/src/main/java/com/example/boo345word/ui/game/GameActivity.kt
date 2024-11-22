@@ -34,6 +34,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     companion object {
+
         fun start(context: Context) {
             Intent(context, GameActivity::class.java).also {
                 context.startActivity(it)
