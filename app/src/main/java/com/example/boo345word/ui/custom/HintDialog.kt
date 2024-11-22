@@ -29,24 +29,21 @@ class HintDialog(word: BasicWord) : DialogFragment() {
         _binding = HintDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        dialog?.window?.let { window ->
+            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window.requestFeature(Window.FEATURE_NO_TITLE)
+        }
+
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initHintDialog()
+        initHintDialogView()
     }
 
-    private fun initHintDialog() {
-        dialog?.window?.let { window ->
-            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            window.requestFeature(Window.FEATURE_NO_TITLE)
-        }
-        initHintDialogBinding()
-    }
-
-    private fun initHintDialogBinding() {
+    private fun initHintDialogView() {
         val imageSource = "example_${word?.word}"
         val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
 
@@ -59,6 +56,7 @@ class HintDialog(word: BasicWord) : DialogFragment() {
 
     override fun onDestroyView() {
         _binding = null
+
         super.onDestroyView()
     }
 }
