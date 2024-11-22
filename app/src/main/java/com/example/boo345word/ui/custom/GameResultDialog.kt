@@ -20,7 +20,7 @@ class GameResultDialog(
     private val context: Context,
     private val correctWordList: List<BasicWord>,
     private val wrongWordList: List<BasicWord>,
-    private val listener: GameResultDialogListener,
+    private val listener: GameResultDialogListener
 ) : DialogFragment() {
 
     private var _binding: DialogGameResultBinding? = null
@@ -29,7 +29,7 @@ class GameResultDialog(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -41,7 +41,7 @@ class GameResultDialog(
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ) {
         initGameResultDialogView()
         initGameResultListener()
@@ -68,7 +68,11 @@ class GameResultDialog(
 
     private fun fillHeartsOnCorrectWords() {
         val hearts = listOf(
-            binding.heart1, binding.heart2, binding.heart3, binding.heart4, binding.heart5
+            binding.heart1,
+            binding.heart2,
+            binding.heart3,
+            binding.heart4,
+            binding.heart5
         )
         repeat(correctWordList.size) { idx ->
             hearts[idx].setImageResource(R.drawable.ic_filled_heart)
