@@ -17,13 +17,13 @@ class SearchingTextField(
         this,
         true
     ).also { binding ->
-        binding.btnInitSeraching.setOnClickListener {
-            binding.etVocaSearching.setText("")
+        binding.btnInitSearching.setOnClickListener {
+            binding.etWordSearching.setText("")
         }
     }
 
     fun setOnSearchingTextFieldListener(onTextChanged: (String) -> Unit) {
-        binding.etVocaSearching.doAfterTextChanged { keyWord ->
+        binding.etWordSearching.doAfterTextChanged { keyWord ->
             onTextChanged(keyWord.toString())
         }
     }

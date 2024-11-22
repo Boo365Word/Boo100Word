@@ -6,7 +6,7 @@
     android:background="@drawable/rounded_shape_6">
 
     <EditText
-        android:id="@+id/et_voca_searching"
+        android:id="@+id/et_word_searching"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,14 +22,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_init_seraching"
+        android:id="@+id/btn_init_searching"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:background="@null"
         android:src="@drawable/btn_delete"
-        app:layout_constraintBottom_toBottomOf="@id/et_voca_searching"
+        app:layout_constraintBottom_toBottomOf="@id/et_word_searching"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/et_voca_searching" />
+        app:layout_constraintTop_toTopOf="@id/et_word_searching" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
