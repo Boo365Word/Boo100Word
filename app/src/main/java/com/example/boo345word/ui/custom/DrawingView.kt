@@ -19,6 +19,7 @@ class DrawingView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+
     private val strokes = mutableListOf<MutableList<Pair<Float, Float>>>()
     private var currentStroke = mutableListOf<Pair<Float, Float>>()
     private var minX = Float.MAX_VALUE

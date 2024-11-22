@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 @Module
 interface RepositoryModule {
+
     @Binds
     fun provideWordRepositoryImpl(repositoryImpl: DefaultWordRepository): WordRepository
 }

@@ -14,6 +14,7 @@ class DefaultWordRepository
 constructor(
     private val dataSource: WordDataSource
 ) : WordRepository {
+
     override suspend fun getFiveBasicWords(): Flow<List<BasicWord>> = dataSource.getFiveBasicWords()
 
     override suspend fun updateStatus(word: String) = dataSource.markWordAsLearned(word)
