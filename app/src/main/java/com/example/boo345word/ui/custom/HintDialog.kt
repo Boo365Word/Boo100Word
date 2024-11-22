@@ -11,10 +11,8 @@ import androidx.fragment.app.DialogFragment
 import com.example.boo345word.data.entity.BasicWord
 import com.example.boo345word.databinding.HintDialogBinding
 
-class HintDialog(
-    word: BasicWord
-) : DialogFragment() {
-    @Suppress("ktlint:standard:backing-property-naming")
+class HintDialog(word: BasicWord) : DialogFragment() {
+
     private var _binding: HintDialogBinding? = null
     private val binding get() = _binding!!
     private var word: BasicWord? = null
@@ -28,20 +26,39 @@ class HintDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
-
         _binding = HintDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.txtHintWord.text = word?.meaning
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initHintDialog()
+    }
+
+    private fun initHintDialog() {
+        dialog?.window?.let { window ->
+            window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window.requestFeature(Window.FEATURE_NO_TITLE)
+        }
+        initHintDialogBinding()
+    }
+
+    private fun initHintDialogBinding() {
         val imageSource = "example_${word?.word}"
         val imageId = resources.getIdentifier(imageSource, "drawable", requireContext().packageName)
-        binding.btnClose.setOnClickListener {
-            dismiss()
-        }
-        binding.imageHint.setImageResource(imageId)
 
-        return view
+        with(binding) {
+            txtHintWord.text = word?.meaning
+            btnClose.setOnClickListener { dismiss() }
+            imageHint.setImageResource(imageId)
+        }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }
