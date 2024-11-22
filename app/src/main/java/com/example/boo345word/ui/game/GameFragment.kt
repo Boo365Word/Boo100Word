@@ -148,7 +148,6 @@ class GameFragment :
                     false
                 }
             }
-
             btnHint.setOnClickListener {
                 currentWord?.let {
                     val dialog = HintDialog(it)
