@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Log
+import com.example.boo345word.ui.word.WordSymbols
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.io.IOException
@@ -20,29 +21,7 @@ class DrawClassifier(
     private var tflite: Interpreter? = null
 
     // 모델이 인식하는 카테고리 배열로 선언
-    private val classNames =
-        arrayOf(
-            "aircraft_carrier", "airplane", "alarm_clock", "ambulance", "angel",
-            "animal_migration", "ant", "anvil", "apple", "arm",
-            "asparagus", "axe", "backpack", "banana", "bandage",
-            "barn", "baseball_bat", "baseball", "basket", "basketball",
-            "bat", "bathtub", "beach", "bear", "beard",
-            "bed", "bee", "belt", "bench", "bicycle",
-            "binoculars", "bird", "birthday_cake", "blackberry", "blueberry",
-            "book", "boomerang", "bottlecap", "bowtie", "bracelet",
-            "brain", "bread", "bridge", "broccoli", "broom",
-            "bucket", "bulldozer", "bus", "bush", "butterfly",
-            "cactus", "cake", "calculator", "calendar", "camel",
-            "camera", "camouflage", "campfire", "candle", "cannon",
-            "canoe", "car", "carrot", "castle", "cat",
-            "ceiling_fan", "cell_phone", "cello", "chair", "chandelier",
-            "church", "circle", "clarinet", "clock", "cloud",
-            "coffee_cup", "compass", "computer", "cookie", "cooler",
-            "couch", "cow", "crab", "crayon", "crocodile",
-            "crown", "cruise_ship", "cup", "diamond", "dishwasher",
-            "diving_board", "dog", "dolphin", "donut", "door",
-            "dragon", "dresser", "drill", "drums", "duck"
-        )
+    private val classNames = WordSymbols.entries.map{it.english}
 
     @Suppress("ktlint:standard:property-naming")
     // 모델 경로 선언 (assets 폴더에 있는 모델 파일 이름)

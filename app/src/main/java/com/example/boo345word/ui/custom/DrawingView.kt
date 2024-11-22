@@ -19,7 +19,9 @@ class DrawingView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    private val strokes = mutableListOf<MutableList<Pair<Float, Float>>>()
+    private val _strokes = mutableListOf<MutableList<Pair<Float, Float>>>()
+    val strokes: List<List<Pair<Float, Float>>>
+        get() = _strokes
     private var currentStroke = mutableListOf<Pair<Float, Float>>()
     private var minX = Float.MAX_VALUE
     private var minY = Float.MAX_VALUE
@@ -60,10 +62,6 @@ class DrawingView @JvmOverloads constructor(
         minY = minOf(minY, y)
         maxX = maxOf(maxX, x)
         maxY = maxOf(maxY, y)
-    }
-
-    fun getStrokes(): List<List<Pair<Float, Float>>> {
-        return strokes
     }
 
     fun getStrokesData(): Pair<List<List<List<Int>>>, List<Int>> {
@@ -120,7 +118,7 @@ class DrawingView @JvmOverloads constructor(
             MotionEvent.ACTION_UP -> {
                 path.lineTo(x, y)
                 paths.add(path)
-                strokes.add(currentStroke)
+                _strokes.add(currentStroke)
                 drawingCompleteRunnable = Runnable {
                     val bitmap = getBitmap()
                     onDrawingCompletedListener?.invoke(bitmap)
@@ -134,7 +132,7 @@ class DrawingView @JvmOverloads constructor(
     }
     fun clearCanvas() {
         paths.clear()
-        strokes.clear()
+        _strokes.clear()
         Log.d("clear 호출", paths.toString())
         undonePaths.clear()
         path.reset()

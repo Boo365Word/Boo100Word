@@ -161,7 +161,7 @@ class GameFragment :
                 // 그림을 그릴 때 1 ± 5번째 게임이라면
                 if (currentState <= 5) {
                     val newBitmap = binding.drawingView.getBitmap()
-                    val strokes = binding.drawingView.getStrokes()
+                    val strokes = binding.drawingView.strokes
                     val result = classifier.classify(newBitmap, strokes, currentWord?.word.toString())
                     // 예측 결과가 정답이라면
                     if (result) {
