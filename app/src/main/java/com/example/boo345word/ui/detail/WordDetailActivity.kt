@@ -60,19 +60,15 @@ class WordDetailActivity : AppCompatActivity() {
             }
         }
         repeatOnStarted(this) {
-            handleWordDetailEvent()
-        }
-    }
-
-    private suspend fun handleWordDetailEvent() {
-        viewModel.event.collect { event ->
-            when (event) {
-                is WordDetailEvent.Error -> {
-                    Toast.makeText(
-                        this@WordDetailActivity,
-                        getString(R.string.word_detail_error_message),
-                        Toast.LENGTH_SHORT
-                    ).show()
+            viewModel.event.collect { event ->
+                when (event) {
+                    is WordDetailEvent.Error -> {
+                        Toast.makeText(
+                            this@WordDetailActivity,
+                            getString(R.string.word_detail_error_message),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }
