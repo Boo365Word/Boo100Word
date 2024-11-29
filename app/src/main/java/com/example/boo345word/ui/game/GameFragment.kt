@@ -26,8 +26,8 @@ import java.util.Locale
 
 @AndroidEntryPoint
 class GameFragment :
-    Fragment(), GameResultDialogListener {
-
+    Fragment(),
+    GameResultDialogListener {
     private val viewModel: GameViewModel by viewModels()
     private var wordList: List<BasicWord> = emptyList()
     private var currentWord: BasicWord? = null
@@ -40,7 +40,7 @@ class GameFragment :
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentGameBinding.inflate(inflater)
 
@@ -49,7 +49,7 @@ class GameFragment :
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) {
         val classifier = DrawClassifier(requireActivity())
 
@@ -139,8 +139,6 @@ class GameFragment :
                     (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)
                 ) {
                     if (binding.editHint.text.toString() == currentWord?.meaning) {
-                        Toast.makeText(context, "맞았어요!! 힌트를 보고 다시 그려볼까요?", Toast.LENGTH_SHORT)
-                            .show()
                         binding.btnHint.visibility = View.VISIBLE
                     } else {
                         Toast.makeText(context, "다시 입력해주세요!", Toast.LENGTH_SHORT).show()
@@ -164,6 +162,8 @@ class GameFragment :
         // 첫단계인 경우 먼저 데이터를 가져온다.
         // 현재 게임 단계가 5보다 작을 경우 다음 게임을 시작한다.
         if (currentState <= stateCount) {
+            // 힌트 창을 지운다
+            binding.editHint.text = null
             // 현재 단계에 맞는 단어를 가져온다.
             getCurrentWord()
             //  새 게임을 위한 뷰를 준비한다..
@@ -198,8 +198,10 @@ class GameFragment :
 
     // 스킵 버튼
     private fun skipCurrentWord() {
+        binding.editHint.text = null
         // 스킵 시에는 해당 단어를 오답으로 저장한다.
         saveGameResult(false)
+
         // 다음 게임으로 넘어간다.
         if (currentState < stateCount) {
             currentState++
@@ -237,10 +239,10 @@ class GameFragment :
             context = requireContext(),
             correctWordList = viewModel.correctWordList.value.toList(),
             wrongWordList = viewModel.wrongWordSet.value.toList(),
-            listener = this
+            listener = this,
         ).show(
             parentFragmentManager,
-            "GameResultDialog"
+            "GameResultDialog",
         )
     }
 
@@ -258,7 +260,6 @@ class GameFragment :
     }
 
     companion object {
-
         fun newInstance(): GameFragment {
             val args = Bundle()
             val fragment = GameFragment()
