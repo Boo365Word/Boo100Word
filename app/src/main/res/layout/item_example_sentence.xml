@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="20dp"
-        android:textAlignment="center"
         android:textColor="#ABABAB"
         android:textSize="20sp"
         android:textStyle="bold"

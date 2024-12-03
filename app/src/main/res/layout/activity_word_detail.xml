@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.detail.WordDetailActivity">
 
     <TextView
         android:id="@+id/tv_word_english_detail_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/changwondangamasac"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -36,36 +37,36 @@
         android:id="@+id/tv_word_english_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold|normal"
-        app:layout_constraintEnd_toStartOf="@id/tv_pronunciation"
-        app:layout_constraintTop_toTopOf="@id/tv_pronunciation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_word_korean_detail"
         tools:text="apple" />
 
     <TextView
         android:id="@+id/tv_pronunciation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="43dp"
         android:textColor="#ABABAB"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_word_english_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_word_english_detail"
         tools:text="['aepel]" />
 
     <TextView
         android:id="@+id/tv_word_korean_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textSize="23sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/tv_pronunciation"
-        app:layout_constraintStart_toEndOf="@id/tv_pronunciation"
-        app:layout_constraintTop_toTopOf="@id/tv_pronunciation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_word_english_detail_title"
         tools:text="사과" />
 
     <ImageView
@@ -73,21 +74,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="25dp"
-        android:background="#EFEFEF"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dialog_info_background"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_pronunciation" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_pronunciation" />
 
     <TextView
         android:id="@+id/tv_example_sentence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_word_symbol_image"
@@ -97,6 +98,7 @@
         android:id="@+id/rv_example_sentence"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

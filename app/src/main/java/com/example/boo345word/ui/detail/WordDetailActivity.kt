@@ -53,6 +53,12 @@ class WordDetailActivity : AppCompatActivity() {
                         word = word.english,
                         sentences = word.sentences
                     )
+
+                    binding.tvWordEnglishDetail.text = word.english
+                    binding.tvPronunciation.text = "[" + word.pronunciation + "]"
+                    binding.tvWordKoreanDetail.text = word.korean
+                    binding.tvExampleSentence.text = "예문"
+
                     word.symbol?.let { symbol ->
                         binding.ivWordSymbolImage.setImageResource(symbol)
                     } ?: binding.ivWordSymbolImage.setImageResource(0)
