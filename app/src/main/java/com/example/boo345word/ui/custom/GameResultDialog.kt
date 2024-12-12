@@ -2,12 +2,16 @@ package com.example.boo345word.ui.custom
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
+import android.icu.text.ListFormatter.Width
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.example.boo345word.R
 import com.example.boo345word.data.entity.BasicWord
@@ -33,10 +37,40 @@ class GameResultDialog(
     ): View {
         _binding = DialogGameResultBinding.inflate(inflater, container, false)
         val view = binding.root
-
         initGameResultDialog()
-
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        context.dialogFragmentResize(this@GameResultDialog,0.8f,0.9f)
+
+    }
+
+    private fun Context.dialogFragmentResize(
+        dialogFragment  : DialogFragment,
+        width: Float,
+        height : Float,
+    ) {
+        val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        if (Build.VERSION.SDK_INT < 30) {
+            val display = windowManager.defaultDisplay
+            val size = Point()
+            display.getSize(size)
+
+            val window = dialogFragment.dialog?.window
+
+            val x = (size.x * width).toInt()
+            val y = (size.y * height).toInt()
+            window?.setLayout(x,y)
+        } else {
+            val rect = windowManager.currentWindowMetrics.bounds
+            val window = dialogFragment.dialog?.window
+            val x = (rect.width() * width).toInt()
+            val y = (rect.height() * height).toInt()
+
+            window?.setLayout(x,y)
+            }
     }
 
     override fun onViewCreated(

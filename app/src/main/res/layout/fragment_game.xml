@@ -32,7 +32,8 @@
     <ProgressBar
         android:id="@+id/time_progress_bar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.8"
         android:layout_height="30sp"
         android:layout_marginTop="4dp"
         android:max="20"
@@ -54,29 +55,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/time_progress_bar" />
 
-    <FrameLayout
+
+    <com.example.boo345word.ui.custom.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:id="@+id/sketch_book_frame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/img_sketch_book"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar">
+        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
+        app:layout_constraintWidth_percent="0.8" />
 
-        <View
-            android:layout_width="370dp"
-            android:layout_height="370dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/img_sketch_book">
-
-        </View>
-        <com.example.boo345word.ui.custom.DrawingView
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/drawingView"
-            android:layout_width="360dp"
-            android:layout_height="360dp"/>
-
-    </FrameLayout>
     <TextView
         android:id="@+id/txt_current_state"
         android:layout_width="wrap_content"
@@ -84,12 +76,12 @@
         android:text="1"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
-        app:layout_constraintEnd_toEndOf="@+id/sketch_book_frame"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
-        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintBottom_toBottomOf="@+id/drawingView"
+        app:layout_constraintEnd_toEndOf="@+id/drawingView"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/drawingView"
+        app:layout_constraintTop_toTopOf="@+id/drawingView"
+        app:layout_constraintVertical_bias="0.13999999" />
 
 
     <TextView
@@ -99,12 +91,9 @@
         android:text="/5"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
-        app:layout_constraintEnd_toEndOf="@+id/sketch_book_frame"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
-        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintBottom_toBottomOf="@+id/txt_current_state"
+        app:layout_constraintStart_toEndOf="@+id/txt_current_state"
+        app:layout_constraintTop_toTopOf="@+id/txt_current_state" />
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -122,18 +111,18 @@
 
 
     <ImageButton
-        android:scaleType="fitCenter"
         android:id="@+id/ic_eraser"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_eraser"
-        app:layout_constraintBottom_toBottomOf="@+id/sketch_book_frame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toStartOf="@+id/sketch_book_frame"
-        app:layout_constraintTop_toBottomOf="@+id/time_progress_bar"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintBottom_toBottomOf="@+id/drawingView"
+        app:layout_constraintEnd_toEndOf="@+id/drawingView"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/drawingView"
+        app:layout_constraintTop_toTopOf="@+id/drawingView"
+        app:layout_constraintVertical_bias="0.96" />
 
     <ImageButton
         android:id="@+id/btn_hint"
@@ -146,53 +135,53 @@
         android:src="@drawable/btn_hint"
         app:layout_constraintBottom_toTopOf="@+id/iv_ghost"
         app:layout_constraintStart_toStartOf="@+id/iv_ghost" />
-    <ImageView
-        android:scaleType="fitCenter"
-        android:id="@+id/iv_ghost"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/img_ghost_v2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sketch_book_frame"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout2"
+    <ImageView
+        android:id="@+id/iv_ghost"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_ghost_v2"
+        app:layout_constraintBottom_toTopOf="@+id/edit_hint"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drawingView"
+        app:layout_constraintWidth_percent="0.4" />
+
+
+    <ImageView
+        android:id="@+id/iv_bubble"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/img_speech_bubble"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ghost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@+id/iv_ghost"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/txt_model_speech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_ghost"
-        app:layout_constraintTop_toBottomOf="@+id/sketch_book_frame">
-
-        <ImageView
-            android:layout_width="180dp"
-            android:layout_height="100dp"
-            android:src="@drawable/img_speech_bubble"
-            app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-        <TextView
-            android:id="@+id/txt_model_speech"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="얼른 그려줘!"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="229dp"
-            tools:layout_editor_absoluteY="608dp" />
-    </FrameLayout>
+        android:layout_gravity="center"
+        android:text="얼른 그려줘!"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bubble"
+        app:layout_constraintEnd_toEndOf="@+id/iv_bubble"
+        app:layout_constraintStart_toStartOf="@+id/iv_bubble"
+        app:layout_constraintTop_toTopOf="@+id/iv_bubble" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:imeOptions="actionDone"
         android:inputType="text"
         android:singleLine="true"
         android:id="@+id/edit_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.06"
         android:layout_marginBottom="15dp"
         android:background="@drawable/edit_text_game"
         android:gravity="center"
