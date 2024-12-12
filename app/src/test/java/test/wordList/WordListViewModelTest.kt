@@ -1,8 +1,8 @@
 package test.wordList
 
-import com.example.boo345word.data.repository.WordRepository
-import com.example.boo345word.ui.word.WordListViewModel
-import com.example.boo345word.ui.word.Words
+import com.lion.boo100word.data.repository.WordRepository
+import com.lion.boo100word.ui.word.WordListViewModel
+import com.lion.boo100word.ui.word.Words
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase.assertEquals

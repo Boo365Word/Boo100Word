@@ -1,7 +1,7 @@
 package androidTest
 
-import com.example.boo345word.ui.detail.Sentence
-import com.example.boo345word.ui.detail.WordDetail
+import com.lion.boo100word.ui.detail.Sentence
+import com.lion.boo100word.ui.detail.WordDetail
 
 object WordDetailFixture {
 

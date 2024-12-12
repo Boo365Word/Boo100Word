@@ -11,11 +11,11 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.boo345word.R
-import com.example.boo345word.ui.word.WordListActivity
-import com.example.boo345word.ui.word.WordListAdapter
-import com.example.boo345word.ui.word.WordListItemViewHolder
-import com.example.boo345word.ui.word.Words
+import com.lion.boo100word.R
+import com.lion.boo100word.ui.word.WordListActivity
+import com.lion.boo100word.ui.word.WordListAdapter
+import com.lion.boo100word.ui.word.WordListItemViewHolder
+import com.lion.boo100word.ui.word.Words
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule

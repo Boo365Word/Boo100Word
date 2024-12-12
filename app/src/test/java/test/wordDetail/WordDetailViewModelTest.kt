@@ -1,10 +1,10 @@
 package test.wordDetail
 
 import app.cash.turbine.test
-import com.example.boo345word.data.repository.WordRepository
-import com.example.boo345word.ui.detail.WordDetail
-import com.example.boo345word.ui.detail.WordDetailEvent
-import com.example.boo345word.ui.detail.WordDetailViewModel
+import com.lion.boo100word.data.repository.WordRepository
+import com.lion.boo100word.ui.detail.WordDetail
+import com.lion.boo100word.ui.detail.WordDetailEvent
+import com.lion.boo100word.ui.detail.WordDetailViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase.assertEquals

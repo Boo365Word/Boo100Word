@@ -1,9 +1,9 @@
 package androidTest
 
 import android.util.Log
-import com.example.boo345word.data.repository.WordRepository
-import com.example.boo345word.ui.detail.WordDetail
-import com.example.boo345word.ui.word.Word
+import com.lion.boo100word.data.repository.WordRepository
+import com.lion.boo100word.ui.detail.WordDetail
+import com.lion.boo100word.ui.word.Word
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

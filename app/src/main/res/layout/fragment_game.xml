@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/time_progress_bar" />
 
 
-    <com.example.boo345word.ui.custom.DrawingView
+    <com.lion.boo100word.ui.custom.DrawingView
         android:id="@+id/drawingView"
         android:layout_width="0dp"
         android:layout_height="0dp"

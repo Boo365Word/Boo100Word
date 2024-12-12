@@ -1,6 +1,6 @@
 package test.wordDetail
 
-import com.example.boo345word.ui.detail.WordDetail
+import com.lion.boo100word.ui.detail.WordDetail
 
 object WordDetailFixture {
 

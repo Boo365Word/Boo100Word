@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.boo345word"
+    namespace = "com.lion.boo100word"
     compileSdk = 34
 
     buildFeatures {

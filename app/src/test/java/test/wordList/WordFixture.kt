@@ -1,6 +1,6 @@
 package test.wordList
 
-import com.example.boo345word.ui.word.Word
+import com.lion.boo100word.ui.word.Word
 
 object WordFixture {
 

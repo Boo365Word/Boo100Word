@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.boo345word.ui.game.GameFragment"
+        android:name="com.lion.boo100word.ui.game.GameFragment"
         android:id="@+id/game_fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

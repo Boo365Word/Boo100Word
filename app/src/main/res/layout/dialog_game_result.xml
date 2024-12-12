@@ -156,7 +156,7 @@
        android:orientation="horizontal"
        app:layout_constraintGuide_percent="0.55"/>
 
-    <com.example.boo345word.ui.custom.GameResultText
+    <com.lion.boo100word.ui.custom.GameResultText
         android:id="@+id/txt_game_result"
         android:layout_width="0dp"
         android:layout_height="0dp"

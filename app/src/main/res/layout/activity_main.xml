@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.4" />
 
-    <com.example.boo345word.ui.custom.HeartProgressBar
+    <com.lion.boo100word.ui.custom.HeartProgressBar
         android:id="@+id/custom_heart_progress_bar"
         android:layout_width="0dp"
         android:layout_height="0dp"
