@@ -43,7 +43,7 @@ class GameResultDialog(
 
     override fun onResume() {
         super.onResume()
-        context.dialogFragmentResize(this@GameResultDialog,0.8f,0.9f)
+        context.dialogFragmentResize(this@GameResultDialog,0.9f,0.9f)
 
     }
 
