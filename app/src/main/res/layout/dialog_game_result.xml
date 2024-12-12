@@ -10,11 +10,10 @@
         android:id="@+id/imageView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="10dp"
         android:src="@drawable/item_result_dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.6"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.9" />
@@ -78,28 +77,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/heart1" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
 
     <ImageView
         android:id="@+id/heart1"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.1"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.05"
         android:layout_marginStart="16dp"
         android:src="@drawable/ic_heart"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintTop_toTopOf="@+id/guide_heart"
+        app:layout_constraintWidth_percent="0.1" />
 
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="맞은 단어"
         android:textStyle="bold"
@@ -109,18 +113,20 @@
 
 
     <ListView
+        android:padding="10dp"
         android:id="@+id/list_correct_word"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/list_wrong_word"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_game_result"
         app:layout_constraintEnd_toEndOf="@+id/textView9"
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         tools:listitem="@layout/game_result_word_item" />
 
     <TextView
@@ -138,23 +144,26 @@
         app:layout_constraintWidth_percent="0.4" />
 
     <ListView
+        android:padding="10dp"
         android:id="@+id/list_wrong_word"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/txt_game_result"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_game_result"
         app:layout_constraintEnd_toEndOf="@+id/textView10"
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         tools:listitem="@layout/game_result_word_item" />
 
-   <androidx.constraintlayout.widget.Guideline
-       android:id="@+id/bottom_guide"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       app:layout_constraintGuide_percent="0.55"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
 
     <com.lion.boo100word.ui.custom.GameResultText
         android:id="@+id/txt_game_result"
