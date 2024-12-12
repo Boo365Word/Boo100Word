@@ -8,30 +8,32 @@
     android:background="@color/white"
     tools:context=".ui.detail.WordDetailActivity">
 
+
     <TextView
         android:id="@+id/tv_word_english_detail_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/changwondangamasac"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
         tools:text="apple" />
 
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="33dp"
         android:layout_height="33dp"
-        android:layout_marginStart="11dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/btn_back"
-        app:layout_constraintBottom_toBottomOf="@id/tv_word_english_detail_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_word_english_detail_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_word_english_detail"
@@ -76,7 +78,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/dialog_info_background"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintDimensionRatio="1:0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pronunciation" />
