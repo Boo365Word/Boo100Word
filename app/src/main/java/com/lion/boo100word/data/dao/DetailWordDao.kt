@@ -19,7 +19,7 @@ interface DetailWordDao {
     @Query("Select * from detail_words")
     fun selectWords(): Flow<List<DetailWord>>
 
-    @Query("Select * from detail_words where word LIKE '%'||:keyword||'%'")
+    @Query("SELECT * FROM detail_words WHERE word LIKE '%'||:keyword||'%' OR meaning LIKE '%'||:keyword||'%'")
     fun selectWordsByKeyword(keyword: String): Flow<List<DetailWord>>
 
     @Query("Select * from detail_words where word LIKE :keyword")
