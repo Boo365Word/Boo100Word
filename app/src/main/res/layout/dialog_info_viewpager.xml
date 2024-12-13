@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="match_parent" >
 
     <!-- 프레임 레이아웃 하나 더 해서 디자인 -->
@@ -37,6 +41,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="end|top"
-        android:background="@drawable/btn_close" />
+        android:background="@drawable/btn_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </FrameLayout>

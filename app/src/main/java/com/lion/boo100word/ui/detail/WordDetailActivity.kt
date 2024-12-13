@@ -81,7 +81,6 @@ class WordDetailActivity : AppCompatActivity() {
     }
 
     companion object {
-
         private const val KEY = "key"
 
         fun start(context: Context, word: String) {
